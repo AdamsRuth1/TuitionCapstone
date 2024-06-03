@@ -17,12 +17,12 @@ export default function Header() {
     <motion.div initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1 }}>
-      <nav className="bg-blue-400 py-2 shadow-md">
-    <div className="flex items-center justify-between mx-5 ">
-<div className='flex '><img src={logo} alt='ExpressWash Logo' className='h-8' /><h1 className='my-2 mx-1    text-white font-bold'>ExpressWash.Ng</h1></div>
+      <nav className="bg-white-400 py-2 shadow">
+    <div className="flex items-center justify-between shadow-md py-2 ">
+<div className='flex mx-3'><img src={logo} alt='ExpressWash Logo' className='h-9' /><h1 className='my-2 mx-1  font-bold'>ExpressWash.Ng</h1></div>
       
       <div className='md:hidden border border-black-500 px-2 py-1 rounded ' >
-        <button className='text-white border-black' onClick={toggleMenu}>
+        <button className='text-black border-black' onClick={toggleMenu}>
             <svg 
             className="h-6 w-6 " 
             fill="none" 
@@ -38,26 +38,26 @@ export default function Header() {
       </div>
       <ul className='hidden md:flex space-x-4'>
       <li>
-        <a href='#' className='text-white hover:bg-white hover:text-blue-500 hover:border-blue-500 hover:rounded-full px-4 py-2 border border-transparent transition-all duration-300'>Home</a>
+        <a href='#' className='text-black hover:bg-white hover:text-blue-500 hover:border-blue-500 hover:rounded-full px-4 py-2 border border-transparent transition-all duration-300'>Home</a>
     </li>
     <li>
-        <a href='#' className='text-white hover:bg-white hover:text-blue-500 hover:border-blue-500 hover:rounded-full px-4 py-2 border border-transparent transition-all duration-300'>About</a>
+        <a href='#' className='text-black hover:bg-white hover:text-blue-500 hover:border-blue-500 hover:rounded-full px-4 py-2 border border-transparent transition-all duration-300'>About</a>
     </li>
     <li>
-        <a href='#' className='text-white hover:bg-white hover:text-blue-500 hover:border-blue-500 hover:rounded-full px-4 py-2 border border-transparent transition-all duration-300'>Service</a>
+        <a href='#' className='text-black hover:bg-white hover:text-blue-500 hover:border-blue-500 hover:rounded-full px-4 py-2 border border-transparent transition-all duration-300'>Service</a>
     </li>
     <li>
-        <a href='#' className='text-white hover:bg-white hover:text-blue-500 hover:border-blue-500 hover:rounded-full px-4 py-2 border border-transparent transition-all duration-300'>Contact</a>
+        <a href='#' className='text-black hover:bg-white hover:text-blue-500 hover:border-blue-500 hover:rounded-full px-4 py-2 border border-transparent transition-all duration-300'>Contact</a>
     </li>
       </ul>
     </div>
     {/* mobile display */}
     {isOpen ? (
-        <ul className='flex-col md:hidden m-6 '>
-            <li className=' text-white hover:bg-white hover:text-blue-500 hover:border-blue-500 hover:rounded-full px-3 py-3 border border-transparent transition-all duration-300'><a href='#'className=''>Home</a></li>
-            <li className=' text-white hover:bg-white hover:text-blue-500 hover:border-blue-500 hover:rounded-full px-3 py-3 border border-transparent transition-all duration-300'><a href='#'>About</a></li>
-            <li className=' text-white hover:bg-white hover:text-blue-500 hover:border-blue-500 hover:rounded-full px-3 py-3 border border-transparent transition-all duration-300'><a href='#' >Services</a></li>
-            <li className=' text-white hover:bg-white hover:text-blue-500 hover:border-blue-500 hover:rounded-full px-3 py-3 border border-transparent transition-all duration-300'><a href='#'>Contact</a></li>
+        <ul className='flex-col md:hidden shadow-md m-6  '>
+            <li className=' text-black hover:bg-white hover:text-white hover:bg-blue-400 hover:border-blue-500 hover:rounded-full px-3 py-3 border border-transparent transition-all duration-300'><a href='#'className=''>Home</a></li>
+            <li className=' text-black hover:bg-white hover:text-white hover:bg-blue-400 hover:border-blue-500 hover:rounded-full px-3 py-3 border border-transparent transition-all duration-300'><a href='#'>About</a></li>
+            <li className=' text-black hover:bg-white hover:text-white hover:bg-blue-400 hover:border-blue-500 hover:rounded-full px-3 py-3 border border-transparent transition-all duration-300'><a href='#' >Services</a></li>
+            <li className=' text-black hover:bg-white hover:text-white hover:bg-blue-400 hover:border-blue-500 hover:rounded-full px-3 py-3 border border-transparent transition-all duration-300'><a href='#'>Contact</a></li>
         </ul>
     ) : (
         null
