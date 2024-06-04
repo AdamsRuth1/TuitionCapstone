@@ -1,0 +1,152 @@
+import React from 'react';
+import { motion } from 'framer-motion';
+export default function AltWaveExplore() {
+    return (
+        <> 
+        <motion.div initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 1 }}>
+           
+  <div className='mx-6'>
+  <div className='text-center mb-20'> <h1 className="mt-20 text-center mb-0 text-xl md:text-5xl  text-customBlack">
+            Explore New Features
+  </h1>
+  <p className='mb-12'>Tailored to improve your experience. Worry less! Study More!!</p></div>
+  <div className='flex justify-between px-5 flex-col md:flex-row sm:flex-col'>
+    <div className='flex-1'>
+        <img src='http://localhost:5173/src/assets/Mockup%20&%20Blob%201.png'/>
+    </div>
+    <div className='flex-1'>
+    <h1 className="mt-12 mb-8 text-xl md:text-5xl font-bold  sm:text-5xl text-customBlack line">
+    Digital Wallet
+  </h1><p className='leading-8 mb-8'>
+  This isn't just a wallet; it's your launchpad to a smoother ‘study abroad’ experience. Forget the stress of accessing money in a new country, our Digital Wallet lets you hit the ground running, so you worry less about getting access to spendable money and focus on what truly matters: immersing yourself in the culture and excelling in your studies.
+  </p>
+  <button className="bg-customButton mt-10 border rounded-md text-white px-6 py-2 my-2 hover:bg-blue-900 ">
+    Explore Wallet
+    </button>
+  
+    </div>
+
+  </div>
+  <div className='flex mt-20 justify-between px-5 flex-col md:flex-row sm:flex-col'>
+  <div className='flex-1'>
+    <h1 className="mt-12 mb-8 text-xl md:text-5xl font-bold  sm:text-5xl text-customBlack line">
+    Target Savings
+  </h1><p className='leading-8 mb-8'>
+  We understand that achieving your dream of studying abroad comes with its own set of challenges, especially when it comes to managing finances in the face of inflation and unstable exchange rates. <br/> <br/> That's why we've launched our new Target Savings feature – a flexible and empathetic solution designed to help you save towards your educational goals in a stress-free manner.
+  </p>
+  <button className="bg-customButton mt-10 border rounded-md text-white px-6 py-2 my-2 hover:bg-blue-900 ">
+    Explore Savings
+    </button>
+  
+    </div>
+    <div className='flex-1 mx-12'>
+        <img src='http://localhost:5173/src/assets/Mockup%20&%20Blob%202.png'/>
+    </div>
+   
+
+  </div>
+  <div className='flex mt-28 justify-between px-5 flex-col md:flex-row sm:flex-col'>
+    <div className='flex-1'>
+        <img src='http://localhost:5173/src/assets/Mockup%20and%20Blob%203.png'/>
+    </div>
+    <div className='flex-1'>
+    <h1 className="mt-12 mb-8 text-xl md:text-5xl font-bold  sm:text-5xl text-customBlack line">
+    Informative Blog
+  </h1><p className='leading-8 mb-8'>
+  We get it. Studying abroad sounds incredible, but the journey can feel overwhelming. Sifting through countless websites, unsure which are reliable and which are scams, can leave you feeling lost.<br /><br />
+  The Tuition by Flutterwave Blog is your one-stop source for reliable information, from school applications to securing your dream scholarship and preparing for your journey.<br /><br />
+  Explore our Blog today and take the first step towards a brighter future with our empathetic and reliable guidance – because we believe in making your dreams a reality, one post at a time.
+  </p>
+  <button className="bg-customButton mt-10 border rounded-md text-white px-6 py-2 my-2 hover:bg-blue-900 ">
+    Explore Blog
+    </button>
+  
+    </div>
+
+  </div>
+  <div className='flex mt-20 justify-between px-5 flex-col md:flex-row sm:flex-col'>
+  <div className='flex-1'>
+    <h1 className="mt-12 mb-8 text-xl md:text-5xl font-bold  sm:text-5xl text-customBlack line">
+    Pay Online Courses
+  </h1><p className='leading-8 mb-8'>
+  Whether you're sharpening your professional skills on Udemy, or delving deep into fascinating topics on Coursera, we got you covered. We offer different payment pathways specifically designed for you, ensuring a smooth and stress-free learning experience. <br/> <br/> We're committed to creating pathways that empower you to achieve your educational goals, regardless of where you are.
+  </p>
+  <button className="bg-customButton mt-10 border rounded-md text-white px-6 py-2 my-2 hover:bg-blue-900 ">
+    Explore Payments
+    </button>
+  
+    </div>
+    <div className='flex-1 mx-12'>
+        <img src='http://localhost:5173/src/assets/Frame%20327.png'/>
+    </div>
+   
+    </div>
+  </div>
+  <div className='bg-customLightBlueGray px-16'>
+           <h1 className="mx-5 py-10 text-3xl md:text-5xl font-bold text-customBlack leading-12 my-12 text-center">
+           4 easy steps to process payment
+              </h1>
+              <div className='flex justify-center items-center text-center px-10 mx-15 space-x-10 flex-col sm:flex-row'>
+          
+          <div className='flex flex-col items-center sm:my-7'>
+
+              <img alt='' src='http://localhost:5173/src/assets/Number1%20container.png'/>
+              <h1 className='font-bold my-3 text-customBlack'> Create an account</h1>
+              <p>
+              Sign up with your email, Google, or Apple login and breeze through the sign-up process in just a few minutes. Easy-peasy!
+              </p>
+            </div>
+            <div className='flex flex-col items-center sm:my-7'>
+
+              <img className='' alt='' src='http://localhost:5173/src/assets/Number%20container2.png'/>
+              <h1 className='font-bold my-3 text-customBlack'> Submit your information</h1>
+              <p>
+              Select a school, online course service provider and enter all the required payment information, as well as your student information.
+              </p>
+            </div>
+            <div className='flex flex-col items-center'>
+
+              <img alt='' src='http://localhost:5173/src/assets/Number%20container%20(1).png'/>
+              <h1 className='font-bold my-3 text-customBlack'> Verify your information</h1>
+              <p>
+              Double-check all the details provided and proceed to payment.
+              </p>
+            </div>
+            <div className='flex flex-col items-center'>
+
+              <img alt='' src='http://localhost:5173/src/assets/Number%20container%20(2).png'/>
+              <h1 className='font-bold my-3 text-customBlack'> Payment confirmation</h1>
+              <p>
+              We’ll confirm your payment with your school or service provider in 48 hours, and keep you updated every step of the way as well.
+              </p>
+            </div>
+          </div>
+          </div>
+          <div className='bg-customLightBlueGray px-16 '>
+          <h1 className="py-32 text-3xl md:text-5xl font-bold text-customBlack leading-12 text-center">
+           Safety and security guaranteed
+              </h1> <p className='mb-12 '>At Flutterwave, we take security seriously, so every payment made on our platform is 100% secure, even exceeding industry standards.!</p> 
+              <div className='flex flex-col md:flex-row sm:flex-col justify-between ' >
+                <div className='flex-1 mr-32'>
+              <h1 className=" text-xl md:text-xl font-bold text-customBlack my-5 ">
+              ISO 27001 & 22301 Certification
+              </h1>
+                <p>Our ISO 27001 & 22301 certification means that we have acceptable business practices and processes, including a robust business continuity plan.</p>
+                
+              </div>
+              <div className='flex-1'>
+              <h1 className=" text-xl md:text-xl font-bold text-customBlack my-5 ">
+              PA DSS & PCI DSS Compliant
+              </h1>
+                <p>This certification is proof that Flutterwave as a payment gateway processor, has satisfied the highest level of Security Audit and authorizations.</p>
+                
+              </div>
+             </div>  
+          </div>
+          
+        </motion.div>
+        </>
+    )
+}

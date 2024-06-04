@@ -3,6 +3,7 @@ import logo from '../assets/expresswash logo.jpeg';
 import Landing from './landing'
 import About from './about'
 import Service from './service'
+import Head from './altwaveheader'
 import { motion } from "framer-motion"
 export default function Header() {
 
@@ -68,6 +69,7 @@ export default function Header() {
       <Landing />
       <About />
       <Service />
+      <Head />
     </>
   );
 }
