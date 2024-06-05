@@ -1,8 +1,8 @@
 export default function Footer() {
     return (
       <>
-        <div className="p-5 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
-          <div className=" p-5">
+        <div className="flex flex-cols  md:flex-cols lg:flex-cols xl:flex-cols gap-5">
+          <div className=" p-5 flex-1 ">
             <p className="mb-5 font-bold">Products</p>
             <div className="flex flex-col">
             <a href="./invoice" className=" mb-5">
@@ -40,7 +40,7 @@ export default function Footer() {
               </a>
             </div>
           </div>
-          <div className="  p-5">
+          <div className=" flex-1   p-5">
             <p className="mb-5 font-bold">Resources</p>
             <div className="flex flex-col">
             <a href="./invoice" className=" mb-5">
@@ -64,7 +64,7 @@ export default function Footer() {
             </div>
           </div>
          
-          <div className=" p-5">
+          <div className=" flex-1  p-5">
             <div className="flex flex-col">
               <p className=" font-bold mb-5">API Status</p>
               <a href="" className=" mb-5">
@@ -78,7 +78,7 @@ export default function Footer() {
               </a>
             </div>
           </div>
-          <div className=" p-5">
+          <div className=" flex-1  p-5">
             <div className="flex flex-col">
               <p className="font-bold mb-5">Company</p>
               <a href="" className=" mb-5">
@@ -95,9 +95,9 @@ export default function Footer() {
               </a>
             </div>
           </div>
-          <div className=" p-5">
+          <div className=" flex-1  p-5">
             <div className="flex flex-col">
-              <p className="font bold mb-5">Contact</p>
+              <p className="font-bold mb-5">Contact</p>
               <a href="" className=" mb-5">
               hi@flutterwavego.com
               </a>
