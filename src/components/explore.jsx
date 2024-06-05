@@ -19,17 +19,17 @@ export default function AltWaveExplore() {
         transition={{ duration: 1 }}>
            
   <div className='mx-6'>
-  <div className='text-center mb-36'> <h1 className="mt-32 text-center mb-0 text-xl md:text-5xl  text-customBlack">
+  <div className='text-center mb-0 md:mb-36'> <h1 className="mt-32 text-center  mb-0 text-5xl md:text-5xl  text-customBlack">
             Explore New Features
   </h1>
   <p className='mb-12'>Tailored to improve your experience. Worry less! Study More!!</p></div>
   <div className='flex justify-between px-5 flex-col md:flex-row sm:flex-col'>
-    <div className='flex-1'>
+    <div className='flex-1 hidden md:flex'>
         <img  src={Mock1}
               alt="Header Image"/>
     </div>
     <div className='flex-1'>
-    <h1 className="mt-12 mb-8 text-xl md:text-5xl font-bold  sm:text-5xl text-customBlack line">
+    <h1 className="mt-8 mb-8 text-3xl md:mt-12 md:text-5xl font-bold  sm:text-3xl text-customBlack line">
     Digital Wallet
   </h1><p className='leading-8 mb-8'>
   This isn't just a wallet; it's your launchpad to a smoother ‘study abroad’ experience. Forget the stress of accessing money in a new country, our Digital Wallet lets you hit the ground running, so you worry less about getting access to spendable money and focus on what truly matters: immersing yourself in the culture and excelling in your studies.
@@ -38,13 +38,17 @@ export default function AltWaveExplore() {
     Explore Wallet
     <FiArrowRight className='mx-2 my-1 ' />
     </button>
-  
+    <div className='flex-1 my-16 md:hidden'>
+        <img  src={Mock1}
+              alt="Header Image"/>
+    </div>
     </div>
 
   </div>
-  <div className='flex mt-20 justify-between px-5 flex-col md:flex-row sm:flex-col'>
+  <div className='flex md:mt-20 justify-between px-5 flex-col md:flex-row sm:flex-col'>
+  
   <div className='flex-1'>
-    <h1 className="mt-12 mb-8 text-xl md:text-5xl font-bold  sm:text-5xl text-customBlack line">
+    <h1 className="mt-12 mb-8  text-3xl md:text-5xl font-bold  sm:text-5xl text-customBlack line">
     Target Savings
   </h1><p className='leading-8 mb-8'>
   We understand that achieving your dream of studying abroad comes with its own set of challenges, especially when it comes to managing finances in the face of inflation and unstable exchange rates. <br/> <br/> That's why we've launched our new Target Savings feature – a flexible and empathetic solution designed to help you save towards your educational goals in a stress-free manner.
@@ -55,7 +59,7 @@ export default function AltWaveExplore() {
     </button>
   
     </div>
-    <div className='flex-1 mx-12'>
+    <div className='flex-1 md:mt-0 mt-14  mx-12'>
         <img src={Mock2}
               alt="Header Image"/>
     </div>
@@ -63,12 +67,12 @@ export default function AltWaveExplore() {
 
   </div>
   <div className='flex mt-28 justify-between px-5 flex-col md:flex-row sm:flex-col'>
-    <div className='flex-1'>
+    <div className='flex-1 hidden md:flex '>
         <img src={Mock3}
               alt="Mock3"/>
     </div>
     <div className='flex-1'>
-    <h1 className="mt-12 mb-8 text-xl md:text-5xl font-bold  sm:text-5xl text-customBlack line">
+    <h1 className="mt-12 mb-8  text-3xl md:text-5xl font-bold  sm:text-5xl text-customBlack line">
     Informative Blog
   </h1><p className='leading-8 mb-8'>
   We get it. Studying abroad sounds incredible, but the journey can feel overwhelming. Sifting through countless websites, unsure which are reliable and which are scams, can leave you feeling lost.<br /><br />
@@ -79,13 +83,16 @@ export default function AltWaveExplore() {
     Explore Blog
     <FiArrowRight className='mx-2 my-1 ' />
     </button>
-  
+    <div className='flex-1 md:hidden md:mt-0 mt-14  mx-12'>
+        <img src={Mock3}
+              alt="Mock3"/>
+    </div>
     </div>
 
   </div>
   <div className='flex mt-20 justify-between px-5 flex-col md:flex-row sm:flex-col'>
   <div className='flex-1'>
-    <h1 className="mt-12 mb-8 text-xl md:text-5xl font-bold  sm:text-5xl text-customBlack line">
+    <h1 className="mt-12 mb-8 text-3xl md:text-5xl font-bold  sm:text-5xl text-customBlack line">
     Pay Online Courses
   </h1><p className='leading-8 mb-8'>
   Whether you're sharpening your professional skills on Udemy, or delving deep into fascinating topics on Coursera, we got you covered. We offer different payment pathways specifically designed for you, ensuring a smooth and stress-free learning experience. <br/> <br/> We're committed to creating pathways that empower you to achieve your educational goals, regardless of where you are.
@@ -96,20 +103,72 @@ export default function AltWaveExplore() {
     </button>
   
     </div>
-    <div className='flex-1 mx-12'>
+    <div className='flex-1  mx-12'>
         <img src={Mock4}
               alt="Header Image"/>
     </div>
    
     </div>
   </div>
-  <div className="bg-customLightBlueGray py-20 mt-24">
-      <h1 className="mx-5 py-10 text-3xl md:text-5xl font-bold text-customBlack leading-12 my-12 text-center">
+  <div className='hidden sm:block bg-customLightBlueGray py-20 mt-24'>
+  <h1 className="mx-5 py-10 text-3xl md:text-5xl font-bold text-customBlack leading-12 my-12 text-center">
+    4 easy steps to process payment
+  </h1>
+  <div className='flex justify-between text-center items-center py-5 px-5 space-x-10'>
+    <div className='flex-1 flex flex-col items-center'>
+      <div>
+        <img src={Step1} className="" alt="Circle1" />
+      </div>
+      <div>
+        <h1 className="font-bold my-3 text-customBlack">Create an account</h1>
+        <p className="">
+          Sign up with your email, Google, or Apple login and breeze through the sign-up process in just a few minutes. Easy-peasy!
+        </p>
+      </div>
+    </div>
+    <div className='flex-1 flex flex-col items-center'>
+      <div>
+        <img src={Step2}  alt="Circle2" />
+      </div>
+      <div>
+        <h1 className="font-bold my-3 text-customBlack">Submit your information</h1>
+        <p className="">
+          Select a school, online course service provider and enter all the required payment information, as well as your student information.
+        </p>
+      </div>
+    </div>
+    <div className='flex-1 flex flex-col items-center'>
+      <div>
+        <img src={Step3}  alt="Circle3" />
+      </div>
+      <div>
+        <h1 className="font-bold my-3 text-customBlack">Verify your information</h1>
+        <p className="">
+          Double-check all the details provided and proceed to payment.
+        </p>
+      </div>
+    </div>
+    <div className='flex-1 flex flex-col items-center'>
+      <div>
+        <img src={Step4}  alt="Circle4" />
+      </div>
+      <div>
+        <h1 className="font-bold my-3 text-customBlack">Payment confirmation</h1>
+        <p className="">
+        We’ll confirm your payment with your school or service provider in 48 hours, and keep you updated every step of the way as well.
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+      
+  <div className="bg-customLightBlueGray  block lg:hidden md:hidden xl:hidden">
+      <h1 className="mx-5 py-10 text-5xl  font-bold text-customBlack leading-12 my-10">
         4 easy steps to process payment
       </h1>
-      <div className="flex flex-col sm:flex-row px-10 md:px-20 lg:px-40 xl:px-60 justify-center items-start  space-y-10 sm:space-y-0 sm:space-x-10">
+      <div className="justify-center items-start  space-y-10 ">
         <div className="flex flex-col sm:w-1/4">
-          <div className="flex space-x-6 mb-4 sm:mb-0">
+          <div className="flex space-x-6 mb-4 ">
             <img src={Step1} alt="Circle1" className="w-8 h-8 sm:mr-4  mt-3  sm:mb-3" />
             <div>
               <h1 className="font-bold my-3 text-customBlack">Create an account</h1>
@@ -136,7 +195,7 @@ export default function AltWaveExplore() {
             <div>
               <h1 className="font-bold my-3 text-customBlack">Verify your information</h1>
               <p className="text-sm">
-                Double-check all the details provided and proceed to payment.
+                Double-check all the details provided and proceed to payment.Double-check all the details provided and proceed to payment.
               </p>
             </div>
           </div>
@@ -155,12 +214,12 @@ export default function AltWaveExplore() {
       </div>
     </div>
           <Faq/>
-          <div className='bg-customLightBlueGray px-16  mt-36'>
-          <h1 className="py-32 text-3xl md:text-5xl font-bold text-customBlack leading-12 text-center">
+          <div className='bg-customLightBlueGray md:py-32 py-16 px-5 mt-36'>
+          <h1 className=" py:32 mb-10 text-4xl md:text-5xl font-bold text-customBlack leading-12 text-center">
            Safety and security guaranteed
-              </h1> <p className='mb-12 '>At Flutterwave, we take security seriously, so every payment made on our platform is 100% secure, even exceeding industry standards.!</p> 
+              </h1> <p className='mb-12 md:ml-12 '>At Flutterwave, we take security seriously, so every payment made on our platform is 100% secure, even exceeding industry standards.!</p> 
               <div className='flex flex-col md:flex-row sm:flex-col justify-between ' >
-                <div className='flex-1 mr-32'>
+                <div className='flex-1 md:mr-32'>
               <h1 className=" text-xl md:text-xl font-bold text-customBlack my-5 ">
               ISO 27001 & 22301 Certification
               </h1>
