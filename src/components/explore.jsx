@@ -107,10 +107,10 @@ export default function AltWaveExplore() {
       <h1 className="mx-5 py-10 text-3xl md:text-5xl font-bold text-customBlack leading-12 my-12 text-center">
         4 easy steps to process payment
       </h1>
-      <div className="flex flex-col sm:flex-row px-10 md:px-20 lg:px-40 xl:px-60 justify-center items-start text-center space-y-10 sm:space-y-0 sm:space-x-10">
-        <div className="flex flex-col items-center sm:w-1/4">
-          <div className="flex items-center mb-4 sm:mb-0">
-            <img src={Step1} alt="Circle1" className="w-32 h-32 sm:mr-4 mb-4 sm:mb-0" />
+      <div className="flex flex-col sm:flex-row px-10 md:px-20 lg:px-40 xl:px-60 justify-center items-start  space-y-10 sm:space-y-0 sm:space-x-10">
+        <div className="flex flex-col sm:w-1/4">
+          <div className="flex space-x-6 mb-4 sm:mb-0">
+            <img src={Step1} alt="Circle1" className="w-8 h-8 sm:mr-4  mt-3  sm:mb-3" />
             <div>
               <h1 className="font-bold my-3 text-customBlack">Create an account</h1>
               <p className="text-sm">
@@ -120,8 +120,8 @@ export default function AltWaveExplore() {
           </div>
         </div>
         <div className="flex flex-col items-center sm:w-1/4">
-          <div className="flex items-center mb-4 sm:mb-0">
-            <img src={Step2} alt="Circle 2" className="w-32 h-32 sm:mr-4 mb-4 sm:mb-0" />
+        <div className="flex space-x-6 mb-4 sm:mb-0">
+            <img src={Step2} alt="Circle1" className="w-8 h-8 sm:mr-4  mt-3  sm:mb-3" />
             <div>
               <h1 className="font-bold my-3 text-customBlack">Submit your information</h1>
               <p className="text-sm">
@@ -131,8 +131,8 @@ export default function AltWaveExplore() {
           </div>
         </div>
         <div className="flex flex-col items-center sm:w-1/4">
-          <div className="flex items-center mb-4 sm:mb-0">
-            <img src={Step3} alt="Circle 3" className="w-32 h-32 sm:mr-4 mb-4 sm:mb-0" />
+        <div className="flex space-x-6 mb-4 sm:mb-0">
+            <img src={Step3} alt="Circle1" className="w-8 h-8 sm:mr-4  mt-3  sm:mb-3" />
             <div>
               <h1 className="font-bold my-3 text-customBlack">Verify your information</h1>
               <p className="text-sm">
@@ -142,8 +142,8 @@ export default function AltWaveExplore() {
           </div>
         </div>
         <div className="flex flex-col items-center sm:w-1/4">
-          <div className="flex items-center">
-            <img src={Step4} alt="Circle 4" className="w-32 h-32 sm:mr-4 mb-4 sm:mb-0" />
+        <div className="flex space-x-6 mb-4 sm:mb-0">
+            <img src={Step4} alt="Circle1" className="w-8 h-8 sm:mr-4  mt-3  sm:mb-3" />
             <div>
               <h1 className="font-bold my-3 text-customBlack">Payment confirmation</h1>
               <p className="text-sm">
