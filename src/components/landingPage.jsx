@@ -4,6 +4,7 @@ import logo from "../assets/images/Hero Images.png";
 import Header from "./header";
 import Why from "./whyaltwave";
 import AltWaveExplore from "./explore";
+import Footer from "./footer";
 
 export default function Landing() {
     return (
@@ -42,7 +43,7 @@ export default function Landing() {
           </div>
           <Why />
           <AltWaveExplore />
-         
+         <Footer /> 
         </motion.div>
       </>
     );
