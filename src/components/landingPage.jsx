@@ -1,6 +1,9 @@
 import React from "react";
 import { motion } from "framer-motion";
-import logo from "../assets/Hero Images.png";
+import logo from "../assets/images/Hero Images.png";
+import Header from "./header";
+import Why from "./whyaltwave";
+import AltWaveExplore from "./explore";
 
 export default function Landing() {
     return (
@@ -10,6 +13,7 @@ export default function Landing() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1 }}
         >
+          <Header />
           <div className="flex flex-col justify-between my-10 md:flex-row sm:flex-col">
             <div className="py-3 px-8 my-12 md:flex-1 sm:w-full md:h-full sm:items-center">
               <h1 className="md:leading-tight text-3xl md:text-5xl font-bold text-black leading-12 my-12">
@@ -36,6 +40,9 @@ export default function Landing() {
               <img src={logo} className="w-full h-auto" />
             </div>
           </div>
+          <Why />
+          <AltWaveExplore />
+         
         </motion.div>
       </>
     );
