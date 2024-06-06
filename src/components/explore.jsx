@@ -11,13 +11,14 @@ import Step4 from "../assets/images/Number container (2).png";
 import Download from "../assets/images/Download mobile app section.png";
 import Faq from "./faq";
 import { FiArrowRight } from "react-icons/fi";
+import Testimonial from "./testimonial";
 export default function AltWaveExplore() {
     return (
         <> 
         <motion.div initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 1 }}>
-           
+           <Testimonial />
   <div className='mx-6'>
   <div className='text-center mb-0 md:mb-36'> <h1 className="mt-32 text-center  mb-0 text-5xl md:text-5xl  text-customBlack">
             Explore New Features

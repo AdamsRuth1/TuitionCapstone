@@ -1,0 +1,28 @@
+/* Top row animation */
+.top-row .testimonial {
+    animation: slide-left 40s linear infinite;
+  }
+  
+  @keyframes slide-left {
+    0% {
+      transform: translateX(100%);
+    }
+    100% {
+      transform: translateX(-100%);
+    }
+  }
+  
+  /* Bottom row animation */
+  .bottom-row .testimonial {
+    animation: slide-right 40s linear infinite;
+  }
+  
+  @keyframes slide-right {
+    0% {
+      transform: translateX(-100%);
+    }
+    100% {
+      transform: translateX(100%);
+    }
+  }
+  
