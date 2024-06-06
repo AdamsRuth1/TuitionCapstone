@@ -23,13 +23,13 @@ export default function Why() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1 }}
         >
-           <div className='bg-customLightBlueGray py-20 px-16'>
-           <h1 className=" text-3xl md:text-5xl font-bold text-customBlack mb-12">
+           <div className='bg-customLightBlueGray md:my-12 md:px-10 px-6'>
+           <h1 className=" text-3xl md:text-5xl pt-16  font-bold text-customBlack mb-16">
                Why use <span className="text-red-500">Tuition.</span>
               </h1>
-              <div className='flex justify-center items-center text-center px-10 mx-15 space-x-10 flex-col sm:flex-row'>
+              <div className='flex justify-center items-center text-center space-x-10 flex-col sm:flex-row'>
           
-          <div className='flex flex-col items-center md:py-12 my-10'>
+          <div className='flex flex-col items-center my-8 '>
 
               <img alt='' src={undraw1}/>
               <h1 className='font-bold my-3 text-customBlack'> Fast and secure payments</h1>
@@ -37,7 +37,7 @@ export default function Why() {
                 Pay your tuition fees quickly and safely with our top-notch security measures. Focus on your education, and leave the payment worries to us.
               </p>
             </div>
-            <div className='flex flex-col items-center md:py-12 my-16'>
+            <div className='flex flex-col md:items-center items-center  md:py-12 my-16'>
 
               <img className='' alt='' src= {Illustration3}/>
               <h1 className='font-bold my-3 text-customBlack'> Multiple payment options</h1>

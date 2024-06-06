@@ -15,9 +15,9 @@ export default function Landing() {
           transition={{ duration: 1 }}
         >
           <Header />
-          <div className="flex md:py-10 flex-col justify-between md:flex-row sm:flex-col">
-  <div className=" px-8 md:my-0 md:py-28 md:flex-1 sm:w-full md:h-full sm:items-center">
-    <h1 className="md:leading-tight text-3xl md:text-5xl font-bold text-black leading-12 my-12">
+          <div className="flex flex-col md:mt-11  mt-8 justify-between md:flex-row sm:flex-col">
+  <div className=" px-8 md:my-0 md:py-22 md:flex-1 sm:w-full md:h-full sm:items-center">
+    <h1 className="md:leading-tight  md:mt-36 text-3xl md:text-5xl font-bold text-black md:my-8 my-4">
       Empowering <br /> Dreams, Bridging{" "} <br />
       <span className="text-red-500">Borders.</span>
     </h1>
@@ -28,16 +28,16 @@ export default function Landing() {
         your aspirations – we'll handle the rest!
       </p>
     </div>
-    <div className="flex space-x-4 my-8 ml-0">
-      <button className="bg-customButton border rounded-md text-white px-3 py-2 my-2 hover:bg-blue-500">
+    <div className="flex space-x-4 md:my-12 my-8 ml-0">
+      <button className="bg-customButton border rounded-md text-white px-3  hover:bg-blue-500">
         Get started
       </button>
-      <button className="border-customButton border-2 text-blue-900 rounded-md px-3 py-2 my-2 hover:bg-blue-900 hover:text-white">
+      <button className="border-customButton border-2 text-blue-900 rounded-md px-3 py-2 hover:bg-blue-900 hover:text-white">
         Enroll your institution
       </button>
     </div>
   </div>
-  <div className="my-10 mx-10 flex-1 sm:w-full">
+  <div className="md:my-0 my-8 mx-6 flex-1 md:mb-0 mb-6 sm:w-full">
     <img src={logo} className="w-full h-auto" />
   </div>
 </div>
