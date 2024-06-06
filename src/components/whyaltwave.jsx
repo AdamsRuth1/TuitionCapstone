@@ -29,7 +29,7 @@ export default function Why() {
               </h1>
               <div className='flex justify-center items-center text-center space-x-10 flex-col sm:flex-row'>
           
-          <div className='flex flex-col items-center my-8 '>
+          <div className='flex flex-col items-center md:my-8 my-4 '>
 
               <img alt='' src={undraw1}/>
               <h1 className='font-bold my-3 text-customBlack'> Fast and secure payments</h1>
@@ -37,7 +37,8 @@ export default function Why() {
                 Pay your tuition fees quickly and safely with our top-notch security measures. Focus on your education, and leave the payment worries to us.
               </p>
             </div>
-            <div className='flex flex-col md:items-center items-center  md:py-12 my-16'>
+            
+            <div className='flex flex-col md:items-center items-center  md:py-12 my-4'>
 
               <img className='' alt='' src= {Illustration3}/>
               <h1 className='font-bold my-3 text-customBlack'> Multiple payment options</h1>
@@ -45,7 +46,7 @@ export default function Why() {
               With our multiple payment options - bank transfers, card payments, direct account debits etc., you can conveniently pay fees to high schools, colleges and universities within Africa and across the globe using your local currency.
               </p>
             </div>
-            <div className='flex  md:py-12 my-16 flex-col items-center'>
+            <div className='flex  md:py-12 flex-col items-center my-4'>
 
               <img alt='' src={Illustration2}/>
               <h1 className='font-bold my-3 text-customBlack'> Affordable pricing</h1>
@@ -54,7 +55,7 @@ export default function Why() {
               Our fees are competitive, helping you save money while paying your tuition.
               </p>
             </div>
-            <div className='flex md:py-12 my-16 flex-col items-center'>
+            <div className='flex md:py-12 my-4 flex-col md:mb-0 mb-16 items-center'>
 
               <img alt='' src={Illustration1}/>
               <h1 className='font-bold my-3 text-customBlack'> Real-time support</h1>
