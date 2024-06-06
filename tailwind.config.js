@@ -9,7 +9,8 @@ export default {
       colors: {
         customLightBlueGray: '#F8FAFD',
         customBlack: '#0A0E27',
-        customButton: '#252E6A'
+        customButton: '#252E6A',
+        customButtonBtn: '#1B2025'
       },
     },
   },

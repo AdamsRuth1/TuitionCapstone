@@ -9,6 +9,9 @@ import Step2 from "../assets/images/Number container2.png";
 import Step3 from "../assets/images/Number container (1).png";
 import Step4 from "../assets/images/Number container (2).png";
 import Download from "../assets/images/Download mobile app section.png";
+import Mobile from "../assets/images/Mobile mockups.png";
+import Google from "../assets/images/Playstore icons (1).png"; 
+import Apple from "../assets/images/Playstore icons.png";   
 import Faq from "./faq";
 import { FiArrowRight } from "react-icons/fi";
 import Testimonial from "./testimonial";
@@ -216,7 +219,7 @@ export default function AltWaveExplore() {
     </div>
           <Faq/>
           <div className='bg-customLightBlueGray md:py-32 py-16 px-5 mt-36'>
-          <h1 className=" py:32 mb-10 text-4xl md:text-5xl font-bold text-customBlack leading-12 text-center">
+          <h1 className=" py:32 mb-10 text-3xl md:text-5xl font-bold text-customBlack leading-12 text-center">
            Safety and security guaranteed
               </h1> <p className='mb-12 md:ml-12 '>At Flutterwave, we take security seriously, so every payment made on our platform is 100% secure, even exceeding industry standards.!</p> 
               <div className='flex flex-col md:flex-row sm:flex-col justify-between ' >
@@ -236,7 +239,25 @@ export default function AltWaveExplore() {
               </div>
              </div>  
           </div>
-          <div><img alt='downlaod mobile app' src= {Download}/></div>
+          <div className='flex py-10 px-4 border-b rounded-xl'>
+      
+            <div className='block sm:hidden flex-1 bg-customLightBlueGray py- px-6'>
+              <h1 className='font-bold text-3xl text-customBlack mb-4 mt-6'> Download the app</h1> 
+              <p>Our app offers a personalized experience with streamlined payment options to make your education journey less stressful and improve your experience.</p>
+              <div className='flex'>
+              <div className='flex flex-col mr-4'>
+              <button className="bg-customButtonBtn flex py-4 mt-6 border rounded-md text-white text-sm hover:bg-blue-900 "> <img className='py-1 ml-2 mr-1' src={Apple}/>
+               Get on Google Play
+                </button>
+                <button className='flex border-2 mt-6 border-customButton rounded-md text-customButton py-4 hover:bg-customButton hover:text-white'><img src={Google} className='py-1 ml-2 mr-1'/>Get on App Store</button>
+                </div>
+                <div><img src={Mobile} className='h-48'/></div>
+                
+            </div>
+            </div>
+           
+          </div>
+         
         </motion.div>
         </>
     )
