@@ -170,7 +170,7 @@ export default function AltWaveExplore() {
       <h1 className="mx-5 py-10 text-5xl  font-bold text-customBlack leading-12 my-10">
         4 easy steps to process payment
       </h1>
-      <div className="justify-center items-start  space-y-10 ">
+      <div className="justify-center items-start ml-4 space-y-10 ">
         <div className="flex flex-col sm:w-1/4">
           <div className="flex space-x-6 mb-4 ">
             <img src={Step1} alt="Circle1" className="w-8 h-8 sm:mr-4  mt-3  sm:mb-3" />
@@ -239,7 +239,7 @@ export default function AltWaveExplore() {
               </div>
              </div>  
           </div>
-          <div className='flex bg-customLightBlueGray mt-44 ml-44 mr-44' >
+          <div className='hidden md:flex bg-customLightBlueGray mt-44 ml-44 mr-44' >
             <div  className='ml-4'><img src={Download} className='h-80 w-96'/></div>
             <div className='ml-4 mt-6'>
             <h1 className='font-bold text-3xl text-customBlack mb-4 mt-6'> Download the app</h1> 
