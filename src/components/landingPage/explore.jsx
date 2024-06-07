@@ -1,17 +1,17 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import Mock1 from "../assets/images/Mockup & Blob 1.png";
-import Mock2 from "../assets/images/Mockup & Blob 2.png";
-import Mock3 from "../assets/images/Mockup and Blob 3.png";
-import Mock4 from "../assets/images/Frame 327.png";
-import Step1 from "../assets/images/Number1 container.png";
-import Step2 from "../assets/images/Number container2.png";
-import Step3 from "../assets/images/Number container (1).png";
-import Step4 from "../assets/images/Number container (2).png";
-import Download from "../assets/images/Download mobile app section.png";
-import Mobile from "../assets/images/Mobile mockups.png";
-import Google from "../assets/images/Playstore icons (1).png"; 
-import Apple from "../assets/images/Playstore icons.png";   
+import Mock1 from "../../assets/images/Mockup & Blob 1.png";
+import Mock2 from "../../assets/images/Mockup & Blob 2.png";
+import Mock3 from "../../assets/images/Mockup and Blob 3.png";
+import Mock4 from "../../assets/images/Frame 327.png";
+import Step1 from "../../assets/images/Number1 container.png";
+import Step2 from "../../assets/images/Number container2.png";
+import Step3 from "../../assets/images/Number container (1).png";
+import Step4 from "../../assets/images/Number container (2).png";
+import Download from "../../assets/images/Mobile mockups (1).png";
+import Mobile from "../../assets/images/Mobile mockups.png";
+import Google from "../../assets/images/Playstore icons (1).png"; 
+import Apple from "../../assets/images/Playstore icons.png";   
 import Faq from "./faq";
 import { FiArrowRight } from "react-icons/fi";
 import Testimonial from "./testimonial";
@@ -239,9 +239,24 @@ export default function AltWaveExplore() {
               </div>
              </div>  
           </div>
+          <div className='flex bg-customLightBlueGray mt-44 ml-44 mr-44' >
+            <div  className='ml-4'><img src={Download} className='h-80 w-96'/></div>
+            <div className='ml-4 mt-6'>
+            <h1 className='font-bold text-3xl text-customBlack mb-4 mt-6'> Download the app</h1> 
+              <p>Our app offers a personalized experience with streamlined payment options to make your education journey less stressful and improve your experience.</p>
+              <div className='flex '>
+              <button className="bg-customButtonBtn flex py-4 mt-6 mr-6  pr-4 border rounded-md text-white text-sm hover:bg-blue-900 "> <img className='py-1 ml-4  mr-3' src={Apple}/>
+               Get on Google Play
+                </button>
+                 <button className="border-customButton border-2  flex py-4 px-1 pr-4 mt-6 mr-6  rounded-md text-customBlack text-sm "> <img className='py-1 ml-4 mr-3' src={Google}/>
+               Get on Google Play
+                </button> 
+                       </div>
+            </div>
+          </div>
           <div className='flex py-10 px-4 border-b rounded-xl'>
       
-            <div className='block sm:hidden flex-1 bg-customLightBlueGray py- px-6'>
+            <div className='block sm:hidden flex-1 bg-customLightBlueGray py-1 px-2'>
               <h1 className='font-bold text-3xl text-customBlack mb-4 mt-6'> Download the app</h1> 
               <p>Our app offers a personalized experience with streamlined payment options to make your education journey less stressful and improve your experience.</p>
               <div className='flex'>
