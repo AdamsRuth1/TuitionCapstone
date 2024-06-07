@@ -32,3 +32,8 @@ class Token(BaseModel):
 class SignIn(BaseModel):
     email: str
     password: str
+
+
+class Country(BaseModel):
+    name: str
+    code: str
