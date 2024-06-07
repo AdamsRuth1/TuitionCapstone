@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import logo from '../assets/images/Logo (2).png';
+import logo from '../../assets/images/Logo (2).png';
 import { motion } from "framer-motion"
 export default function Header() {
 

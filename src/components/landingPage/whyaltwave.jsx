@@ -1,20 +1,20 @@
 import React from 'react';
 import { motion } from "framer-motion"
-import Illustration1 from "../assets/images/Illustrations for why cards (1).png";
-import Illustration2 from "../assets/images/Illustrations for why cards (2).png";
-import Illustration3 from "../assets/images/Illustrations for why cards.png";
-import undraw1 from "../assets/images/undraw_safe_re_kiil 1.png";
-import harvardLogo from "../assets/images/harvard_university_logo.svg.png";
-import harvardLogo1 from "../assets/images/harvard_university_logo.svg (2).png";
-import Standard from "../assets/images/Group (5).png";
-import udemyLogo from "../assets/images/udemy_logo.svg.png";
-import cambridgeLogo from "../assets/images/cambridge_university_press__assessment_logo.png.png";
-import Standford from "../assets/images/Group.png";
-import Coursera1 from "../assets/images/coursera_logo.svg (2).png";
-import Coursera from "../assets/images/coursera_logo.svg (1).png";
-import Altschool from "../assets/images/altcareer_logo.png.png";
-import Ielts from "../assets/images/ielts_online_tests_logo.svg.png";
-import CityLogo from "../assets/images/the_city_university_of_new_york_logo.svg.png";
+import Illustration1 from "../../assets/images/Illustrations for why cards (1).png";
+import Illustration2 from "../../assets/images/Illustrations for why cards (2).png";
+import Illustration3 from "../../assets/images/Illustrations for why cards.png";
+import undraw1 from "../../assets/images/undraw_safe_re_kiil 1.png";
+import harvardLogo from "../../assets/images/harvard_university_logo.svg.png";
+import harvardLogo1 from "../../assets/images/harvard_university_logo.svg (2).png";
+import Standard from "../../assets/images/Group (5).png";
+import udemyLogo from "../../assets/images/udemy_logo.svg.png";
+import cambridgeLogo from "../../assets/images/cambridge_university_press__assessment_logo.png.png";
+import Standford from "../../assets/images/Group.png";
+import Coursera1 from "../../assets/images/coursera_logo.svg (2).png";
+import Coursera from "../../assets/images/coursera_logo.svg (1).png";
+import Altschool from "../../assets/images/altcareer_logo.png.png";
+import Ielts from "../../assets/images/ielts_online_tests_logo.svg.png";
+import CityLogo from "../../assets/images/the_city_university_of_new_york_logo.svg.png";
 export default function Why() {
     return (
       <>
