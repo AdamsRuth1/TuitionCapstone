@@ -32,6 +32,7 @@ export default function Footer() {
   const toggleContact = () => {
     setShowContact(!showContact);
   };
+  const Arrow = <path d="M4 6h16M4 12h16M4 18h16"></path>
     return (
       <>
     
@@ -157,10 +158,10 @@ export default function Footer() {
         <div className="p-5">
           <button className=" py-4 flex justify-between items-center w-full border-b border-gray-300" onClick={toggleProducts}>
             <span>Products</span>
-            {showProducts ? '▲' : '▼'}
+            {showProducts ? '⌄' : '⌄'}
           </button>
           {showProducts && (
-            <div className="flex flex-col">
+            <div className="flex flex-col mt-5">
               <a href="./invoice" className="mb-5">
                 Send Money
               </a>
@@ -200,10 +201,10 @@ export default function Footer() {
         <div className="p-5">
           <button className=" py-4  flex justify-between items-center w-full border-b border-gray-300" onClick={toggleResources}>
             <span>Resources</span>
-            {showResources ? '▲' : '▼'}
+            {showResources ? '⌄' : '⌄'}
           </button>
           {showResources && (
-            <div className="flex flex-col">
+            <div className="flex flex-col mt-5">
               <a href="./invoice" className="mb-5">
                 Pricing
               </a>
@@ -228,10 +229,10 @@ export default function Footer() {
         <div className="p-5">
           <button className="py-4  flex justify-between items-center w-full border-b border-gray-300" onClick={toggleAPIStatus}>
             <span>API Status</span>
-            {showAPIStatus ? '▲' : '▼'}
+            {showAPIStatus ? '⌄' : '⌄'}
           </button>
           {showAPIStatus && (
-            <div className="flex flex-col">
+            <div className="flex flex-col mt-5">
               <a href="./invoice" className="mb-5">
                 API Documentation
               </a>
@@ -247,10 +248,10 @@ export default function Footer() {
         <div className="p-5">
           <button className=" py-4  flex justify-between items-center w-full border-b border-gray-300" onClick={toggleCompany}>
             <span>Company</span>
-            {showCompany ? '▲' : '▼'}
+            {showCompany ? '⌄' : '⌄'}
           </button>
           {showCompany && (
-            <div className="flex flex-col">
+            <div className="flex flex-col mt-5">
               <a href="./invoice" className="mb-5">
                 Customers
               </a>
@@ -269,10 +270,10 @@ export default function Footer() {
         <div className="p-5">
           <button className="py-4  flex justify-between items-center w-full border-b border-gray-300" onClick={toggleContact}>
             <span>Contact</span>
-            {showContact ? '▲' : '▼'}
+            {showContact ? '⌄' : '⌄'}
           </button>
           {showContact && (
-            <div className="flex flex-col">
+            <div className="flex flex-col mt-5">
               <a href="./invoice" className="mb-5">
                 hi@flutterwavego.com
               </a>
@@ -292,6 +293,7 @@ export default function Footer() {
           )}
         </div>
       </div>
+      
     </div>
       </>
     );
