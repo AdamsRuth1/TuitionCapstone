@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import logo from "../assets/images/Hero Images.png";
 import Header from "./header";
 import Why from "./whyaltwave";
-import AltWaveExplore from "./explore";
+import AltWaveExplore from "./landingPage/explore";
 import Footer from "./footer";
 
 export default function Landing() {
