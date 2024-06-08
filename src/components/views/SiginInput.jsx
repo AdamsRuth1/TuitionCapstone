@@ -14,7 +14,7 @@ const SiginInput = () => {
         <input
           type="email"
           placeholder="Enter Email here"
-          className="input-style w-[480px] h-[48px] moderat-font"
+          className="input-style lg:w-[480px]   h-[48px] moderat-font"
         />
       </div>
 
@@ -26,7 +26,7 @@ const SiginInput = () => {
           // value={state.password}
           placeholder="Enter email here"
           // onChange={handleChange}
-          className={`input-style w-[480px] h-[48px] moderat-font`}
+          className={`input-style lg:w-[480px]  h-[48px] moderat-font `}
         />
         <span
           className="eyeIcon cursor-pointer"

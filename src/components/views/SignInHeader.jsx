@@ -4,7 +4,7 @@ const SignInHeader = ({ header, Paragraph }) => {
   return (
     <div className="">
       <div className="  flex gap-3 pt-[4rem]">
-        <h1 className="text-[38px] font-normal leading-[48px] text-[#0A0E27] millik-font">
+        <h1 className="lg:text-[38px] max-sm:text-[20px] font-normal leading-[48px] text-[#0A0E27] millik-font">
           {header}
         </h1>
         <img src={SignLogo} height="40" alt="Your Logo" />

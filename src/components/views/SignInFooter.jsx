@@ -1,17 +1,10 @@
-import {Link} from "react-router-dom"
+import { Link } from "react-router-dom";
 
-const SignInFooter = ({text,navigate, to, footerText, className }) => {
+const SignInFooter = ({ text, navigate, to, footerText, className }) => {
   return (
     <>
-      <div className="text-center pt-3" style={{ paddingBottom: "1.9rem" }}>
-        <p
-          style={{
-            fontWeight: "400",
-            fontSize: "1rem",
-            lineHeight: "1rem",
-            color: "#606569",
-          }}
-        >
+      <div className="pt-3 text-center " style={{ paddingBottom: "1.9rem" }}>
+        <p className="  font-normal text-[1rem] leading-[1rem] text-[#606569] ">
           {text}
           <Link
             to={to}
@@ -34,7 +27,7 @@ const SignInFooter = ({text,navigate, to, footerText, className }) => {
           lineHeight: "1.5rem",
           color: "#A1A4A8",
         }}
-        className="text-center"
+        className="text-center w-[29rem] h-[4.5rem] font-normal text-[0.875rem] leading-[1.5rem] text-[#A1A4A8]"
       >
         <p className={`pb-5 ${className}`}>
           By clicking “{footerText}”, I acknowledge that I have read and do
@@ -46,6 +39,6 @@ const SignInFooter = ({text,navigate, to, footerText, className }) => {
       </div>
     </>
   );
-}
+};
 
-export default SignInFooter
+export default SignInFooter;

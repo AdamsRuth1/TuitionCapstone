@@ -6,9 +6,10 @@ import SignInFooter from "../views/SignInFooter";
 import Formside from "../views/Formside"
 const SignUp = () => {
   return (
-    <main className="grid grid-cols-2 bg-white">
-      <div>
-        <div className="px-[7.5rem]">
+    <main className="grid grid-cols-2  bg-white">
+      <div className="px-[7.5rem]">
+        <div className="">
+         
           <SignInHeader
             header="Welcome Back"
             Paragraph="Sign in to Tuition to continue"
@@ -28,7 +29,8 @@ const SignUp = () => {
           />
         </div>
       </div>
-      <div className="flex justify-center ">
+      <div className="sm:hidden max-sm:hidden lg:block ">
+       
         <Formside />
       </div>
     </main>
