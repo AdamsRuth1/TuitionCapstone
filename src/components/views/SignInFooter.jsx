@@ -6,7 +6,7 @@ const SignInFooter = ({ text, navigate, to, footerText, className }) => {
       <div className="pt-3 text-center " style={{ paddingBottom: "1.9rem" }}>
         <p className="  font-normal text-[1rem] leading-[1rem] text-[#606569] ">
           {text}
-          <Link
+          <Link 
             to={to}
             style={{
               color: "#0A0E27",
@@ -17,6 +17,7 @@ const SignInFooter = ({ text, navigate, to, footerText, className }) => {
             {navigate}
           </Link>
         </p>
+        
       </div>
       <div
         style={{

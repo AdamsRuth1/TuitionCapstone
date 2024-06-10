@@ -1,39 +1,31 @@
+// import SignupForm from "../views/SignupForm";
+import SignupForm from "../views/SignupForm";
+import Formside from "../views/Formside";
 import SignInHeader from "../views/SignInHeader";
-import SignUpWithGoogle from "../views/SignUpWithGoogle";
-import SiginInput from "../views/SiginInput";
-import Button from "../views/Button";
 import SignInFooter from "../views/SignInFooter";
-import Formside from "../views/Formside"
+
 const SignUp = () => {
   return (
-    <main className="grid grid-cols-2  bg-white">
-      <div className="px-[7.5rem]">
-        <div className="">
-         
+    <section>
+      <div className="grid grid-cols-2">
+        <div className="pl-[7.5rem]">
           <SignInHeader
-            header="Welcome Back"
-            Paragraph="Sign in to Tuition to continue"
+            header="Get Started"
+            Paragraph="Over 1,000 users are already using Tuition to pay their fees abroad - join the easy way to pay!"
           />
-          <SignUpWithGoogle />
-
-          <SiginInput />
-          <p className="pt-[1rem] moderat-font text-[#606569] font-normal text-[1rem] leading-[1rem]">
-            Forgot password?
-          </p>
-          <Button text="Sign Up" />
+          <SignupForm />
           <SignInFooter
-            text="Don’t have an account? "
-            navigate="Sign Up"
+            text="Already have an account? "
+            navigate="Sign in"
             to="/signin"
-            footerText="Sign in"
+            footerText="Sign up"
           />
         </div>
+        <div>
+          <Formside />
+        </div>
       </div>
-      <div className="sm:hidden max-sm:hidden lg:block ">
-       
-        <Formside />
-      </div>
-    </main>
+    </section>
   );
 };
 

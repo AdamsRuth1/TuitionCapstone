@@ -76,7 +76,7 @@ export default function Header() {
                 Download App
               </button>
               <Link
-                to="/signup"
+                to="/signin"
                 className="bg-customButton border rounded-md text-white py-2 px-3 hover:bg-blue-900"
               >
                 Sign in
