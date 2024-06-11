@@ -41,3 +41,22 @@ users.db
 test.html
 
 .env
+
+# Ignore virtual environment directory
+tuitionenv/
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Installer logs
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Ignore SQLite database file
+users.db
+
+test.html
+
+.env
