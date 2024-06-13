@@ -46,15 +46,15 @@ const Faq = () => {
   ];
 
   return (
-    <div className="">
-        <h1 className=" text-3xl md:text-5xl font-bold text-customBlack text-center my-14 ">
+    <div className="mt-32 mb-64">
+        <h1 className=" text-3xl  font-normal font-millik text-customBlack text-50 leading-13 text-center my-14 ">
                Frequently Asked Questions
               </h1>
-      <div className="max-w-screen-xlg  mx-12   ">
+      <div className="max-w-screen-xlg  mx-12 font-Modarat   ">
         {faqs.map((faq) => (
           <div key={faq.id} className="border-b my-2 border-gray-200">
             <button
-              className="flex  justify-between items-center w-full font-medium text-gray-700 hover:text-gray-900 focus:outline-none px-4 py-3"
+              className="flex  justify-between items-center w-full font-medium text-gray-700 hover:text-gray-900 focus:outline-none px-4 py-8"
               onClick={() => handleItemClick(faq.id)}
             >
               <span>{faq.question}</span>

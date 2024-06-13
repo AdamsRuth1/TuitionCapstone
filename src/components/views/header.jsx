@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import logo from "../../assets/images/Logo (2).png";
+import logo from "../../assets/images/Vector (1).png";
 import { motion } from "framer-motion";
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
@@ -16,10 +16,10 @@ export default function Header() {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 1 }}
       >
-        <nav className="bg-white-400 py-2 shadow">
-          <div className="flex items-center justify-between shadow-md py-2 ">
+        <nav className="bg-white-400 py-2 shadow font-Modarat">
+          <div className="flex items-center justify-between ml-24 mr-24 py-2 ">
             <div className="flex">
-              <img src={logo} alt="ExpressWash Logo" className="h-16 mx-4" />
+              <img src={logo} alt="Tuition Logo" className=" mx-4" />
             </div>
 
             <div className="md:hidden border border-black-500 px-2 py-1 rounded ">
@@ -77,7 +77,7 @@ export default function Header() {
               </button>
               <Link
                 to="/signin"
-                className="bg-customButton border rounded-md text-white py-2 px-3 hover:bg-blue-900"
+                className="bg-customButton border rounded-md text-white text-center py-2 px-3 hover:bg-blue-900"
               >
                 Sign in
               </Link>

@@ -1,18 +1,14 @@
 import { useState } from 'react';
-
+import ReactFlagsSelect from "react-flags-select";
 export default function Footer() {
-    const [showProductsLinks, setShowProductsLinks] = useState(false);
-  const [showResourcesLinks, setShowResourcesLinks] = useState(false);
-  const [showAPIStatusLinks, setShowAPIStatusLinks] = useState(false);
-  const [showCompanyLinks, setShowCompanyLinks] = useState(false);
-  const [showContactLinks, setShowContactLinks] = useState(false);
-
+  
   const [showProducts, setShowProducts] = useState(false);
   const [showResources, setShowResources] = useState(false);
   const [showAPIStatus, setShowAPIStatus] = useState(false);
   const [showCompany, setShowCompany] = useState(false);
   const [showContact, setShowContact] = useState(false);
-
+  const [selected, setSelected] = useState("NG");
+  
   const toggleProducts = () => {
     setShowProducts(!showProducts);
   };
@@ -36,12 +32,12 @@ export default function Footer() {
     return (
       <>
     
-    <div className="hidden sm:flex flex-cols  md:flex-cols lg:flex-cols xl:flex-cols gap-5">
+    <div className="hidden sm:flex ml-24 mr-24 flex-cols  md:flex-cols lg:flex-cols xl:flex-cols gap-5">
 
 
 <div className=" p-5 flex-1 ">
             <p className="mb-5 font-bold">Products</p>
-            <div className="flex flex-col">
+            <div className="flex flex-col font-Modarat text-customGray">
             <a href="./invoice" className=" mb-5">
                Send Money
               </a>
@@ -79,7 +75,7 @@ export default function Footer() {
           </div>
           <div className=" flex-1   p-5">
             <p className="mb-5 font-bold">Resources</p>
-            <div className="flex flex-col">
+            <div className="flex flex-col font-Modarat text-customGray">
             <a href="./invoice" className=" mb-5">
                 Pricing
               </a>
@@ -102,8 +98,9 @@ export default function Footer() {
           </div>
          
           <div className=" flex-1  p-5">
-            <div className="flex flex-col">
-              <p className=" font-bold mb-5">API Status</p>
+          <p className=" font-bold mb-5">API Status</p>
+            <div className="flex flex-col font-Modarat text-customGray ">
+              
               <a href="" className=" mb-5">
                 API Documentation
               </a>
@@ -116,8 +113,9 @@ export default function Footer() {
             </div>
           </div>
           <div className=" flex-1  p-5">
-            <div className="flex flex-col">
-              <p className="font-bold mb-5">Company</p>
+          <p className="font-bold mb-5">Company</p>
+            <div className="flex flex-col font-Modarat text-customGray">
+              
               <a href="" className=" mb-5">
                 Customers
               </a>
@@ -133,8 +131,9 @@ export default function Footer() {
             </div>
           </div>
           <div className=" flex-1  p-5">
-            <div className="flex flex-col">
-              <p className="font-bold mb-5">Contact</p>
+          <p className="font-bold mb-5">Contact</p>
+            <div className="flex flex-col font-Modarat text-customGray">
+              
               <a href="" className=" mb-5">
               hi@flutterwavego.com
               </a>
@@ -152,7 +151,34 @@ export default function Footer() {
               </a>
             </div>
           </div>
+         
         </div>
+        <div className='border-b border flex justify-between p-10 '>
+       
+        <ReactFlagsSelect 
+    selected={selected}
+    searchable
+    onSelect={(code) => setSelected(code)} className="ml-20" 
+  />
+            <div className='flex space-x-2 font-Modarat text-lg font-normal text-customGray mr-24'> 
+              <a href="" className=''>X (formerly Twitter)</a>
+              <a href="" className=''>Facebook</a>
+              <a href="" className=''>Instagram</a>
+              <a href="" className=''>YouTube</a>
+              <a href="" className=''>LinkedIn</a>
+            
+            </div>
+          </div>
+          <div className='border-b border flex justify-between space-x-2 font-Modarat text-lg font-normal text-customGray p-6 '>
+           
+            <a href="" className='ml-24'>Privacy notice</a>
+              <a href="" className=''>Terms of use</a>
+              <a href="" className=''>Cookie notice</a>
+              <a href="" className=''>Merchant service management</a>
+              <a href="" className=''>IMS policy</a>
+              <a href="" className='mr-24'>Send App licenses</a>
+              
+          </div>
         <div className="block sm:hidden">
       <div className="grid grid-cols-1">
         <div className="p-5">
@@ -161,7 +187,7 @@ export default function Footer() {
             {showProducts ? '⌄' : '⌄'}
           </button>
           {showProducts && (
-            <div className="flex flex-col mt-5">
+            <div className="flex flex-col mt-5 font-Modarat">
               <a href="./invoice" className="mb-5">
                 Send Money
               </a>
@@ -204,7 +230,7 @@ export default function Footer() {
             {showResources ? '⌄' : '⌄'}
           </button>
           {showResources && (
-            <div className="flex flex-col mt-5">
+            <div className="flex flex-col mt-5 font-Modarat">
               <a href="./invoice" className="mb-5">
                 Pricing
               </a>
@@ -232,7 +258,7 @@ export default function Footer() {
             {showAPIStatus ? '⌄' : '⌄'}
           </button>
           {showAPIStatus && (
-            <div className="flex flex-col mt-5">
+            <div className="flex flex-col mt-5 font-Modarat ">
               <a href="./invoice" className="mb-5">
                 API Documentation
               </a>
@@ -251,7 +277,7 @@ export default function Footer() {
             {showCompany ? '⌄' : '⌄'}
           </button>
           {showCompany && (
-            <div className="flex flex-col mt-5">
+            <div className="flex flex-col mt-5 font-Modarat">
               <a href="./invoice" className="mb-5">
                 Customers
               </a>
@@ -273,7 +299,7 @@ export default function Footer() {
             {showContact ? '⌄' : '⌄'}
           </button>
           {showContact && (
-            <div className="flex flex-col mt-5">
+            <div className="flex flex-col mt-5 font-Modarat">
               <a href="./invoice" className="mb-5">
                 hi@flutterwavego.com
               </a>
