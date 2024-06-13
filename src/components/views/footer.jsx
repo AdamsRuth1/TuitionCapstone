@@ -7,6 +7,7 @@ export default function Footer() {
   const [showAPIStatus, setShowAPIStatus] = useState(false);
   const [showCompany, setShowCompany] = useState(false);
   const [showContact, setShowContact] = useState(false);
+  const [showLegal, setLegal] = useState(false);
   const [selected, setSelected] = useState("NG");
   
   const toggleProducts = () => {
@@ -27,6 +28,9 @@ export default function Footer() {
 
   const toggleContact = () => {
     setShowContact(!showContact);
+  };
+  const toggleLegal = () => {
+    setShowLegal(!showLegal);
   };
   const Arrow = <path d="M4 6h16M4 12h16M4 18h16"></path>
     return (
@@ -153,32 +157,37 @@ export default function Footer() {
           </div>
          
         </div>
-        <div className='border-b border flex justify-between p-10 '>
-       
+        
+        <div className='hidden sm:flex border-b border  justify-between p-10 '>
+      
         <ReactFlagsSelect 
     selected={selected}
     searchable
     onSelect={(code) => setSelected(code)} className="ml-20" 
   />
-            <div className='flex space-x-2 font-Modarat text-lg font-normal text-customGray mr-24'> 
+  
+            <div className='flex space-x-2 font-Modarat text-lg font-normal text-customGray mr-24 '> 
+            
               <a href="" className=''>X (formerly Twitter)</a>
               <a href="" className=''>Facebook</a>
               <a href="" className=''>Instagram</a>
               <a href="" className=''>YouTube</a>
               <a href="" className=''>LinkedIn</a>
-            
+              
             </div>
           </div>
-          <div className='border-b border flex justify-between space-x-2 font-Modarat text-lg font-normal text-customGray p-6 '>
-           
-            <a href="" className='ml-24'>Privacy notice</a>
+          
+          <div className='border-b border  hidden sm:flex justify-between space-x-2 font-Modarat text-lg font-normal text-customGray p-6 '>
+          <div className='ml-20 space-x-20 '> 
+            <a href="" className=''>Privacy notice</a>
               <a href="" className=''>Terms of use</a>
               <a href="" className=''>Cookie notice</a>
               <a href="" className=''>Merchant service management</a>
               <a href="" className=''>IMS policy</a>
-              <a href="" className='mr-24'>Send App licenses</a>
-              
+              <a href="" className=''>Send App licenses</a>
+              </div>
           </div>
+          
         <div className="block sm:hidden">
       <div className="grid grid-cols-1">
         <div className="p-5">
@@ -318,8 +327,50 @@ export default function Footer() {
             </div>
           )}
         </div>
-      </div>
+        <div className="p-5">
+          <button className="py-4  flex justify-between items-center w-full border-b border-gray-300" onClick={toggleContact}>
+            <span>Legal</span>
+            {showContact ? '⌄' : '⌄'}
+          </button>
+          {showContact && (
+            <div className="flex flex-col mt-5 font-Modarat">
+              <a href="./invoice" className="mb-5">
+              Privacy notice
+              </a>
+              <a href="./invoice" className="mb-5">
+              Terms of use
+              </a>
+              <a href="./invoice" className="mb-5">
+              Cookie notice
+              </a>
+              <a href="./invoice" className="mb-5">
+              Merchant service management
+              </a>
+              <a href="./invoice" className="mb-5">
+              IMS policy
+              </a> <a href="./invoice" className="mb-5">
+              Send App licenses
+              </a>
+            </div>
+          )}
+        </div>
+        <div className=''>
       
+      <ReactFlagsSelect 
+  selected={selected}
+  searchable
+  onSelect={(code) => setSelected(code)} className="" 
+/></div>
+
+<div className='flex mt-2'>
+<div className="ml-4 text-customGray ">
+&copy; 
+    </div>
+  <p className='font-Modarat text-customGray text-base leading-6 ml-2 mt-1'>
+     Flutterwave Technology Solutions Limited Licensed by Central Bank of Nigeria</p>
+</div>
+      </div>
+     
     </div>
       </>
     );

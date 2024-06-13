@@ -16,25 +16,29 @@ export default function Landing() {
         transition={{ duration: 1 }}
       >
         <Header />
-        <div className="flex flex-col md:mt-11  mt-8 ml-24 mr-24 justify-between md:flex-row sm:flex-col font-Modarat">
+        <div className="flex flex-col md:mt-11  mt-8 md:ml-24 mr-4 ml-4  md:mr-24 justify-between md:flex-row sm:flex-col ">
           <div className=" px-8 md:my-0 md:py-22 md:flex-1 sm:w-full md:h-full sm:items-center">
             
-            <h1 className=" md:leading-13 leading-9 md:mt-36 font-normal text-3xl md:text-6xl  text-customBlack md:my-8 my-4 font-millik">
+            <h1 className="md:block hidden leading-13  mt-36 font-normal text-6xl  text-customBlack my-8 font-millik">
               Empowering Dreams, Bridging <br />
               <span className="text-red-500">Borders.</span>
             </h1>
+            <h2 className="block md:hidden  leading-44 font-normal text-34    text-customBlack  my-4 font-millik">
+              Empowering  <br /> Dreams, Bridging
+              <span className="text-red-500">  <br /> Borders.</span>
+            </h2>
             <div>
-              <p className="leading-8 font-Modarat text-xl">
+              <p className="md:leading-8  leading-6 font-Modarat md:text-xl text-lg ">
                 Your Passport to Global Education! Fulfill your dreams
                 effortlessly as we streamline the process for you. Focus on your
                 aspirations – we'll handle the rest!
               </p>
             </div>
             <div className="flex space-x-4 md:my-12 my-8 ml-0">
-              <button className="bg-customButton border rounded-md text-white px-3  hover:bg-blue-500">
+              <NavLink to="/signup" className="bg-customButton border rounded-md text-white px-3 py-2 hover:bg-blue-500">
                 {" "}
                 Get started
-              </button>
+              </NavLink>
               <button className="border-customButton border-2 text-blue-900 rounded-md px-3 py-2 hover:bg-blue-900 hover:text-white">
                 <NavLink to="/enroll">Enroll your institution</NavLink>
                 

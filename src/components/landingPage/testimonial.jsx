@@ -5,7 +5,7 @@ import "./testimonial.css"; // Import the CSS file
 function Testimonial() {
   return (
     <>
-      <div className=" bg-customLightBlueGray  p-4 flex flex-col mt-32">
+      <div className=" bg-customLightBlueGray  p-4 hidden md:flex flex-col mt-32">
         <div className="testimonial text-center mb-16">
           <p className="mt-32 font-Modarat leading-6 text-xl font-normal text-customGray ">Don’t just listen to us</p>
           <h1 className="text-5xl font-normal mt-4 font-millik leading-13 text-customBlack">

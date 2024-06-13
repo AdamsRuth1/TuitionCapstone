@@ -10,7 +10,8 @@ export default {
         customButtonBtn: "#1B2025",
         customGray: "#51575D",
         customLightGray: "#606569",
-        customLine: "#CCCCCC"
+        customLine: "#CCCCCC",
+        customEnroll: "#606569",
       },
      
       fontFamily: {
@@ -27,6 +28,8 @@ export default {
         '26':'26px',
         '50':'50px',
         '56':'56px',
+        '34':'34px',
+        '44':'44px',
       },
       lineHeight: {
        
