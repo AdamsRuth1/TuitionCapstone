@@ -23,8 +23,8 @@ export default function Why() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1 }}
         >
-           <div className='bg-customLightBlueGray md:my-12 md:px-10 px-6'>
-           <h1 className=" text-3xl md:text-5xl pt-16  font-bold text-customBlack mb-16">
+           <div className='bg-customLightBlueGray md:my-12 md:px-10 px-6 font-Modarat'>
+           <h1 className=" text-3xl md:text-5xl pt-16 font-millik text-customBlack mb-16">
                Why use <span className="text-red-500">Tuition.</span>
               </h1>
               <div className='flex justify-center items-center text-center space-x-10 flex-col sm:flex-row'>
@@ -32,8 +32,8 @@ export default function Why() {
           <div className='flex flex-col items-center md:my-8 my-4 '>
 
               <img alt='' src={undraw1}/>
-              <h1 className='font-bold my-3 text-customBlack'> Fast and secure payments</h1>
-              <p>
+              <h1 className='font-extrabold my-3 text-customBlack font-Modarat text-lg'> Fast and secure payments</h1>
+              <p className='text-customGray text-lg leading-6'>
                 Pay your tuition fees quickly and safely with our top-notch security measures. Focus on your education, and leave the payment worries to us.
               </p>
             </div>
@@ -41,16 +41,16 @@ export default function Why() {
             <div className='flex flex-col md:items-center items-center  md:py-12 my-4'>
 
               <img className='' alt='' src= {Illustration3}/>
-              <h1 className='font-bold my-3 text-customBlack'> Multiple payment options</h1>
-              <p>
+              <h1 className='font-bold my-3 text-customBlack font-Modarat text-lg '> Multiple payment options</h1>
+              <p className='text-customGray text-lg leading-6'>
               With our multiple payment options - bank transfers, card payments, direct account debits etc., you can conveniently pay fees to high schools, colleges and universities within Africa and across the globe using your local currency.
               </p>
             </div>
             <div className='flex  md:py-12 flex-col items-center my-4'>
 
               <img alt='' src={Illustration2}/>
-              <h1 className='font-bold my-3 text-customBlack'> Affordable pricing</h1>
-              <p>
+              <h1 className='font-bold my-3 text-customBlack font-Modarat text-lg'> Affordable pricing</h1>
+              <p className='text-customGray text-lg leading-6'>
               Our fees are competitive, helping you save money while paying your tuition.
               Our fees are competitive, helping you save money while paying your tuition.
               </p>
@@ -58,18 +58,18 @@ export default function Why() {
             <div className='flex md:py-12 my-4 flex-col md:mb-0 mb-16 items-center'>
 
               <img alt='' src={Illustration1}/>
-              <h1 className='font-bold my-3 text-customBlack'> Real-time support</h1>
-              <p>
+              <h1 className='font-bold my-3 text-customBlack font-Modarat text-lg'> Real-time support</h1>
+              <p className='text-customGray text-lg leading-6'>
               Our fees are competitive, helping you save money while paying your tuition.ur fees are competitive, helping you save money while paying your tuition.
               </p>
             </div>
           </div>
           </div>
           <div className='text-center hidden sm:block'>
-  <h1 className="mt-12 mb-0 text-3xl md:text-5xl font-bold text-customBlack">
+  <h1 className="mt-32 mb-0 text-3xl md:text-5xl font-normal font-millik text-customBlack leading-13">
     Over 10k + tuition paid
   </h1>
-  <p className='mb-12'>across 100+ universities, colleges, and learning institutions across the world</p>
+  <p className='mb-16 font-Modarat text-customGray text-xl '>across 100+ universities, colleges, and learning institutions across the world</p>
   <div className='flex justify-between px-14'>
   <div>
     <img src={harvardLogo} 

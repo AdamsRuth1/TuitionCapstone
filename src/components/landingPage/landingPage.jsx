@@ -16,14 +16,15 @@ export default function Landing() {
         transition={{ duration: 1 }}
       >
         <Header />
-        <div className="flex flex-col md:mt-11  mt-8 justify-between md:flex-row sm:flex-col">
+        <div className="flex flex-col md:mt-11  mt-8 ml-24 mr-24 justify-between md:flex-row sm:flex-col font-Modarat">
           <div className=" px-8 md:my-0 md:py-22 md:flex-1 sm:w-full md:h-full sm:items-center">
-            <h1 className="md:leading-tight  md:mt-36 text-3xl md:text-5xl font-bold text-black md:my-8 my-4">
-              Empowering <br /> Dreams, Bridging <br />
+            
+            <h1 className=" md:leading-13 leading-9 md:mt-36 font-normal text-3xl md:text-6xl  text-customBlack md:my-8 my-4 font-millik">
+              Empowering Dreams, Bridging <br />
               <span className="text-red-500">Borders.</span>
             </h1>
             <div>
-              <p className="leading-8">
+              <p className="leading-8 font-Modarat text-xl">
                 Your Passport to Global Education! Fulfill your dreams
                 effortlessly as we streamline the process for you. Focus on your
                 aspirations – we'll handle the rest!
@@ -40,9 +41,12 @@ export default function Landing() {
               </button>
             </div>
           </div>
-          <div className="md:my-0 my-8 mx-6 flex-1 md:mb-0 mb-6 sm:w-full">
-            <img src={logo} className="w-full h-auto" />
-          </div>
+          <div className="absolute inset-10  ml-96 mr-96 mt-20 bg-customBackgroundImage  bg-left"></div>
+          <div className="md:my-0 my-8 mx-6  flex-1 md:mb-0 mb-6 sm:w-full ">
+  
+  <img src={logo} className="w-full  h-auto relative z-10" alt="Logo" />
+</div>
+
         </div>
 
         <Why />
