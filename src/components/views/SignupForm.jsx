@@ -9,7 +9,7 @@ import { useState } from "react";
 import { useSignupContext } from "../../context/SignupContext";
 import { base_URL } from "../../config/api_url";
 import axios from "axios";
-import { useRevalidator } from "react-router-dom";
+// import { useRevalidator } from "react-router-dom";
 
 const SignupForm = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -104,9 +104,10 @@ const SignupForm = () => {
     e.preventDefault();
     try {
       const userData = await axios.post(
-        `${base_URL}/api/users/signup`,
+        'https://aecf-102-89-23-224.ngrok-free.app/api/users/signup',
         signupData
       );
+      // console.log(signupData)
       if (!userData.ok) {
         console.log("error fetching");
       }
@@ -116,7 +117,7 @@ const SignupForm = () => {
       console.log(error);
     }
 
-    // console.log(signupData);
+    console.log(signupData);
     // state.value;
   };
   return (

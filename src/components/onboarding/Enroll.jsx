@@ -19,7 +19,7 @@ export default function Enroll() {
         console.error("Error fetching countries:", error);
         setLoading(false);
       });
-  }, []); // Empty dependency array to ensure useEffect runs only once when the component mounts
+  }, []); 
 
   if (loading) {
     return <div>Loading...</div>;
