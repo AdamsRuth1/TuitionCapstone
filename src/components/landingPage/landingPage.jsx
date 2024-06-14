@@ -16,33 +16,41 @@ export default function Landing() {
         transition={{ duration: 1 }}
       >
         <Header />
-        <div className="flex flex-col md:mt-11  mt-8 justify-between md:flex-row sm:flex-col">
+        <div className="flex flex-col md:mt-11  mt-8 md:ml-24 mr-4 ml-4  md:mr-24 justify-between md:flex-row sm:flex-col ">
           <div className=" px-8 md:my-0 md:py-22 md:flex-1 sm:w-full md:h-full sm:items-center">
-            <h1 className="md:leading-tight  md:mt-36 text-3xl md:text-5xl font-bold text-black md:my-8 my-4">
-              Empowering <br /> Dreams, Bridging <br />
+            
+            <h1 className="md:block hidden leading-13  mt-36 font-normal text-6xl  text-customBlack my-8 font-millik">
+              Empowering Dreams, Bridging <br />
               <span className="text-red-500">Borders.</span>
             </h1>
+            <h2 className="block md:hidden  leading-44 font-normal text-34    text-customBlack  my-4 font-millik">
+              Empowering  <br /> Dreams, Bridging
+              <span className="text-red-500">  <br /> Borders.</span>
+            </h2>
             <div>
-              <p className="leading-8">
+              <p className="md:leading-8  leading-6 font-Modarat md:text-xl text-lg ">
                 Your Passport to Global Education! Fulfill your dreams
                 effortlessly as we streamline the process for you. Focus on your
                 aspirations – we'll handle the rest!
               </p>
             </div>
             <div className="flex space-x-4 md:my-12 my-8 ml-0">
-              <button className="bg-customButton border rounded-md text-white px-3  hover:bg-blue-500">
+              <NavLink to="/signup" className="bg-customButton border rounded-md text-white px-3 py-2 hover:bg-blue-500">
                 {" "}
                 Get started
-              </button>
+              </NavLink>
               <button className="border-customButton border-2 text-blue-900 rounded-md px-3 py-2 hover:bg-blue-900 hover:text-white">
                 <NavLink to="/enroll">Enroll your institution</NavLink>
                 
               </button>
             </div>
           </div>
-          <div className="md:my-0 my-8 mx-6 flex-1 md:mb-0 mb-6 sm:w-full">
-            <img src={logo} className="w-full h-auto" />
-          </div>
+          <div className="absolute inset-10  ml-96 mr-96 mt-20 bg-customBackgroundImage  bg-left"></div>
+          <div className="md:my-0 my-8 mx-6  flex-1 md:mb-0 mb-6 sm:w-full ">
+  
+  <img src={logo} className="w-full  h-auto relative z-10" alt="Logo" />
+</div>
+
         </div>
 
         <Why />
