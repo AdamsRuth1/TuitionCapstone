@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
 import logo from "../../assets/images/Vector (1).png";
 import { motion } from "framer-motion";
 
@@ -96,13 +96,12 @@ export default function Header() {
                   )}
                 </div>
               </li>
-              <li>
-                <a
-                  href="#"
+              <li> 
+                <NavLink to="/contactUs"
                   className="text-black hover:bg-white hover:text-blue-900 hover:border-customButton hover:rounded-full px-4 py-2 border-2 border-transparent transition-all duration-300"
                 >
                   Support
-                </a>
+                </NavLink>
               </li>
             </ul>
             <div className="md:flex justify-between space-x-4 mx-3 hidden">
@@ -160,7 +159,7 @@ export default function Header() {
                   )}
                 </div>
               <li className=" text-black hover:text-blue-900 hover:border-blue-900  hover:rounded-full px-4 py-4 border border-transparent transition-all duration-300 ">
-                <a href="#">Support</a>
+                <NavLink to="/contactUs">Support</NavLink>
               </li>
               <div className=" flex flex-col mb-4 justify-between my-6  md:mr-0 md:ml-0 mr-6 ml-4 ">
                 <Link

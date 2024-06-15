@@ -4,6 +4,8 @@ import EnrollPage from "./components/onboarding/Enroll";
 import SignIn from "./components/onboarding/SignIn";
 import SignUp from "./components/onboarding/SignUp";
 import EnrollSuccess from "./components/onboarding/EnrollSuccess";
+import ContactUs from "./components/onboarding/contactUs/contactus";
+import Faq from "./components/landingPage/faq";
 import "./index.css";
 
 function App() {
@@ -15,6 +17,8 @@ function App() {
         <Route path="/signin" element={<SignIn />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/enrollsuccess" element={<EnrollSuccess/>}/>
+        <Route path="/contactus" element={<ContactUs/>}/>
+        <Route path="/faq" element={<Faq/>}/>
       </Routes>
     </Router>
   );
