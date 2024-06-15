@@ -10,3 +10,5 @@ class User(Base):
     last_name = Column(String, nullable=False)
     hashed_password = Column(String, nullable=False)
     phone_number = Column(String, nullable=False)
+
+
