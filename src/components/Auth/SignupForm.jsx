@@ -3,11 +3,11 @@ import Nigeria from "../../assets/Icons/Nigeria.svg";
 import Arrow from "../../assets/Icons/Arrrow-down.svg";
 import eyeOpen from "../../assets/Icons/eyeOpen.svg";
 import eyeClose from "../../assets/Icons/eyeClose.svg";
-import Button from "../views/Button";
+import Button from "../Auth/Button";
 import { Error } from "../../constants/ErrorMessage";
 import { useState } from "react";
 import { useSignupContext } from "../../context/SignupContext";
-import { base_URL } from "../../config/api_url";
+// import { base_URL } from "../../config/api_url";
 import axios from "axios";
 // import { useRevalidator } from "react-router-dom";
 

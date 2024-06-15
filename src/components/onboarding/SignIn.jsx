@@ -1,9 +1,9 @@
-import SignInHeader from "../views/SignInHeader";
-import SignUpWithGoogle from "../views/SignUpWithGoogle";
-import SiginInput from "../views/SiginInput";
-import Button from "../views/Button";
-import SignInFooter from "../views/SignInFooter";
-import Formside from "../views/Formside";
+import SignInHeader from "../Auth/SignInHeader";
+import SignUpWithGoogle from "../Auth/SignUpWithGoogle";
+import SiginInput from "../Auth/SiginInput";
+import Button from "../Auth/Button";
+import SignInFooter from "../Auth/SignInFooter";
+import Formside from "../Auth/Formside";
 const SignIn = () => {
   return (
     <main className="grid grid-cols-2  bg-white">
