@@ -36,12 +36,13 @@ pip-log.txt
 pip-delete-this-directory.txt
 
 # Ignore SQLite database file
-users.db
+app.db
 
 test.html
 
 .env
 
+<<<<<<< HEAD
 # Ignore virtual environment directory
 tuitionenv/
 
@@ -60,3 +61,10 @@ users.db
 test.html
 
 .env
+=======
+
+# Ignore environment files
+env.py
+
+*.db
+>>>>>>> made few changes
