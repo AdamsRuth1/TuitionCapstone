@@ -1,4 +1,5 @@
 from fastapi import FastAPI
+import uvicorn
 import logging
 from fastapi import FastAPI, Request
 from fastapi.middleware.cors import CORSMiddleware
