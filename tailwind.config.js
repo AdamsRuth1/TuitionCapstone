@@ -30,6 +30,10 @@ export default {
         '56':'56px',
         '34':'34px',
         '44':'44px',
+        '48':'48px',
+      },
+      margin: {
+        '92': '92px', // Custom margin
       },
       lineHeight: {
        
