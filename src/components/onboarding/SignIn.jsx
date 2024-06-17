@@ -7,7 +7,7 @@ import Formside from "../Auth/Formside";
 const SignIn = () => {
   return (
     <main className="grid grid-cols-2  bg-white">
-      <div className="px-[7.5rem]">
+      <div className="pl-[7.5rem]">
         <div className="">
           <SignInHeader
             header="Welcome Back"
@@ -19,7 +19,7 @@ const SignIn = () => {
           <p className="pt-[1rem] moderat-font text-[#606569] font-normal text-[1rem] leading-[1rem]">
             Forgot password?
           </p>
-          <Button text="Sign Up" />
+          <Button text="Sign In" />
           <SignInFooter
             text="Don’t have an account? "
             navigate="Sign Up"

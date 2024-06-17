@@ -1,10 +1,84 @@
 import Header from "../views/header";
 import Logo from "../../assets/images/SigninLogo copy.svg";
-import Search from "./Search";
+import Input from "./Input";
 import { useState } from "react";
-// import { act } from "react";
-
+import Post from "../Blog/Post";
+import Blog1 from "../../assets/images/Blogimage1.png";
+import Blog2 from "../../assets/images/Blogimage2.png";
+import Blog3 from "../../assets/images/Blogimage3.png";
+import Blog4 from "../../assets/images/Blogimage4.png";
+import Blog5 from "../../assets/images/Blogimage5.png";
+import Blog6 from "../../assets/images/Blogimage6.png";
+import Pagination from "./Pagination";
+import Newsletter from "../Blog/Newletter";
+import searchIcon from "../../assets/Icons/search-icon.png";
+import Footer from "../views/footer"
 const BlogPage = () => {
+  const Blogs = [
+    {
+      imgUrl: Blog1,
+      heading: "So You Want To Study Abroad? Top 10 Schools To Choose",
+      choice1: "Study abroad",
+      choice2: "School",
+      choice3: "Finance",
+    },
+    {
+      imgUrl: Blog2,
+      heading:
+        "How To Properly Write A Proposal Letter To Your University Of Choice",
+      choice1: "Travel",
+      choice2: "School",
+      choice3: "Visa",
+    },
+    {
+      imgUrl: Blog3,
+      heading: "Visa Voyage: Demystifying the Application Process",
+      choice1: "Travel",
+      choice2: "Study abroad Visa",
+      choice3: "Visa",
+    },
+    {
+      imgUrl: Blog4,
+      heading: "Easy Steps To Pay For Your Next Coursera Certificate",
+      choice1: "Payment",
+      choice2: "E-learning",
+      choice3: "Finance",
+    },
+    {
+      imgUrl: Blog5,
+      heading: "Easy Steps To Pay For Your Next Coursera Certificate",
+      choice1: "Scholarships",
+      choice2: "E-learning",
+      choice3: "Visa",
+    },
+    {
+      imgUrl: Blog6,
+      heading: "So You Want To Study Abroad? Top 10 Schools To Choose",
+      choice1: "Study abroad",
+      choice2: "School",
+    },
+    {
+      imgUrl: Blog4,
+      heading: "Easy Steps To Pay For Your Next Coursera Certificate",
+      choice1: "Payment",
+      choice2: "E-learning",
+      choice3: "Finance",
+    },
+    {
+      imgUrl: Blog1,
+      heading: "So You Want To Study Abroad? Top 10 Schools To Choose",
+      choice1: "Study abroad",
+      choice2: "School",
+      choice3: "Finance",
+    },
+    {
+      imgUrl: Blog3,
+      heading: "Visa Voyage: Demystifying the Application Process",
+      choice1: "Travel",
+      choice2: "Study abroad Visa",
+      choice3: "Visa",
+    },
+  ];
   const [active, setActiveTab] = useState("All");
   const Tabs = [
     "All",
@@ -18,27 +92,47 @@ const BlogPage = () => {
     setActiveTab(tab);
   };
 
-  const contentToRender = () => {
+  const contentToRender = (blogs) => {
     switch (active) {
       case "All":
-        return <h1>77777</h1>;
+        return <Post Blogs={Blogs} />;
       case "Study Abroad":
-        return <h1>66666</h1>;
+        return (
+          <Post
+            Blogs={blogs.filter((abroad) => abroad.choice1 === "Study abroad")}
+          />
+        );
+
       case "Scholarships":
-        return <h1>555555</h1>;
+        return (
+          <Post
+            Blogs={blogs.filter((abroad) => abroad.choice1 === "Scholarships")}
+          />
+        );
       case "Travel":
-        return <h1>444444</h1>;
+        return (
+          <Post Blogs={blogs.filter((school) => school.choice3 === "Visa")} />
+        );
       case "Student Loans":
-        return <h1>e222222</h1>;
+        return (
+          <Post
+            Blogs={blogs.filter((school) => school.choice3 === "Finance")}
+          />
+        );
       case "School":
-        return <h1>schoollll</h1>;
+        return (
+          <Post Blogs={blogs.filter((school) => school.choice2 === "School")} />
+        );
       default:
         return null;
     }
   };
+  const handleGo = () => {
+    alert("clicked Goal.......");
+  };
 
   return (
-    <section>
+    <section className="relative">
       <Header />
       <div className="">
         <div className="flex justify-center gap-[1.5rem] lg:pt-[5.75rem]">
@@ -54,7 +148,12 @@ const BlogPage = () => {
             and don'ts
           </p>
         </div>
-        <Search />
+        <Input
+          text="Go"
+          placeholder="Search topics, information"
+          handleClick={handleGo}
+          icon={searchIcon}
+        />
         <div className=" lg:mx-[6rem] pt-[5.125rem]">
           <div className="flex gap-[13.625rem]">
             <div className="flex gap-[1.5rem]">
@@ -63,7 +162,11 @@ const BlogPage = () => {
                   <h4
                     className={`py-[12px] px-[24px] font-Modarat
                        font-normal text-[16px] leading-[16px] cursor-pointer
-                       ${active === tab ? "text-[#0A0E27] border-b border-[#0A0E27]" : "text-[#51575D]"}
+                       ${
+                         active === tab
+                           ? "text-[#0A0E27] border-b border-[#0A0E27]"
+                           : "text-[#51575D]"
+                       }
                        `}
                     onClick={() => handleTabs(tab)}
                   >
@@ -80,7 +183,10 @@ const BlogPage = () => {
               </select>
             </div>
           </div>
-          {contentToRender()}
+          {contentToRender(Blogs)}
+          <Pagination />
+          <Newsletter />
+          <Footer />
         </div>
       </div>
     </section>

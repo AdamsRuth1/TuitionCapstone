@@ -5,6 +5,7 @@ import SignInHeader from "../Auth/SignInHeader";
 import SignInFooter from "../Auth/SignInFooter";
 
 const SignUp = () => {
+
   return (
     <section>
       <div className="grid grid-cols-2">
@@ -19,6 +20,7 @@ const SignUp = () => {
             navigate="Sign in"
             to="/signin"
             footerText="Sign up"
+          
           />
         </div>
         <div>

@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 const SignInFooter = ({ text, navigate, to, footerText, className }) => {
   return (
     <>
-      <div className="pt-3 text-center " style={{ paddingBottom: "1.9rem" }}>
+      <div className="pt-3 flex justify-center w-[81%] pb-[1.9rem]  ">
         <p className="  font-normal text-[1rem] leading-[1rem] text-[#606569] ">
           {text}
           <Link 

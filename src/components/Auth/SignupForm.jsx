@@ -20,15 +20,16 @@ const SignupForm = () => {
   const [countryNumber, setCountryNumber] = useState(+234);
   const [state, setState] = useState({
     email: "",
-    firstName: "",
-    lastName: "",
+    first_name: "",
+    last_name: "",
+    phone_number: "",
     password: "",
   });
 
   const [errorMessage, setErrorMessage] = useState({
     email: "",
-    firstName: "",
-    lastName: "",
+    first_name: "",
+    last_name: "",
     password: "",
   });
 
@@ -45,10 +46,12 @@ const SignupForm = () => {
     const isValid =
       name === "email"
         ? validateEmail(value)
-        : name === "firstName" || name === "lastName"
+        : name === "first_name" || name === "last_name"
         ? validateName(value)
         : name === "password"
         ? validatePassword(value)
+        : name === "phone_number"
+        ? /^\d{7,14}$/.test(value) // Phone number validation
         : true;
 
     setErrorMessage((prev) => ({
@@ -104,15 +107,15 @@ const SignupForm = () => {
     e.preventDefault();
     try {
       const userData = await axios.post(
-        'https://aecf-102-89-23-224.ngrok-free.app/api/users/signup',
+        "https://mole-relevant-salmon.ngrok-free.app/api/users/signup",
         signupData
       );
-      // console.log(signupData)
+      console.log(signupData);
       if (!userData.ok) {
         console.log("error fetching");
       }
       const Result = await userData.json();
-      console.log(Result);
+      console.log(Result.data);
     } catch (error) {
       console.log(error);
     }
@@ -120,6 +123,8 @@ const SignupForm = () => {
     console.log(signupData);
     // state.value;
   };
+
+  
   return (
     <form onSubmit={handleSubmit}>
       <div className="pt-[3rem]">
@@ -130,25 +135,22 @@ const SignupForm = () => {
           value={state.email}
           placeholder="Enter email here"
           onChange={handleChange}
-          className={`input-style w-[87%] h-[48px] ${
+          className={`input-style w-[81%] h-[48px] ${
             errorMessage.email ? "error-border" : ""
           }`}
         />
-        <div
-          className="flex gap-4"
-          style={{ paddingTop: "1.5rem", paddingBottom: "1.5rem" }}
-        >
+        <div className="flex gap-4 py-[1.5rem]">
           <div>
             <label className="moderat-font">First Name</label>
             <br />
             <input
               type="text"
-              name="firstName"
-              value={state.firstName}
+              name="first_name"
+              value={state.first_name}
               placeholder="Enter First Name here"
               onChange={handleChange}
-              className={`input-style h-[48px] w-[95%] ${
-                errorMessage.firstName ? "error-border" : ""
+              className={`input-style h-[48px] w-[100%] ${
+                errorMessage.first_name ? "error-border" : ""
               }`}
             />
           </div>
@@ -157,12 +159,12 @@ const SignupForm = () => {
             <br />
             <input
               type="text"
-              name="lastName"
-              value={state.lastName}
+              name="last_name"
+              value={state.last_name}
               placeholder="Enter your last name"
               onChange={handleChange}
-              className={`input-style w-[90%] h-[48px] ${
-                errorMessage.lastName ? "error-border" : ""
+              className={`input-style w-[100%]  h-[48px] ${
+                errorMessage.last_name ? "error-border" : ""
               }`}
             />
           </div>
@@ -175,7 +177,7 @@ const SignupForm = () => {
             value={state.password}
             placeholder="Choose your password"
             onChange={handleChange}
-            className={`input-style w-[87%] h-[48px] ${
+            className={`input-style w-[81%]   h-[48px] ${
               errorMessage.password ? "error-border" : ""
             }`}
           />
@@ -230,12 +232,21 @@ const SignupForm = () => {
               </div>
             </div>
 
-            <input
+            {/* <input
               className="input-style w-[69%] h-[48px] pl-[4rem] ml-[6.7rem] "
               type="number"
               name=""
-              value={countryNumber}
-              onChange={(e) => setCountryNumber(e.target.value)}
+              value={state.phone_number}
+              onChange={handleChange}
+              // onChange={(e) => setCountryNumber(e.target.value)}
+            /> */}
+            <input type="hidden" name="country_code" value={countryNumber} />
+            <input
+              className="input-style w-[64%] h-[48px] pl-[4rem] ml-[6.7rem] "
+              type="number"
+              name="phone_number"
+              value={state.phone_number}
+              onChange={handleChange}
             />
           </div>
         </div>

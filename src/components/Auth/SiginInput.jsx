@@ -14,31 +14,28 @@ const SiginInput = () => {
         <input
           type="email"
           placeholder="Enter Email here"
-          className="input-style lg:w-[480px]   h-[48px] moderat-font"
+          className="input-style w-[81%]   h-[48px] moderat-font"
         />
       </div>
-
-      <div className="">
-        <label className="moderat-font">Password</label> <br />
-        <input
-          type={showpassword ? "text" : "password"}
-          name="password"
-          // value={state.password}
-          placeholder="Enter email here"
-          // onChange={handleChange}
-          className={`input-style lg:w-[480px]  h-[48px] moderat-font `}
-        />
-        <span
-          className="eyeIcon cursor-pointer"
-          onClick={handlePasswordVisibility}
-        >
-          {showpassword ? (
-            <img src={EyeOpen} alt="eye icon" />
-          ) : (
-            <img src={EyeClose} alt="eye icon" />
-          )}
-        </span>
-      </div>
+      <label className="moderat-font">Password</label> <br />
+      <input
+        type={showpassword ? "text" : "password"}
+        name="password"
+        // value={state.password}
+        placeholder="Enter email here"
+        // onChange={handleChange}
+        className={`input-style w-[81%]  h-[48px] moderat-font `}
+      />
+      <span
+        className="eyeIcon cursor-pointer"
+        onClick={handlePasswordVisibility}
+      >
+        {showpassword ? (
+          <img src={EyeOpen} alt="eye icon" />
+        ) : (
+          <img src={EyeClose} alt="eye icon" />
+        )}
+      </span>
     </div>
   );
 };
