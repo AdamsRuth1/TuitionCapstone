@@ -7,6 +7,7 @@ import Blog from "./components/onboarding/BlogPage";
 import EnrollSuccess from "./components/onboarding/EnrollSuccess";
 import ContactUs from "./components/onboarding/contactUs/contactus";
 import Faq from "./components/landingPage/faq";
+import Dashboard from "./components/dashboard/dashboard";
 import "./index.css";
 
 function App() {
@@ -21,6 +22,7 @@ function App() {
         <Route path="/enrollsuccess" element={<EnrollSuccess/>}/>
         <Route path="/contactus" element={<ContactUs/>}/>
         <Route path="/faq" element={<Faq/>}/>
+        <Route path="/dashboard" element={<Dashboard/>}/>
       </Routes>
     </Router>
   );
