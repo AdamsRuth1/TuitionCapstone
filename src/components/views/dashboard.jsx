@@ -1,14 +1,12 @@
 import { motion } from "framer-motion";
 import SidebarHeader from "./dashboardHeader";
 import DashboardSideBar from "./DashboardSideBar";
-// import Sidebar from "./sidebar";
 
 export default function Dashboard({ children }) {
   return (
     <div>
       <SidebarHeader />
-      {/* <Sidebar /> */}
-<DashboardSideBar />
+      <DashboardSideBar />
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
