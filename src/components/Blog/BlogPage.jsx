@@ -2,6 +2,7 @@ import Header from "../views/header";
 import Logo from "../../assets/images/SigninLogo copy.svg";
 import Input from "./Input";
 import { useState } from "react";
+import { motion } from "framer-motion";
 import Post from "../Blog/Post";
 import Blog1 from "../../assets/images/Blogimage1.png";
 import Blog2 from "../../assets/images/Blogimage2.png";
@@ -133,34 +134,39 @@ const BlogPage = () => {
 
   return (
     <section className="relative">
-      <Header />
-      <div className="">
-        <div className="flex justify-center gap-[1.5rem] lg:pt-[5.75rem]">
-          <img src={Logo} alt=" website logo" />
-          <h1 className="font-millik font-normal text-[38px] leading-[48px] text-[#0A0E27]">
-            All you need in one place
-          </h1>
-        </div>
-        <div className="text-center m-auto w-[609px] lg:pt-[1rem]">
-          <p className="font-Modarat font-normal text-[16px] leading-[24px] text-[#606569]">
-            Find essential resources on everything you need to know, from
-            program options and visa requirements to budgeting and cultural do's
-            and don'ts
-          </p>
-        </div>
-        <Input
-          text="Go"
-          placeholder="Search topics, information"
-          handleClick={handleGo}
-          icon={searchIcon}
-        />
-        <div className=" lg:mx-[6rem] pt-[5.125rem]">
-          <div className="flex gap-[13.625rem]">
-            <div className="flex gap-[1.5rem]">
-              {Tabs.map((tab, index) => (
-                <div key={index}>
-                  <h4
-                    className={`py-[12px] px-[24px] font-Modarat
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 1 }}
+      >
+        <Header />
+        <div className="">
+          <div className="flex justify-center gap-[1.5rem] lg:pt-[5.75rem]">
+            <img src={Logo} alt=" website logo" />
+            <h1 className="font-millik font-normal text-[38px] leading-[48px] text-[#0A0E27]">
+              All you need in one place
+            </h1>
+          </div>
+          <div className="text-center m-auto w-[609px] lg:pt-[1rem]">
+            <p className="font-Modarat font-normal text-[16px] leading-[24px] text-[#606569]">
+              Find essential resources on everything you need to know, from
+              program options and visa requirements to budgeting and cultural
+              do's and don'ts
+            </p>
+          </div>
+          <Input
+            text="Go"
+            placeholder="Search topics, information"
+            handleClick={handleGo}
+            icon={searchIcon}
+          />
+          <div className=" lg:mx-[6rem] pt-[5.125rem]">
+            <div className="flex justify-between lg:pr-[3rem]">
+              <div className="flex gap-[1.5rem]">
+                {Tabs.map((tab, index) => (
+                  <div key={index}>
+                    <h4
+                      className={`py-[12px] px-[24px] font-Modarat
                        font-normal text-[16px] leading-[16px] cursor-pointer
                        ${
                          active === tab
@@ -168,27 +174,31 @@ const BlogPage = () => {
                            : "text-[#51575D]"
                        }
                        `}
-                    onClick={() => handleTabs(tab)}
-                  >
-                    {tab}
-                  </h4>
-                </div>
-              ))}
+                      onClick={() => handleTabs(tab)}
+                    >
+                      {tab}
+                    </h4>
+                  </div>
+                ))}
+              </div>
+              <div className="">
+                <select className=" py-[12px] px-[24px] -mt-[1.6rem] text-[#51575D] font-normal text-[16px] leading-[16px] cursor-pointer outline-none border border-[#CCCCCC] rounded-[8px]">
+                  <option>See all</option>
+                  <option value="All">All</option>
+                  <option value="Study Abroad">Study Abroad</option>
+                  <option value="School">School</option>
+                  <option value="Scholarships">Scholarships</option>
+                  <option value="Travel">Student Loans</option>
+                </select>
+              </div>
             </div>
-            <div className="">
-              <select className=" py-[12px] px-[24px] -mt-[1.6rem] outline-none border border-[#CCCCCC] rounded-[8px]">
-                <option>see all</option>
-                <option value="few"> few</option>
-                <option value="few"> many</option>
-              </select>
-            </div>
+            {contentToRender(Blogs)}
+            <Pagination />
+            <Newsletter />
+            <Footer />
           </div>
-          {contentToRender(Blogs)}
-          <Pagination />
-          <Newsletter />
-          <Footer />
         </div>
-      </div>
+      </motion.div>
     </section>
   );
 };
