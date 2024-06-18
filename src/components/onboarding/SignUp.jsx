@@ -1,10 +1,11 @@
 // import SignupForm from "../views/SignupForm";
-import SignupForm from "../views/SignupForm";
-import Formside from "../views/Formside";
-import SignInHeader from "../views/SignInHeader";
-import SignInFooter from "../views/SignInFooter";
+import SignupForm from "../Auth/SignupForm";
+import Formside from "../Auth/Formside";
+import SignInHeader from "../Auth/SignInHeader";
+import SignInFooter from "../Auth/SignInFooter";
 
 const SignUp = () => {
+
   return (
     <section>
       <div className="grid grid-cols-2">
@@ -19,6 +20,7 @@ const SignUp = () => {
             navigate="Sign in"
             to="/signin"
             footerText="Sign up"
+          
           />
         </div>
         <div>

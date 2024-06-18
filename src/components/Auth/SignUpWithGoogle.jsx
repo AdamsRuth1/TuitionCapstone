@@ -8,7 +8,7 @@ const SignUpWithGoogle = ({ HandleAppleSignIn, HandleGoogleSignIn }) => {
         <div className="pb-[1.5rem]">
           <button
             onClick={HandleGoogleSignIn}
-            className=" Google-border flex bg-white justify-center rounded-[4px]  max-sm:w-[350px] lg:w-[480px] h-[48px] gap-[0.62rem]"
+            className=" Google-border flex bg-white justify-center rounded-[4px]  max-sm:w-[350px] w-[81%] h-[48px] gap-[0.62rem]"
           >
             <img src={Google} alt="Google icon" className="-mt-[0.3rem]" />
             Continue with Google
@@ -17,7 +17,7 @@ const SignUpWithGoogle = ({ HandleAppleSignIn, HandleGoogleSignIn }) => {
 
         <button
           onClick={HandleAppleSignIn}
-          className=" Google-border flex bg-white justify-center rounded-[4px] max-sm:w-[350px] lg:w-[480px] h-[48px] gap-[0.62rem]"
+          className=" Google-border flex bg-white justify-center rounded-[4px] max-sm:w-[350px] w-[81%] h-[48px] gap-[0.62rem]"
         >
           <img
             src={Apple}
@@ -28,11 +28,10 @@ const SignUpWithGoogle = ({ HandleAppleSignIn, HandleGoogleSignIn }) => {
         </button>
       </div>
       <div className="flex pt-[2rem]  text-center pb-3 lg:w-[480px] max-sm:w-[350px]">
-      
-        <div className="line" style={{ width: "215px", height: "0" }}></div>
+        <div className="line  w-[215px] h-0"></div>
 
         <span className="text-center ">Or</span>
-        <div className="line" style={{ width: "215px", height: "0" }}></div>
+        <div className="line  w-[215px] h-0"></div>
       </div>
     </>
   );

@@ -9,7 +9,6 @@ export default function Header() {
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
-    
   };
 
   const toggleDropdown = () => {
@@ -49,19 +48,19 @@ export default function Header() {
             <ul className="hidden md:flex space-x-4">
               <li>
                 <Link
-                 to="/"
+                  to="/"
                   className="text-black hover:bg-white hover:text-customButton hover:border-customButton hover:rounded-full px-4 py-2 border-2 border-transparent transition-all duration-300"
                 >
                   Home
                 </Link>
               </li>
               <li>
-                <a
-                  href="#"
+                <Link
+                  to="/blog"
                   className="text-black hover:bg-white hover:text-customButton hover:border-customButton hover:rounded-full px-4 py-2 border-2 border-transparent transition-all duration-300"
                 >
                   Blog
-                </a>
+                </Link>
               </li>
               <li>
                 <div className="relative">
@@ -89,9 +88,24 @@ export default function Header() {
                   {isDropdownOpen && (
                     <div className="absolute top-full left-0 bg-white border border-gray-300 rounded-md mt-1 shadow-md">
                       {/* Dropdown items */}
-                      <a href="#" className="block px-4 py-2 text-gray-800 hover:bg-gray-200">Item 1</a>
-                      <a href="#" className="block px-4 py-2 text-gray-800 hover:bg-gray-200">Item 2</a>
-                      <a href="#" className="block px-4 py-2 text-gray-800 hover:bg-gray-200">Item 3</a>
+                      <a
+                        href="#"
+                        className="block px-4 py-2 text-gray-800 hover:bg-gray-200"
+                      >
+                        Item 1
+                      </a>
+                      <a
+                        href="#"
+                        className="block px-4 py-2 text-gray-800 hover:bg-gray-200"
+                      >
+                        Item 2
+                      </a>
+                      <a
+                        href="#"
+                        className="block px-4 py-2 text-gray-800 hover:bg-gray-200"
+                      >
+                        Item 3
+                      </a>
                     </div>
                   )}
                 </div>
@@ -125,39 +139,54 @@ export default function Header() {
                 </Link>
               </li>
               <li className=" text-black hover:text-blue-900 hover:border-blue-900 hover:rounded-full px-4 py-4 border border-transparent  transition-all duration-300">
-                <a href="#">Blog</a>
+                <Link to="/blog">Blog</Link>
               </li>
               <div className="relative">
-                  <a
-                    onClick={toggleDropdown}
-                    href="#"
-                    className="flex items-center text-black hover:bg-white hover:text-blue-900 hover:border-blue-900 hover:rounded-full px-4 py-4  border border-transparent transition-all duration-300"
+                <a
+                  onClick={toggleDropdown}
+                  href="#"
+                  className="flex items-center text-black hover:bg-white hover:text-blue-900 hover:border-blue-900 hover:rounded-full px-4 py-4  border border-transparent transition-all duration-300"
+                >
+                  Developer
+                  <svg
+                    className="h-6 w-6 mr-2 ml-2 text-gray-700"
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
                   >
-                    Developer
-                    <svg
-                      className="h-6 w-6 mr-2 ml-2 text-gray-700"
-                      xmlns="http://www.w3.org/2000/svg"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="2"
+                      d="M19 9l-7 7-7-7"
+                    />
+                  </svg>
+                </a>
+                {isDropdownOpen && (
+                  <div className="absolute top-full left-0 bg-white border border-gray-300 rounded-md mt-1 shadow-md">
+                    {/* Dropdown items */}
+                    <a
+                      href="#"
+                      className="block px-4 py-2 text-gray-800 hover:bg-gray-200"
                     >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth="2"
-                        d="M19 9l-7 7-7-7"
-                      />
-                    </svg>
-                  </a>
-                  {isDropdownOpen && (
-                    <div className="absolute top-full left-0 bg-white border border-gray-300 rounded-md mt-1 shadow-md">
-                      {/* Dropdown items */}
-                      <a href="#" className="block px-4 py-2 text-gray-800 hover:bg-gray-200">Item 1</a>
-                      <a href="#" className="block px-4 py-2 text-gray-800 hover:bg-gray-200">Item 2</a>
-                      <a href="#" className="block px-4 py-2 text-gray-800 hover:bg-gray-200">Item 3</a>
-                    </div>
-                  )}
-                </div>
+                      Item 1
+                    </a>
+                    <a
+                      href="#"
+                      className="block px-4 py-2 text-gray-800 hover:bg-gray-200"
+                    >
+                      Item 2
+                    </a>
+                    <a
+                      href="#"
+                      className="block px-4 py-2 text-gray-800 hover:bg-gray-200"
+                    >
+                      Item 3
+                    </a>
+                  </div>
+                )}
+              </div>
               <li className=" text-black hover:text-blue-900 hover:border-blue-900  hover:rounded-full px-4 py-4 border border-transparent transition-all duration-300 ">
                 <NavLink to="/contactUs">Support</NavLink>
               </li>
