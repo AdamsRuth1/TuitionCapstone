@@ -12,6 +12,7 @@ export default {
         customLightGray: "#606569",
         customLine: "#CCCCCC",
         customEnroll: "#606569",
+        customrAdd: "#F8FAFE",
       },
      
       fontFamily: {
