@@ -195,10 +195,11 @@ const BlogPage = () => {
             {contentToRender(Blogs)}
             <Pagination />
             <Newsletter />
-            <Footer />
+           
           </div>
         </div>
       </motion.div>
+      <Footer />
     </section>
   );
 };

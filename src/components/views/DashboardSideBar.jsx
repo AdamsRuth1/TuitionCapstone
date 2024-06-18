@@ -7,7 +7,7 @@ const DashboardSideBar = () => {
   const location = useLocation();
   return (
     <>
-    <div className="flex justify-end p-2 sticky top-0 bg-white z-10 dashboardheader">
+    <div className="flex justify-end p-2 sticky top-0 bg-white z-10">
         <button className="flex">
           <img src={Notification} alt="Notification icon" className="mr-10" />
         </button>

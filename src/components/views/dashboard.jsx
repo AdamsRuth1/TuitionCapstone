@@ -11,7 +11,7 @@ export default function Dashboard({ children }) {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 1 }}
       >
-        <main className="flex flex-col items-center bg-customDashBoard h-full">
+        <main className="flex flex-col items-center bg-customDash h-full">
           {children}
         </main>
       </motion.div>
