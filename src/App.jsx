@@ -3,7 +3,7 @@ import Landing from "./components/landingPage/landingPage";
 import EnrollPage from "./components/onboarding/Enroll";
 import SignIn from "./components/onboarding/SignIn";
 import SignUp from "./components/onboarding/SignUp";
-import Blog from "./components/Blog/BlogPage";
+import Blog from "./components/onboarding/BlogPage";
 import EnrollSuccess from "./components/onboarding/EnrollSuccess";
 import ContactUs from "./components/onboarding/contactUs/contactus";
 import Faq from "./components/landingPage/faq";

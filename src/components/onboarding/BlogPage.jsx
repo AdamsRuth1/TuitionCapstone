@@ -1,6 +1,6 @@
 import Header from "../views/header";
 import Logo from "../../assets/images/SigninLogo copy.svg";
-import Input from "./Input";
+import Input from "../Blog/Input";
 import { useState } from "react";
 import { motion } from "framer-motion";
 import Post from "../Blog/Post";
@@ -10,10 +10,10 @@ import Blog3 from "../../assets/images/Blogimage3.png";
 import Blog4 from "../../assets/images/Blogimage4.png";
 import Blog5 from "../../assets/images/Blogimage5.png";
 import Blog6 from "../../assets/images/Blogimage6.png";
-import Pagination from "./Pagination";
+import Pagination from "../Blog/Pagination";
 import Newsletter from "../Blog/Newletter";
 import searchIcon from "../../assets/Icons/search-icon.png";
-import Footer from "../views/footer"
+import Footer from "../views/footer";
 const BlogPage = () => {
   const Blogs = [
     {
