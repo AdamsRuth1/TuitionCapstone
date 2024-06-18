@@ -70,7 +70,10 @@
   }
   .border-dropdown {
     border: 1px solid #CCCCCC;
-    
   }
+  .dashboardheader{
+    border-bottom: 1px solid rgba(204, 204, 204, 0.2);
+  }
+
 
 }
