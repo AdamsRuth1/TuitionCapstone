@@ -1,6 +1,5 @@
-import React from 'react'
+import Email from "../../assets/Icons/mail (2).svg";
 
-import searchIcon from "../../assets/Icons/search-icon.png";
 const Newletter = () => {
   return (
     <div className="text-center pb-[12.625rem]">
@@ -13,29 +12,29 @@ const Newletter = () => {
           it affects you direct to your inbox
         </p>
       </div>
-     <div className=" flex justify-center lg:pt-[5rem] relative">
-      <div className="items-center flex bottom-4 left-[23rem] absolute">
-        <img src={searchIcon} alt="Search icon" width={32} height={32} />
-      </div>
-      <input
-        type="text"
-        placeholder="Enter your email address"
-        className="lg:w-[608px] lg:h-[64px] font-Modarat
+      <div className=" flex justify-center lg:pt-[5rem] relative">
+        <div className="items-center flex bottom-4 left-[23rem] absolute">
+          <img src={Email} alt="Search icon" width={32} height={32} />
+        </div>
+        <input
+          type="text"
+          placeholder="Enter your email address"
+          className="lg:w-[608px] lg:h-[64px] font-Modarat
          font-normal text-[16px] text-[#A1A4A8] leading-[16px] 
          outline-none bg-[#F5F5F5] rounded-[4px] pl-[3.8rem] border border-[#E6E6E6]"
-      />
-      <div className="items-center flex bottom-[0.6rem] right-[23rem] absolute">
-        <button
-          className="py-[10px] px-[24px] rounded-[4px] bg-[#252E6A] text-[#FFFFFF] 
+        />
+        <div className="items-center flex bottom-[0.6rem] right-[23rem] absolute">
+          <button
+            className="py-[10px] px-[24px] rounded-[4px] bg-[#252E6A] text-[#FFFFFF] 
         font-Modarat font-normal text-[20px] leading-[24px]"
-          // onClick={handleClick}
-        >
-          Subscribe
-        </button>
+            // onClick={handleClick}
+          >
+            Subscribe
+          </button>
+        </div>
       </div>
     </div>
-    </div>
   );
-}
+};
 
-export default Newletter
+export default Newletter;

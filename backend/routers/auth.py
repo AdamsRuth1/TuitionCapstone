@@ -1,8 +1,9 @@
 # backend/routers/auth.py
+from backend.services import users
 import openai
 from fastapi import APIRouter, Depends, HTTPException, status, Request
 from sqlalchemy.orm import Session
-from backend import schemas, services
+from backend.schemas import users
 from backend.database import get_db
 from fastapi.security import OAuth2PasswordRequestForm
 from fastapi.security.oauth2 import OAuth2PasswordBearer
@@ -24,16 +25,16 @@ router = APIRouter()
 
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl="api/auth/signin")
 
-@router.post("/signin", response_model=schemas.Token)
-async def sign_in(form_data: schemas.SignIn, db: Session = Depends(get_db)):
-    user = services.UserService().authenticate_user(db, form_data.email, form_data.password)
+@router.post("/signin", response_model=users.Token)
+async def sign_in(form_data: users.SignIn, db: Session = Depends(get_db)):
+    user = users.UserService().authenticate_user(db, form_data.email, form_data.password)
     if not user:
         raise HTTPException(
             status_code=status.HTTP_401_UNAUTHORIZED,
             detail="Incorrect email or password",
             headers={"WWW-Authenticate": "Bearer"},
         )
-    access_token = services.UserService.create_access_token(data={"sub": user.email})
+    access_token = users.UserService.create_access_token(data={"sub": user.email})
     return {"access_token": access_token, "token_type": "bearer"}
 
 
