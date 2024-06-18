@@ -1,6 +1,5 @@
 import React from "react";
 import { motion } from "framer-motion";
-import SidebarHeader from "../views/dashboardHeader";
 import Sidebar from "../views/sidebar";
 import Profile from "../../assets/images/Profile empty.png";
 import logo from "../../assets/images/Vector (4).png";
@@ -8,7 +7,7 @@ import logo from "../../assets/images/Vector (4).png";
 export default function Dashboard() {
   return (
     <>
-    <SidebarHeader />
+  
       <Sidebar />
 
     <motion.div
