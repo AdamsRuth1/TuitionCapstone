@@ -10,19 +10,18 @@ export default function Payment1() {
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 1 }}
     >
-      <div className="flex justify-end p-2 sticky top-0 bg-white z-10">
-    <button className="flex">
-      <img src={Notification} alt="Notification icon" className="mr-10" />
-    </button>
-    <button className="flex">
-      <img src={Profile} alt="Profile icon" className="mr-6" />
-    </button>
-    <div className="mr-10 text-customBlack font-Modarat">
-      <h1 className="text-base">Ayodele Grace</h1>
-      <p className="text-customGray text-xs">ayodelegrace@gmail.com</p>
-    </div>
-  </div>
-  
+      <div className="flex justify-end p-2 sticky top-0 bg-white z-10 dashboardheader">
+        <button className="flex">
+          <img src={Notification} alt="Notification icon" className="mr-10" />
+        </button>
+        <button className="flex">
+          <img src={Profile} alt="Profile icon" className="mr-6" />
+        </button>
+        <div className="mr-10 text-customBlack font-Modarat">
+          <h1 className="text-base">Ayodele Grace</h1>
+          <p className="text-customGray text-xs">ayodelegrace@gmail.com</p>
+        </div>
+      </div>
     </motion.div>
   );
 }
