@@ -150,7 +150,7 @@ export default function Footer() {
         </div>
       </div>
 
-      <div className="hidden sm:flex border-b border  justify-between p-10 ">
+      <div className="hidden sm:flex border-b border  justify-between p-4 ">
         <ReactFlagsSelect
           selected={selected}
           searchable
@@ -177,7 +177,7 @@ export default function Footer() {
         </div>
       </div>
 
-      <div className="border-b border  hidden sm:flex justify-between space-x-2 font-Modarat text-lg font-normal text-customGray p-6 ">
+      <div className="border-b border  hidden sm:flex justify-between space-x-2 font-Modarat text-lg font-normal text-customGray p-4 ">
         <div className="ml-20 space-x-20 ">
           <a href="" className="">
             Privacy notice
@@ -199,6 +199,13 @@ export default function Footer() {
           </a>
         </div>
       </div>
+      <div className="flex mt-2 ml-20">
+            <div className="ml-4 text-customGray ">&copy;</div>
+            <p className="font-Modarat text-customGray text-base leading-6 ml-2 mt-1">
+              Flutterwave Technology Solutions Limited Licensed by Central Bank
+              of Nigeria
+            </p>
+          </div>
 
       <div className="block sm:hidden">
         <div className="grid grid-cols-1">
