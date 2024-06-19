@@ -38,6 +38,7 @@ pip-delete-this-directory.txt
 
 # Environment files
 env.py
+<<<<<<< Updated upstream
 
 # Database
 app.db
@@ -59,8 +60,17 @@ pip-log.txt
 pip-delete-this-directory.txt
 
 # Ignore SQLite database file
+=======
+
+# Database
+>>>>>>> Stashed changes
 app.db
 
+# Temporary files
 test.html
 
+<<<<<<< Updated upstream
+=======
+# Ignore environment files
+>>>>>>> Stashed changes
 .env

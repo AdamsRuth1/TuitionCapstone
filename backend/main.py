@@ -1,11 +1,12 @@
 import uvicorn
+import os
+from dotenv import load_dotenv
 import logging
 from fastapi import FastAPI, Request
 from fastapi.middleware.cors import CORSMiddleware
-from backend.routers import users, auth, countries, institution
+from backend.routers import users, auth, countries, institution, contact
 from backend.database import engine, Base
 
-# Create the database tables
 Base.metadata.create_all(bind=engine)
 
 # Initialize the FastAPI app
@@ -23,11 +24,7 @@ origins = [
 # Configure CORS middleware
 app.add_middleware(
     CORSMiddleware,
-<<<<<<< HEAD
-    allow_origins=origins,
-=======
     allow_origins=origins,  # Or list specific origins (e.g., your frontend URL)
->>>>>>> made few changes
     allow_credentials=True,
     allow_methods=["*"],  # Make sure to include "OPTIONS"
     allow_headers=["*"],
@@ -52,45 +49,13 @@ app.include_router(users.router, prefix="/api/users", tags=["users"])
 app.include_router(auth.router, prefix="/api/auth", tags=["auth"])
 app.include_router(countries.router, prefix="/api/countries", tags=["countries"])
 app.include_router(institution.router, prefix="/api/institution", tags=["institution"])
+app.include_router(contact.router, prefix="/api/contact", tags=["contact"])
 
 # Root endpoint
 @app.get("/")
 def read_root():
     return {"message": "Welcome to the API"}
-<<<<<<< HEAD
-from fastapi import FastAPI
-from fastapi.middleware.cors import CORSMiddleware
-from backend.routers import users, auth
-from backend.database import engine, Base
 
-Base.metadata.create_all(bind=engine)
-
-
-app = FastAPI()
-
-origins = [
-    "http://localhost",
-    "http://localhost:8000",
-    "http://127.0.0.1:5500",
-]
-
-app.add_middleware(
-    CORSMiddleware,
-    allow_origins=origins,
-    allow_credentials=True,
-    allow_methods=["*"],
-    allow_headers=["*"],
-)
-
-
-app.include_router(users.router, prefix="/api/users", tags=["users"])
-app.include_router(auth.router, prefix="/api/auth", tags=["auth"])
-
-
-@app.get("/")
-def read_root():
-    return {"message": "Welcome to the API"}
-=======
-
+# Run the application
 if __name__ == "__main__":
     uvicorn.run(app, host="0.0.0.0", port=8000)
