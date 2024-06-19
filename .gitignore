@@ -47,3 +47,5 @@ test.html
 
 # Ignore environment files
 .env
+restore-point.patch
+app.db
