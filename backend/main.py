@@ -7,6 +7,8 @@ from fastapi.middleware.cors import CORSMiddleware
 from backend.routers import users, auth, countries, institution, contact
 from backend.database import engine, Base
 
+load_dotenv()
+# Create the database tables
 Base.metadata.create_all(bind=engine)
 
 # Initialize the FastAPI app
