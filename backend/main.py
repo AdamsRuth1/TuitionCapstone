@@ -1,10 +1,13 @@
 import uvicorn
+import os
+from dotenv import load_dotenv
 import logging
 from fastapi import FastAPI, Request
 from fastapi.middleware.cors import CORSMiddleware
-from backend.routers import users, auth, countries, institution
+from backend.routers import users, auth, countries, institution, contact
 from backend.database import engine, Base
 
+load_dotenv()
 # Create the database tables
 Base.metadata.create_all(bind=engine)
 
@@ -48,6 +51,7 @@ app.include_router(users.router, prefix="/api/users", tags=["users"])
 app.include_router(auth.router, prefix="/api/auth", tags=["auth"])
 app.include_router(countries.router, prefix="/api/countries", tags=["countries"])
 app.include_router(institution.router, prefix="/api/institution", tags=["institution"])
+app.include_router(contact.router, prefix="/api/contact", tags=["contact"])
 
 # Root endpoint
 @app.get("/")
