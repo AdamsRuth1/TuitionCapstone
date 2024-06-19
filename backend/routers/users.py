@@ -18,7 +18,7 @@ logging.basicConfig(level=logging.INFO)
 @router.post("/signup", response_model=user_schemas.User)
 async def create_user(user: user_schemas.UserCreate, db: Session = Depends(get_db)):
     try:
-        logger.info(f"Received data: {user.dict()}")
+        logger.info(f"Received data: {user.json()}")
         db_user = user_service.get_user_by_email(db, user.email)
         if db_user:
             raise HTTPException(status_code=400, detail="Email already registered")
@@ -28,9 +28,6 @@ async def create_user(user: user_schemas.UserCreate, db: Session = Depends(get_d
     except HTTPException as e:
         logger.error(f"HTTP Exception: {e.detail}")
         raise e
-    except ValueError as e:
-        logger.error(f"Validation Error: {str(e)}")
-        raise HTTPException(status_code=422, detail=str(e))
     except Exception as e:
         logger.error(f"Unhandled Exception: {str(e)}")
         raise HTTPException(status_code=500, detail="Internal Server Error")
