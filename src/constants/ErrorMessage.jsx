@@ -1,4 +1,5 @@
 export const Error = {
+  email: "ykk styyjyj",
   phoneNo:
     "Valid phone number is required, Your number should have the prefix +1 or +234",
   password:

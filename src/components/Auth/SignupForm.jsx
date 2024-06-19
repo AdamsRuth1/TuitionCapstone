@@ -7,22 +7,23 @@ import Button from "../Auth/Button";
 import { Error } from "../../constants/ErrorMessage";
 import { useState } from "react";
 import { useSignupContext } from "../../context/SignupContext";
-// import { base_URL } from "../../config/api_url";
 import axios from "axios";
-// import { useRevalidator } from "react-router-dom";
+import Loading from "../Auth/Loading";
 
 const SignupForm = () => {
   const [isOpen, setIsOpen] = useState(false);
-  // const [disabled, setDisabled] = useState(true);
+  const [loading, setLoading] = useState(false);
+  const [disabled, setDisabled] = useState(true);
   const { signupData, setSignupData } = useSignupContext();
   const [selected, setSelected] = useState(null);
   const [showpassword, setShowPassword] = useState(false);
+
   const [countryNumber, setCountryNumber] = useState(+234);
   const [state, setState] = useState({
     email: "",
     first_name: "",
     last_name: "",
-    phone_number: "",
+    phone_number: "+",
     password: "",
   });
 
@@ -50,14 +51,24 @@ const SignupForm = () => {
         ? validateName(value)
         : name === "password"
         ? validatePassword(value)
-        : name === "phone_number"
-        ? /^\d{7,14}$/.test(value) // Phone number validation
         : true;
 
+    if (name === "phone_number") {
+      const digits = value.replace(/\D/g, "");
+      setState((prevState) => ({ ...prevState, [name]: digits }));
+    } else {
+      setState((prevState) => ({ ...prevState, [name]: value }));
+    }
+    if (!isValid) {
+      setDisabled(true);
+    } else {
+      setDisabled(false);
+    }
     setErrorMessage((prev) => ({
       ...prev,
       [name]: isValid ? "" : Error[name],
     }));
+
     setState((prevState) => ({ ...prevState, [name]: value }));
     setSignupData((prevState) => ({ ...prevState, [name]: value }));
   };
@@ -105,6 +116,7 @@ const SignupForm = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setLoading(true);
     try {
       const userData = await axios.post(
         "https://mole-relevant-salmon.ngrok-free.app/api/users/signup",
@@ -112,19 +124,20 @@ const SignupForm = () => {
       );
       console.log(signupData);
       if (!userData.ok) {
-        console.log("error fetching");
+        alert("error fetching");
       }
       const Result = await userData.json();
-      console.log(Result.data);
+      console.log(Result);
+      return <div>Loading...</div>;
     } catch (error) {
-      console.log(error);
+      alert(error);
+      setLoading(false);
     }
 
     console.log(signupData);
     // state.value;
   };
 
-  
   return (
     <form onSubmit={handleSubmit}>
       <div className="pt-[3rem]">
@@ -232,26 +245,28 @@ const SignupForm = () => {
               </div>
             </div>
 
-            {/* <input
-              className="input-style w-[69%] h-[48px] pl-[4rem] ml-[6.7rem] "
-              type="number"
-              name=""
-              value={state.phone_number}
-              onChange={handleChange}
-              // onChange={(e) => setCountryNumber(e.target.value)}
-            /> */}
-            <input type="hidden" name="country_code" value={countryNumber} />
             <input
+              type="tel"
               className="input-style w-[64%] h-[48px] pl-[4rem] ml-[6.7rem] "
-              type="number"
               name="phone_number"
               value={state.phone_number}
               onChange={handleChange}
+              placeholder="+ Country Code Phone Number"
             />
+            <input type="hidden" name="country_code" value={countryNumber} />
           </div>
         </div>
       </div>
-      <Button text="Sign Up" handleSubmit={handleSubmit} />
+      <div>
+        {loading && <Loading text="Loading..." />}
+        {!loading && (
+          <Button
+            text="Sign Up"
+            handleSubmit={handleSubmit}
+            disable={disabled}
+          />
+        )}
+      </div>
     </form>
   );
 };

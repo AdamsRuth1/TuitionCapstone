@@ -9,6 +9,7 @@ const Button = ({ disable, handleSubmit, text }) => {
           onClick={handleSubmit}
           className={`w-[81%] h-[72px] rounded-[5px] bg-[#252E6A] text-[#FFFFFF] font-normal text-[18px] leading-[22px] moderat-font ${disable ? "cursor-not-allowed" : "cursor-pointer"}`}
         >
+          
           {text}
         </button>
       </div>
