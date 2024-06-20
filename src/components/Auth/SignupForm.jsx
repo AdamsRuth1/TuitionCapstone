@@ -1,24 +1,24 @@
-import Google from "../../assets/Icons/Google-icon.svg";
 import Nigeria from "../../assets/Icons/Nigeria.svg";
 import Arrow from "../../assets/Icons/Arrrow-down.svg";
 import eyeOpen from "../../assets/Icons/eyeOpen.svg";
 import eyeClose from "../../assets/Icons/eyeClose.svg";
 import Button from "../Auth/Button";
 import { Error } from "../../constants/ErrorMessage";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useSignupContext } from "../../context/SignupContext";
 import axios from "axios";
 import Loading from "../Auth/Loading";
+import { useNavigate } from "react-router-dom";
 
 const SignupForm = () => {
+  const navigate = useNavigate();
   const [isOpen, setIsOpen] = useState(false);
   const [loading, setLoading] = useState(false);
   const [disabled, setDisabled] = useState(true);
   const { signupData, setSignupData } = useSignupContext();
-  const [selected, setSelected] = useState(null);
+  const [selectedCountry, setSelectedCountry] = useState(null);
   const [showpassword, setShowPassword] = useState(false);
-
-  const [countryNumber, setCountryNumber] = useState(+234);
+  const [countries, setCountries] = useState([]);
   const [state, setState] = useState({
     email: "",
     first_name: "",
@@ -54,11 +54,22 @@ const SignupForm = () => {
         : true;
 
     if (name === "phone_number") {
-      const digits = value.replace(/\D/g, "");
-      setState((prevState) => ({ ...prevState, [name]: digits }));
+      let formattedPhoneNumber = value;
+
+      if (selectedCountry && !value.startsWith(`+${selectedCountry.code}`)) {
+        formattedPhoneNumber = `+${selectedCountry.code}`;
+      }
+
+      setState((prevState) => ({ ...prevState, [name]: formattedPhoneNumber }));
+      setSignupData((prevState) => ({
+        ...prevState,
+        [name]: formattedPhoneNumber,
+      }));
     } else {
       setState((prevState) => ({ ...prevState, [name]: value }));
+      setSignupData((prevState) => ({ ...prevState, [name]: value }));
     }
+
     if (!isValid) {
       setDisabled(true);
     } else {
@@ -68,51 +79,36 @@ const SignupForm = () => {
       ...prev,
       [name]: isValid ? "" : Error[name],
     }));
-
-    setState((prevState) => ({ ...prevState, [name]: value }));
-    setSignupData((prevState) => ({ ...prevState, [name]: value }));
   };
 
-  const options = [
-    {
-      value: +264,
-      image: Google,
-    },
-    {
-      value: +234,
-      image: Nigeria,
-    },
-    {
-      value: +222,
-      image: Google,
-    },
-  ];
   const handlePasswordVisibility = () => {
     setShowPassword(!showpassword);
   };
 
-  const toggleDropdown = async (e) => {
-    e.preventDefault();
-    try {
-      setIsOpen(!isOpen);
-      const response = await axios.get(
-        `http://localhost:8000/api/countries/countries`
-      );
-      if (!response.ok) {
-        throw new Error("Failed to fetch countries data");
+  useEffect(() => {
+    const fetchCountries = async () => {
+      try {
+        const response = await axios.get("https://restcountries.com/v3.1/all");
+        const formattedCountries = response.data.map((country) => ({
+          code: country.ccn3,
+          flagUrl: country.flags.svg,
+        }));
+        setCountries(formattedCountries);
+      } catch (error) {
+        console.error("Error fetching countries:", error);
       }
-      const countriesData = await response.json();
-      console.log(countriesData);
-    } catch (error) {
-      console.error("Error fetching countries:", error);
-    }
-  };
+    };
 
-  const handleClick = (option) => {
-    setSelected(option);
-    setCountryNumber(option.value);
-    setIsOpen(false);
-  };
+    fetchCountries();
+  }, []);
+
+  //  useEffect(() => {
+  //    setCountries([
+  //      { name: "United States", code: "1", flagUrl: "path/to/us_flag.png" },
+  //      { name: "Nigeria", code: "234", flagUrl: "path/to/ng_flag.png" },
+       
+  //    ]);
+  //  }, []);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -123,19 +119,28 @@ const SignupForm = () => {
         signupData
       );
       console.log(signupData);
-      if (!userData.ok) {
-        alert("error fetching");
-      }
-      const Result = await userData.json();
-      console.log(Result);
-      return <div>Loading...</div>;
+      console.log(userData);
+      navigate("/signin");
+      alert("Signup Success");
     } catch (error) {
-      alert(error);
+      alert(error.message);
       setLoading(false);
     }
-
     console.log(signupData);
-    // state.value;
+  };
+
+  const toggleDropdown = () => setIsOpen(!isOpen);
+  const handleSelect = (country) => {
+    setSelectedCountry(country);
+    const phoneNumber = `+${country.code}`;
+    setState((prevState) => ({ ...prevState, phone_number: phoneNumber }));
+    setSignupData((prevState) => ({
+      ...prevState,
+      phone_number: phoneNumber,
+    }));
+    setIsOpen(false);
+
+    
   };
 
   return (
@@ -207,56 +212,62 @@ const SignupForm = () => {
         </p>
         <div className="pb-[0.7rem] pt-5">
           <label className="moderat-font"> Phone Number</label> <br />
-          <div className="flex">
-            <div
-              style={{
-                position: "absolute",
-              }}
-            >
-              <div>
-                <div
-                  onClick={toggleDropdown}
-                  className="flex gap-10 px-3 py-[0.7rem] border-dropdown mt-2 "
-                >
-                  {selected ? (
-                    <>
-                      <img src={selected.image} alt={selected.label} />
-                    </>
-                  ) : (
-                    <img src={Nigeria} alt="Nigeria Flag" />
-                  )}
-                  <div className="pt-2 ">
-                    <img src={Arrow} alt="Arrow down icon" />
+          <div className="flex gap-0">
+            <div className="dropdown-container absolute">
+              <div className="dropdown-header" onClick={toggleDropdown}>
+                {selectedCountry ? (
+                  <div className="dropdown-selected">
+                    <img
+                      src={selectedCountry.flagUrl}
+                      alt={`${selectedCountry.name} flag`}
+                      width={20}
+                    />
+                    <span>
+                      {selectedCountry.name} ({selectedCountry.code})
+                    </span>
                   </div>
-                </div>
-                {isOpen && (
-                  <ul style={{ border: "1px solid red" }}>
-                    {options.map((option) => (
-                      <li
-                        style={{ border: "none" }}
-                        key={option.value}
-                        onClick={() => handleClick(option)}
-                      >
-                        <img src={option.image} alt={option.label} />
-                      </li>
-                    ))}
-                  </ul>
+                ) : (
+                  <div className="dropdown-selected">
+                    <img src={Nigeria} alt="Nigeria Flag" width={20} />
+                  </div>
                 )}
+                <img src={Arrow} alt="Arrow down icon" className="arrow-icon" />
               </div>
+              {isOpen && (
+                <div className="dropdown-list">
+                  {countries.map((country, index) => (
+                    <div
+                      key={index}
+                      className="dropdown-item"
+                      onClick={() => handleSelect(country)}
+                    >
+                      <img
+                        src={country.flagUrl}
+                        alt={`${country.name} flag`}
+                        width={20}
+                      />
+                      <span>
+                        {country.name} ({country.code})
+                      </span>
+                    </div>
+                  ))}
+                </div>
+              )}
             </div>
-
             <input
               type="tel"
-              className="input-style w-[64%] h-[48px] pl-[4rem] ml-[6.7rem] "
+              className="input-style w-[64%] h-[48px] pl-[4rem]  "
               name="phone_number"
               value={state.phone_number}
               onChange={handleChange}
               placeholder="+ Country Code Phone Number"
             />
-            <input type="hidden" name="country_code" value={countryNumber} />
+           
           </div>
         </div>
       </div>
+      {/* </div> */}
+
       <div>
         {loading && <Loading text="Loading..." />}
         {!loading && (

@@ -4,8 +4,10 @@ import EyeClose from "../../assets/Icons/eyeClose.svg";
 import Button from "../Auth/Button";
 import axios from "axios";
 import { useSignInContext } from "../../context/SignInContext";
+import { useNavigate } from "react-router-dom";
 
 const SiginInput = () => {
+  const navigate = useNavigate();
   const [showpassword, setShowPassword] = useState(false);
   const { signInData, setSignInData } = useSignInContext();
   const [state, setState] = useState({
@@ -30,17 +32,14 @@ const SiginInput = () => {
         "https://mole-relevant-salmon.ngrok-free.app/api/auth/signin",
         signInData
       );
-      if (!signIn.ok) {
-        alert("error message");
-      } else {
-        const signInSucceed = await signIn;
-        console.log(signInSucceed);
-      }
+      console.log(signIn);
+      console.log(signInData);
+      navigate("/dashboard");
+
+      
     } catch (error) {
-      alert(error);
+      alert(error.message);
     }
-    
-    console.log(signInData);
   };
   return (
     <form onSubmit={handleSubmit}>

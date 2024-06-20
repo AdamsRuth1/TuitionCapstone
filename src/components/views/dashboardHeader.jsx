@@ -1,9 +1,11 @@
 import { motion } from "framer-motion";
-import React from "react";
+import { useSignupContext } from "../../context/SignupContext";
 import Notification from "../../assets/images/Notification icon.png";
 import Profile from "../../assets/images/Profile empty.png";
 
 export default function Payment1() {
+  const { signupData } = useSignupContext();
+  
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -18,7 +20,7 @@ export default function Payment1() {
           <img src={Profile} alt="Profile icon" className="mr-6" />
         </button>
         <div className="mr-10 text-customBlack font-Modarat">
-          <h1 className="text-base">Ayodele Grace</h1>
+          <h1 className="text-base">{signupData.first_name}</h1>
           <p className="text-customGray text-xs">ayodelegrace@gmail.com</p>
         </div>
       </div>

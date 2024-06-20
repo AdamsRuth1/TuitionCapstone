@@ -68,12 +68,72 @@
   .error-border {
     border: 1px solid red;
   }
+
   .border-dropdown {
     border: 1px solid #CCCCCC;
   }
-  .dashboardheader{
+
+  .dashboardheader {
     border-bottom: 1px solid rgba(204, 204, 204, 0.2);
   }
 
+
+  /* CountryDropdown.css */
+  .dropdown-container {
+    position: relative;
+    margin-top: 0.5rem;
+    width: 150px;
+    height: 48px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #fff;
+  }
+
+  .dropdown-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.7rem;
+    cursor: pointer;
+  }
+
+  .dropdown-selected {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .arrow-icon {
+    width: 16px;
+    transition: transform 0.2s;
+  }
+
+  .dropdown-container.open .arrow-icon {
+    transform: rotate(180deg);
+  }
+
+  .dropdown-list {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    max-height: 200px;
+    overflow-y: auto;
+    border: 1px solid #ccc;
+    background-color: #fff;
+    z-index: 10;
+  }
+
+  .dropdown-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 0.7rem;
+    cursor: pointer;
+  }
+
+  .dropdown-item:hover {
+    background-color: #f0f0f0;
+  }
 
 }
