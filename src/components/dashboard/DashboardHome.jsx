@@ -3,6 +3,7 @@ import logo from "../../assets/images/Vector (4).png";
 import Dashboard from "../views/dashboard";
 
 const DashboardHome = () => {
+  const firstname = JSON.parse(localStorage.getItem("first_name"));
   return (
     <Dashboard>
       <div className="mt-16 flex flex-col items-center">
@@ -11,7 +12,7 @@ const DashboardHome = () => {
         </div>
         <div>
           <h1 className="font-millik text-3xl mb-2 leading-10">
-            Hello Ayodele
+            Hello {firstname}
           </h1>
           <p className="text-center font-Modarat text-customGray text-lg">
             Welcome to Tuition

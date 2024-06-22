@@ -12,7 +12,7 @@ const SignIn = () => {
         "https://mole-relevant-salmon.ngrok-free.app/api/auth/signin/google"
       );
       if (!GoogleSignIn.ok) {
-        alert("error message");
+        alert("message");
       } else {
         const Response = await GoogleSignIn;
         console.log(Response);

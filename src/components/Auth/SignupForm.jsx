@@ -75,6 +75,8 @@ const SignupForm = () => {
     } else {
       setDisabled(false);
     }
+
+    
     setErrorMessage((prev) => ({
       ...prev,
       [name]: isValid ? "" : Error[name],
@@ -106,7 +108,7 @@ const SignupForm = () => {
   //    setCountries([
   //      { name: "United States", code: "1", flagUrl: "path/to/us_flag.png" },
   //      { name: "Nigeria", code: "234", flagUrl: "path/to/ng_flag.png" },
-       
+
   //    ]);
   //  }, []);
 
@@ -121,6 +123,8 @@ const SignupForm = () => {
       console.log(signupData);
       console.log(userData);
       navigate("/signin");
+      localStorage.setItem("email", JSON.stringify(userData.data.email));
+      localStorage.setItem("first_name", JSON.stringify(userData.data.first_name));
       alert("Signup Success");
     } catch (error) {
       alert(error.message);
@@ -139,8 +143,6 @@ const SignupForm = () => {
       phone_number: phoneNumber,
     }));
     setIsOpen(false);
-
-    
   };
 
   return (
@@ -262,7 +264,6 @@ const SignupForm = () => {
               onChange={handleChange}
               placeholder="+ Country Code Phone Number"
             />
-           
           </div>
         </div>
       </div>

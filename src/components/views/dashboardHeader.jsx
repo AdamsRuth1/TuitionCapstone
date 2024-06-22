@@ -1,11 +1,11 @@
 import { motion } from "framer-motion";
-import { useSignupContext } from "../../context/SignupContext";
+// import { useSignupContext } from "../../context/SignupContext";
 import Notification from "../../assets/images/Notification icon.png";
 import Profile from "../../assets/images/Profile empty.png";
 
 export default function Payment1() {
-  const { signupData } = useSignupContext();
-  
+  const email = JSON.parse(localStorage.getItem("email"));
+  const firstname = JSON.parse(localStorage.getItem("first_name"));
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -20,8 +20,8 @@ export default function Payment1() {
           <img src={Profile} alt="Profile icon" className="mr-6" />
         </button>
         <div className="mr-10 text-customBlack font-Modarat">
-          <h1 className="text-base">{signupData.first_name}</h1>
-          <p className="text-customGray text-xs">ayodelegrace@gmail.com</p>
+          <h1 className="text-base">{firstname}</h1>
+          <p className="text-customGray text-xs">{email}</p>
         </div>
       </div>
     </motion.div>

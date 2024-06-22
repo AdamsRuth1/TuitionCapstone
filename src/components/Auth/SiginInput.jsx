@@ -2,15 +2,23 @@ import { useState } from "react";
 import EyeOpen from "../../assets/Icons/eyeOpen.svg";
 import EyeClose from "../../assets/Icons/eyeClose.svg";
 import Button from "../Auth/Button";
+import { Error } from "../../constants/ErrorMessage";
 import axios from "axios";
+import Loading from "../Auth/Loading";
 import { useSignInContext } from "../../context/SignInContext";
 import { useNavigate } from "react-router-dom";
 
 const SiginInput = () => {
   const navigate = useNavigate();
+  const [loading, setLoading] = useState(false);
+  const [disabled, setDisabled] = useState(true);
   const [showpassword, setShowPassword] = useState(false);
   const { signInData, setSignInData } = useSignInContext();
   const [state, setState] = useState({
+    email: "",
+    password: "",
+  });
+  const [errorMessage, setErrorMessage] = useState({
     email: "",
     password: "",
   });
@@ -18,14 +26,41 @@ const SiginInput = () => {
   const handlePasswordVisibility = () => {
     setShowPassword(!showpassword);
   };
+
+  const validateEmail = (value) =>
+    /^[a-zA-Z0-9._-]+@[a-zA-Z0-9]+\.[a-zA-Z]{2,3}$/.test(value);
+
+  const validatePassword = (value) =>
+    /^(?=.*\d)(?=.*[A-Z])(?=.*[a-z])[a-zA-Z._\=\:\*\&\^\%\$\@\#\/-\w]{8,}$/.test(
+      value
+    );
   const handleChange = (event) => {
     const { name, value } = event.target;
+    const isValid =
+      name === "email"
+        ? validateEmail(value)
+        : name === "password"
+        ? validatePassword(value)
+        : true;
+
+    if (!isValid) {
+      setDisabled(true);
+    } else {
+      setDisabled(false);
+    }
+
     setState((prevState) => ({ ...prevState, [name]: value }));
     setSignInData((prevState) => ({ ...prevState, [name]: value }));
+
+    setErrorMessage((prev) => ({
+      ...prev,
+      [name]: isValid ? "" : Error[name],
+    }));
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setLoading(true);
 
     try {
       const signIn = await axios.post(
@@ -35,10 +70,9 @@ const SiginInput = () => {
       console.log(signIn);
       console.log(signInData);
       navigate("/dashboard");
-
-      
     } catch (error) {
       alert(error.message);
+       setLoading(false);
     }
   };
   return (
@@ -51,7 +85,9 @@ const SiginInput = () => {
           value={state.email}
           onChange={handleChange}
           placeholder="Enter Email here"
-          className={`input-style w-[81%] h-[48px] moderat-font`}
+          className={`input-style w-[81%] h-[48px] ${
+            errorMessage.email ? "error-border" : ""
+          }`}
         />
       </div>
       <label className="moderat-font">Password</label> <br />
@@ -73,10 +109,22 @@ const SiginInput = () => {
           <img src={EyeClose} alt="eye icon" />
         )}
       </span>
+      <p className="text-red-600" style={{ fontSize: "14px" }}>
+        {errorMessage.password}
+      </p>
       <p className="pt-[1rem] moderat-font text-[#606569] font-normal text-[1rem] leading-[1rem]">
         Forgot password?
       </p>
-      <Button text="Sign In" handleSubmit={handleSubmit} />
+      <div>
+        {loading && <Loading text="Loading..." />}
+        {!loading && (
+          <Button
+            text="Sign In"
+            handleSubmit={handleSubmit}
+            disable={disabled}
+          />
+        )}
+      </div>
     </form>
   );
 };
