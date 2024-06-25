@@ -258,7 +258,7 @@ const SignupForm = () => {
             </div>
             <input
               type="tel"
-              className="input-style w-[64%] h-[48px] pl-[4rem]  "
+              className="input-style w-[57%] h-[48px] pl-[4rem]  "
               name="phone_number"
               value={state.phone_number}
               onChange={handleChange}

@@ -1,21 +1,30 @@
+
 import { motion } from "framer-motion";
 import SidebarHeader from "./dashboardHeader";
 import DashboardSideBar from "./DashboardSideBar";
 
-export default function Dashboard({ children }) {
+
+const Dashboard = ({ children }) => {
   return (
-    <div>
-      <SidebarHeader />
-      <DashboardSideBar />
+    <main className="min-h-screen flex">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 1 }}
+        className="flex flex-row w-full h-full"
       >
-        <main className="flex flex-col items-center bg-customDashBoard h-full">
-          {children}
-        </main>
+        <DashboardSideBar />
+        <div className="flex flex-col w-[100%]">
+        <SidebarHeader />
+        <div className="flex items-center   w-full flex-grow ">
+          <div className="w-full bg-[#FAFAFB] items-center flex flex-col ml-[12rem]  ">
+            {children}
+          </div>
+          </div>
+        </div>
       </motion.div>
-    </div>
+    </main>
   );
-}
+};
+
+export default Dashboard;

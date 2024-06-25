@@ -137,3 +137,12 @@
   }
 
 }
+
+@layer components {
+  .tuitionLabel {
+    @apply font-Modarat text-[18px] font-normal leading-[22px] text-[#0A0E27] mb-[0.5rem]
+  }
+  .tuitionSelect {
+    @apply w-[436px] h-[48px] rounded-[4px] px-[1.25rem] outline-none border border-[#CCCCCC] text-[16px] font-Modarat font-normal leading-[16px] text-[#A1A4A8]
+  }
+}
