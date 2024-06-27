@@ -25,10 +25,10 @@ const InstituteInfor = ({ Next }) => {
     setIsInstituteOpen(false);
   };
   return (
-    <div className=" flex justify-between gap-[19.75rem]">
+    // <div className=" flex justify-between gap-[19.75rem]">
       <div className="w-full  pt-[4rem] mb-[18rem] ">
-        <div className="w-[8.375rem] py-[0.75rem] bg-[#CCCCCC] font-normal text-[18px] leading-[22px] mb-[2rem]">
-          <span className="text-white font-Modarat pl-[1.7rem]">
+        <div className="w-[8.375rem] py-[0.75rem] bg-[#CCCCCC]  mb-[2rem]">
+          <span className="text-white font-Modarat pl-[1.7rem] font-normal text-[18px] leading-[22px]">
             Step {steps} of 5
           </span>
         </div>
@@ -115,7 +115,7 @@ const InstituteInfor = ({ Next }) => {
           </div>
         </form>
       </div>
-    </div>
+    // </div>
   );
 };
 

@@ -1,8 +1,6 @@
-
 import { motion } from "framer-motion";
 import SidebarHeader from "./dashboardHeader";
 import DashboardSideBar from "./DashboardSideBar";
-
 
 const Dashboard = ({ children }) => {
   return (
@@ -15,11 +13,11 @@ const Dashboard = ({ children }) => {
       >
         <DashboardSideBar />
         <div className="flex flex-col w-[100%]">
-        <SidebarHeader />
-        <div className="flex items-center   w-full flex-grow ">
-          <div className="w-full bg-[#FAFAFB] items-center flex flex-col ml-[12rem]  ">
-            {children}
-          </div>
+          <SidebarHeader />
+          <div className="flex items-center   w-full flex-grow ">
+            <section className="w-full bg-[#FAFAFB] items-center flex flex-col ml-[12rem]  ">
+              {children}
+            </section>
           </div>
         </div>
       </motion.div>
