@@ -1,18 +1,14 @@
 import Calender from "../../../assets/Icons/calender.svg";
-
-const StudentInfor = ({Next}) => {
+import TuitionHeader from "./TuitionHeader";
+import TuitionButton from "./TuitionButton";
+const StudentInfor = ({ Next }) => {
   return (
     <div className="w-full pt-[4rem]  ">
-      <div className="w-[8.375rem] py-[0.75rem] bg-[#CCCCCC] font-normal text-[18px] leading-[22px] mb-[2rem]">
-        <span className="text-white font-Modarat pl-[1.7rem]">Step 3 of 5</span>
-      </div>
-
-      <h2 className="font-millik font-normal text-[30px] leading-[40px] mb-[1rem] text-[#252E6A]">
-        Student Information
-      </h2>
-      <p className="font-Modarat font-normal text-[16px] leading-[24px] mb-[2.5rem] text-[#606569]">
-        Enter students details to be sent to the school
-      </p>
+      <TuitionHeader
+        count="3"
+        Header="Student Information"
+        Paragraph="Enter students details to be sent to the school."
+      />
       <form>
         <div className="flex gap-[1rem] mb-[2.5rem]">
           <div>
@@ -66,7 +62,7 @@ const StudentInfor = ({Next}) => {
         <div className="tuitionSelect mt-[0.5rem]  mb-[2rem] py-[0.8rem] flex justify-between">
           date
           <div>
-            <img src={Calender} alt="calender icon" onClick={Next} />
+            <img src={Calender} alt="calender icon" />
           </div>
         </div>{" "}
         <br />
@@ -78,11 +74,12 @@ const StudentInfor = ({Next}) => {
           name=""
           id=""
           cols="30"
-          className="w-[436px] h-[224px] mt-[0.5rem] outline-none border border-[#CCCCCC] p-[20px] rounded-[4px] font-normal text-[16px] leading-[24px] text-[#606569]"
+          className="w-[436px] h-[224px] mt-[0.5rem] mb-[2.5rem] outline-none border border-[#CCCCCC] p-[20px] rounded-[4px] font-normal text-[16px] leading-[24px] text-[#606569]"
         >
           Account number or student Id number or institution or unique Id or
           transit number or description (as stated in your invoice)
         </textarea>
+        <TuitionButton back="Back" forward="continue" Next={Next} />
       </form>
     </div>
   );

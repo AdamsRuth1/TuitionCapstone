@@ -3,8 +3,11 @@ import ArrowDown from "../../../assets/Icons/Arrrow-down.svg";
 import { By } from "../../../constants/TuitionDropdown";
 import { For } from "../../../constants/TuitionDropdown";
 import { paymentCountry } from "../../../constants/TuitionDropdown";
+import TuitionHeader from "./TuitionHeader";
 import paymentFooter from "../../../assets/Icons/dashboardFooter.svg";
-const PaymentInformation = ({Next}) => {
+import PaymentInforSummary from "./PaymentInforSummary";
+import TuitionButton from "./TuitionButton";
+const PaymentInformation = ({ Next }) => {
   const [isPaymentByOpen, setIsPaymentByOpen] = useState(false);
   const [isPaymentForOpen, setIsPaymentForOpen] = useState(false);
   const [isCountryPaymentOpen, setIsCountryPaymentOpen] = useState(false);
@@ -35,19 +38,12 @@ const PaymentInformation = ({Next}) => {
 
   return (
     <div>
-      <div className="w-full  pt-[4rem]  ">
-        <div className="w-[8.375rem] py-[0.75rem] bg-[#CCCCCC] font-normal text-[18px] leading-[22px] mb-[2rem]">
-          <span className="text-white font-Modarat pl-[1.7rem]">
-            Step 2 of 5
-          </span>
-        </div>
-
-        <h2 className="font-millik font-normal text-[30px] leading-[40px] mb-[1rem] text-[#252E6A]">
-          Payment Information
-        </h2>
-        <p className="font-Modarat font-normal text-[16px] leading-[24px] mb-[2.5rem] text-[#606569]">
-          Confirm the amount you’re sending before proceeding
-        </p>
+      <div className="w-full  pt-[4rem]">
+        <TuitionHeader
+          count="2"
+          Header=" Payment Information"
+          Paragraph="Confirm the amount you’re sending before proceeding"
+        />
       </div>
       <form>
         <div className="flex flex-col">
@@ -166,7 +162,7 @@ const PaymentInformation = ({Next}) => {
 
           <div className="pt-[0.2rem] mb-[2rem] flex">
             <div className="w-[341px] h-[48px] border border-[#CCCCCC]"></div>
-            <button className="w-[95px] bg-[#2A3362] text-white font-Moderate text-[18px] leading-[24px]" onClick={Next}>
+            <button className="w-[95px] bg-[#2A3362] text-white font-Moderate text-[18px] leading-[24px]">
               Apply
             </button>
           </div>
@@ -185,7 +181,7 @@ const PaymentInformation = ({Next}) => {
             <div className="w-[353px] h-[48px] border border-[#CCCCCC]"></div>
           </div>
         </div>
-        <div className="flex gap-3 mb-6">
+        <div className="flex gap-3 mb-[2.5rem]">
           <div>
             <img src={paymentFooter} alt="footer icon" />
           </div>
@@ -193,6 +189,9 @@ const PaymentInformation = ({Next}) => {
             Total payment in CAD = CA$ 2,344.50
           </span>
         </div>
+        <PaymentInforSummary />
+
+        <TuitionButton back="Back" forward="continue" Next={Next} />
       </form>
     </div>
   );

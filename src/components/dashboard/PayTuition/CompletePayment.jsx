@@ -1,15 +1,46 @@
-import React from 'react'
+import TuitionButton from "./TuitionButton";
+import TuitionHeader from "./TuitionHeader";
+import PaymentMethod from "./PaymentMethod";
 
-const CompletePayment = () => {
+const CompletePayment = ({ Next }) => {
+  const style = "mr-[3rem]"
   return (
     <div className="w-full  pt-[4rem] mb-[18rem] ">
-      <div className="w-[8.375rem] py-[0.75rem] bg-[#CCCCCC]  mb-[2rem]">
-        <span className="text-white font-Modarat pl-[1.7rem] font-normal text-[18px] leading-[22px]">
-          Step 5 of 5
-        </span>
-      </div>
+      <TuitionHeader
+        count="5"
+        Header=" Complete Payment"
+        Paragraph="Confirm your bank’s transaction limit and choose your preferred payment
+        method"
+      />
+      <PaymentMethod
+        Method=" Generate Payment Link"
+        description=" Send a link to someone else to pay your fee for you"
+      />
+      <PaymentMethod
+        Method="Tuition Wallet"
+        description="Easily pay through your Tuition Wallet"
+      />
+      <PaymentMethod
+        Method="Bank Transfer"
+        description=" Send funds directly from your bank account"
+      />
+      <PaymentMethod
+        Method="Debit Card"
+        description="Send funds securely to your school using your card"
+      />
+      <PaymentMethod
+        Method="Google Pay"
+        description="Make instant payment to your school via Google Pay"
+      />
+
+      <TuitionButton
+        back="Back"
+        forward="continue"
+        Next={Next}
+        className={style}
+      />
     </div>
   );
-}
+};
 
-export default CompletePayment
+export default CompletePayment;
