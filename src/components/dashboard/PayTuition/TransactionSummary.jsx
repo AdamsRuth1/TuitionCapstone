@@ -4,7 +4,7 @@ import StudentInformation from "./StudentInformation";
 const TransactionSummary = ({ Next }) => {
   const style = "w-[470px]";
   return (
-    <div className="w-full pt-[4rem]  ">
+    <div className=" pt-[4rem]  ">
       <TuitionHeader
         count="4"
         Header="Transaction Summary"

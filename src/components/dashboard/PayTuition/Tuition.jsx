@@ -31,9 +31,9 @@ const Tuition = () => {
   };
   return (
     <Dashboard>
-      <div className=" flex justify-between gap-[12.75rem]">
-        <div className="w-2/3">{renderForm()}</div>
-        <div className="w-1/3">
+      <div className=" flex gap-[10rem]">
+        <div className="">{renderForm()}</div>
+        <div className=" mr-5">
           <TuitionStatus activeState={currentForm} />
         </div>
       </div>

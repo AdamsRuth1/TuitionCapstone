@@ -5,7 +5,7 @@ import PaymentMethod from "./PaymentMethod";
 const CompletePayment = ({ Next }) => {
   const style = "mr-[3rem]"
   return (
-    <div className="w-full  pt-[4rem] mb-[18rem] ">
+    <div className="ml-5  pt-[4rem] mb-[18rem] ">
       <TuitionHeader
         count="5"
         Header=" Complete Payment"
