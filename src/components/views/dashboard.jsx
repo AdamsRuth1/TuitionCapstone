@@ -15,7 +15,7 @@ const Dashboard = ({ children }) => {
         <div className="flex flex-col w-[100%]">
           <SidebarHeader />
           <div className="flex items-center   w-full flex-grow ">
-            <section className="w-full bg-[#FAFAFB] items-center flex flex-col pl-[17rem]  ">
+            <section className="w-full bg-[#FAFAFB] items-center flex flex-col   ">
               {children}
             </section>
           </div>
