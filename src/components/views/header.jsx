@@ -64,7 +64,7 @@ export default function Header() {
               </li>
               <li>
                 <Link
-                  to="/dashboard"
+                  to="/dashboard/"
                   className="text-black hover:bg-white hover:text-customButton hover:border-customButton hover:rounded-full px-4 py-2 border-2 border-transparent transition-all duration-300"
                 >
                   Testimonial

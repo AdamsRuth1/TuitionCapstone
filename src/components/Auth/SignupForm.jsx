@@ -159,7 +159,7 @@ const SignupForm = () => {
             errorMessage.email ? "error-border" : ""
           }`}
         />
-        <div className="flex gap-4 py-[1.5rem]">
+        <div className="flex  py-[1.5rem]">
           <div>
             <label className="moderat-font">First Name</label>
             <br />
@@ -169,7 +169,7 @@ const SignupForm = () => {
               value={state.first_name}
               placeholder="Enter First Name here"
               onChange={handleChange}
-              className={`input-style h-[48px] w-[100%] ${
+              className={`input-style h-[48px] w-[92%] ${
                 errorMessage.first_name ? "error-border" : ""
               }`}
             />
@@ -183,7 +183,7 @@ const SignupForm = () => {
               value={state.last_name}
               placeholder="Enter your last name"
               onChange={handleChange}
-              className={`input-style w-[100%]  h-[48px] ${
+              className={`input-style w-[84%]  h-[48px] ${
                 errorMessage.last_name ? "error-border" : ""
               }`}
             />
@@ -258,7 +258,7 @@ const SignupForm = () => {
             </div>
             <input
               type="tel"
-              className="input-style w-[64%] h-[48px] pl-[4rem]  "
+              className="input-style w-[54.9%] h-[48px] pl-[4rem]  "
               name="phone_number"
               value={state.phone_number}
               onChange={handleChange}
