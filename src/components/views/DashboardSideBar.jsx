@@ -21,7 +21,7 @@ const DashboardSideBar = () => {
       </div>
     <aside
       id="logo-sidebar"
-      className="fixed top-0 left-0 z-40 w-64 h-screen transition-transform -translate-x-full border-r sm:translate-x-0 bg-white"
+      className="fixed top-0 left-0 z-40 w-64 h-screen  transition-transform -translate-x-full border-r sm:translate-x-0 bg-white"
       aria-label="Sidebar"
     >
       <div className="flex items-center mt-4 w-full">

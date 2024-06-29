@@ -1,14 +1,13 @@
-
-
-const Post = ({Blogs}) => {
- 
+// import React, { useState } from "react";
+import LazyImage from "../dashboard/PayTuition/LazyImamge";
+const Post = ({ Blogs }) => {
   return (
     <main className="pt-[4.5rem]">
-      <div className="grid grid-cols-3">
+      <div className="grid grid-cols-3 ">
         {Blogs.map((posts, index) => (
           <div key={index}>
-            <div>
-              <img src={posts.imgUrl} alt="" />
+            <div className="px-4">
+              <LazyImage src={posts.imgUrl} alt={posts.choice1} />
             </div>
             <div className="pt-[1rem]">
               <h2 className="font-Modarat font-bold text-[20px] leading-[32px] text-[#0A0E27] w-[396.67px] h-[64px]">
