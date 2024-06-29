@@ -29,6 +29,7 @@ function App() {
           <Route path="/contactus" element={<ContactUs />} />
           <Route path="/faq" element={<Faq />} />
           <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="*" element={"Not Found"} />
 
           <Route path="/dashboard/Tuition" element={<Tuition />} />
           {/* <Route path="/dashboard/Tuition/payment" element={<PaymentInformation />} /> */}
