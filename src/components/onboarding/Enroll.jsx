@@ -7,7 +7,7 @@ import ReactFlagsSelect from "react-flags-select";
 
 export default function Enroll() {
   const [selected, setSelected] = useState("");
-  const [loading, setLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
     schoolName: "",
@@ -19,9 +19,8 @@ export default function Enroll() {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    console.log("handleSubmit function called");
-
     try {
+      setIsLoading(true);
       if (
         !formData.schoolName ||
         !formData.countryName ||
@@ -45,12 +44,10 @@ export default function Enroll() {
       console.log("sending data", formData);
       if (response.ok) {
         navigate("/enrollsuccess");
-      } else {
-        alert("Failed to submit. Please try again later.");
-      }
+      } 
     } catch (error) {
-      console.error("Error submitting form:", error);
-      alert("Failed to submit. Please try again later.");
+      alert(error.message);
+      setIsLoading(false);
     }
   };
 
@@ -128,11 +125,12 @@ export default function Enroll() {
                 placeholder="contact Email"
               />
               <div className="relative inline-block">
-                <button
+              <button
                   type="submit"
-                  className="border w-96 p-6 mt-8 ml-28 rounded-lg bg-customBlack text-white font-Modarat"
+                  className={`border w-96 p-6 mt-8 ml-28 rounded-lg bg-customBlack text-white font-Modarat ${isLoading ? 'opacity-50 cursor-not-allowed' : ''}`}
+                  disabled={isLoading} 
                 >
-                  Send Message
+                  {isLoading ? 'Sending...' : 'Send Message'}
                 </button>
               </div>
             </form>
