@@ -1,19 +1,23 @@
 from sqlalchemy.orm import Session
 from ..models import Institution
 from ..schemas import InstitutionCreate
+# from .email import send_confirmation_email
 
 class InstitutionService:
     @staticmethod
     def create_institution(db: Session, institution: InstitutionCreate):
         db_institution = Institution(
-            school_name=institution.school_name,
-            country_name=institution.country_name,  # Use country_name
+            schoolName=institution.school_name,
+            countryName=institution.country_name,  # Use country_name
             address=institution.address,
-            payment_type=institution.payment_type,
+            paymentType=institution.payment_type,
+            contactEmail=institution.contact_email
         )
         db.add(db_institution)
         db.commit()
         db.refresh(db_institution)
+
+        # send_confirmation_email(institution.contact_email, institution.school_name)
         return db_institution
 
     @staticmethod

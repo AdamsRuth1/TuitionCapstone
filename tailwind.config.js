@@ -27,6 +27,7 @@ export default {
         customLine: "#CCCCCC",
         customEnroll: "#606569",
         customrAdd: "#F8FAFE",
+        customDash: "#FAFAFB",
       },
 
       fontFamily: {

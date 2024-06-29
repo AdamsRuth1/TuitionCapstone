@@ -6,9 +6,7 @@ from sqlalchemy.orm import Session
 import logging
 from backend import database, utils
 from backend.database import get_db
-from fastapi.security import OAuth2PasswordRequestForm
 from fastapi.security.oauth2 import OAuth2PasswordBearer
-from backend.database import SessionLocal
 
 router = APIRouter()
 
@@ -20,7 +18,7 @@ logging.basicConfig(level=logging.INFO)
 @router.post("/signup", response_model=user_schemas.User)
 async def create_user(user: user_schemas.UserCreate, db: Session = Depends(get_db)):
     try:
-        logger.info(f"Received data: {user}")
+        logger.info(f"Received data: {user.json()}")
         db_user = user_service.get_user_by_email(db, user.email)
         if db_user:
             raise HTTPException(status_code=400, detail="Email already registered")
@@ -34,12 +32,15 @@ async def create_user(user: user_schemas.UserCreate, db: Session = Depends(get_d
         logger.error(f"Unhandled Exception: {str(e)}")
         raise HTTPException(status_code=500, detail="Internal Server Error")
 
+
 @router.get("/users/{user_id}", response_model=user_schemas.User)
 async def read_user(user_id: int, db: Session = Depends(get_db)):
     db_user = user_service.get_user(db, user_id)
     if db_user is None:
         raise HTTPException(status_code=404, detail="User not found")
     return db_user
+
+oauth2_scheme = OAuth2PasswordBearer(tokenUrl="token")
 
 @router.post("/signin", response_model=user_schemas.Token, operation_id="sign_in")
 async def sign_in(form_data: user_schemas.SignIn, db: Session = Depends(get_db)):

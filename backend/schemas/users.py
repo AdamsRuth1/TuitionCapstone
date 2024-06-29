@@ -11,7 +11,7 @@ class UserBase(BaseModel):
     @validator('phone_number')
     def phone_number_must_include_country_code(cls, v):
         if not v.startswith('+'):
-            raise ValueError('Phone number must include country code')
+            raise ValueError('Phone number must include country code. Example: +123456789')
         return v
 
 class UserCreate(UserBase):
@@ -38,5 +38,3 @@ class SignIn(BaseModel):
 class Country(BaseModel):
     name: str
     flag: str
-
-

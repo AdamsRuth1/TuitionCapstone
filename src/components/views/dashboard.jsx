@@ -14,8 +14,8 @@ const Dashboard = ({ children }) => {
         <DashboardSideBar />
         <div className="flex flex-col w-[100%]">
           <SidebarHeader />
-          <div className="flex items-center ">
-            <section className="w-full bg-[#FAFAFB] items-center flex flex-col pl-[16rem]  ">
+          <div className="flex items-center   w-full flex-grow ">
+            <section className="w-full bg-[#FAFAFB] items-center flex flex-col pl-[17rem]  ">
               {children}
             </section>
           </div>

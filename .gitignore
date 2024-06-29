@@ -7,15 +7,35 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
-node_modules
-dist
-dist-ssr
-*.local
+# Node modules
+node_modules/
 
-# Editor directories and files
-.vscode/*
-!.vscode/extensions.json
-.idea
+# Virtual environment directory
+tuitionenv/
+
+# Python compiled files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Installer logs
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Alembic files
+alembic.ini
+
+# SQLite database
+app.db
+
+# Vercel and other deployment-specific files
+.vercel/
+dist/
+build/
+
+# IDE/Editor specific files
+.vscode/
+.idea/
 .DS_Store
 *.suo
 *.ntvs*
@@ -23,48 +43,20 @@ dist-ssr
 *.sln
 *.sw?
 
-# Ignore virtual environment directory
-tuitionenv/
-
-# Byte-compiled / optimized / DLL files
-__pycache__/
-*.py[cod]
-*$py.class
-
-# Installer logs
-pip-log.txt
-pip-delete-this-directory.txt
-
-# Ignore SQLite database file
-app.db
-
-test.html
-
+# Other environment files
 .env
 
-<<<<<<< HEAD
-# Ignore virtual environment directory
-tuitionenv/
+# Patch files
+restore-point.patch
 
-# Byte-compiled / optimized / DLL files
-__pycache__/
-*.py[cod]
-*$py.class
-
-# Installer logs
-pip-log.txt
-pip-delete-this-directory.txt
-
-# Ignore SQLite database file
-users.db
-
+#html
 test.html
+Procfile
 
-.env
-=======
+#Ignore frontend build output if applicable
+build/
+out/
 
-# Ignore environment files
-env.py
-
-*.db
->>>>>>> made few changes
+# OS-specific files
+.DS_Store
+Thumbs.db
