@@ -33,7 +33,7 @@ const Tuition = () => {
     <Dashboard>
       <div className=" flex gap-[10rem]">
         <div className="">{renderForm()}</div>
-        <div className=" mr-5">
+        <div className=" ml-12">
           <TuitionStatus activeState={currentForm} />
         </div>
       </div>
