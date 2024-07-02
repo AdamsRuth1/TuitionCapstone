@@ -22,7 +22,8 @@ export default function Why() {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 1 }}
       >
-        <div className="bg-customLightBlueGray md:my-12 md:px-10 px-6 font-Modarat">
+        <div className="bg-customLightBlueGray  md:my-12 md:px-10  font-Modarat ">
+          <div className="md:ml-[100px] md:mr-[100px]">
           <h1 className=" text-3xl md:text-5xl pt-16 font-millik text-customBlack mb-16">
             Why use <span className="text-red-500">Tuition.</span>
           </h1>
@@ -81,8 +82,9 @@ export default function Why() {
               </div>
             </div>
           </div>
+          </div>
         </div>
-        <div className="text-center hidden sm:block">
+        <div className="text-center hidden sm:block md:ml-[100px] md:mr-[100px]">
           <h1 className="mt-32 mb-0 text-3xl md:text-5xl font-normal font-millik text-customBlack leading-13">
             Over 10k + tuition paid
           </h1>

@@ -24,8 +24,8 @@ export default function Header() {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 1 }}
       >
-        <nav className="bg-white-400 py-2 shadow font-Modarat">
-          <div className="flex items-center justify-between md:ml-24 mr-4 ml-4  md:mr-24  py-2 ">
+        <nav className="bg-white-400 py-2 font-Modarat">
+          <div className="flex items-center justify-between md:ml-24 mr-100 ml-100  md:mr-24  py-2 ">
             <div className="flex">
               <img src={logo} alt="Tuition Logo" className=" mx-4" />
             </div>
@@ -47,17 +47,17 @@ export default function Header() {
             </div>
             <ul className="hidden md:flex space-x-4">
               <li>
-                <Link
-                  to="/"
-                  className="text-black hover:bg-white hover:text-customButton hover:border-customButton hover:rounded-full px-4 py-2 border-2 border-transparent transition-all duration-300"
-                >
-                  Home
-                </Link>
+              <Link
+  to="/"
+  className="text-black hover:bg-white hover:text-customButton hover:border-customButton px-4 py-2 border-b border-transparent transition-all duration-300 relative inline-block"
+>
+  Home
+</Link>
               </li>
               <li>
                 <Link
                   to="/blog"
-                  className="text-black hover:bg-white hover:text-customButton hover:border-customButton hover:rounded-full px-4 py-2 border-2 border-transparent transition-all duration-300"
+                  className="text-black hover:bg-white hover:text-customButton hover:border-customButton px-4 py-2 border-b border-transparent transition-all duration-300 relative inline-block"
                 >
                   Blog
                 </Link>
@@ -65,7 +65,7 @@ export default function Header() {
               <li>
                 <Link
                   to="/dashboard/"
-                  className="text-black hover:bg-white hover:text-customButton hover:border-customButton hover:rounded-full px-4 py-2 border-2 border-transparent transition-all duration-300"
+                  className="text-black hover:bg-white hover:text-customButton hover:border-customButton px-4 py-2 border-b border-transparent transition-all duration-300 relative inline-block"
                 >
                   Testimonial
                 </Link>
@@ -120,19 +120,19 @@ export default function Header() {
               </li> */}
               <li> 
                 <NavLink to="/contactUs"
-                  className="text-black hover:bg-white hover:text-blue-900 hover:border-customButton hover:rounded-full px-4 py-2 border-2 border-transparent transition-all duration-300"
+                  className="text-black hover:bg-white hover:text-customButton hover:border-customButton px-4 py-2 border-b border-transparent transition-all duration-300 relative inline-block"
                 >
                   Support
                 </NavLink>
               </li>
             </ul>
             <div className="md:flex justify-between space-x-4 mx-3 hidden">
-              <Link className="border-2 border-customButton rounded-md text-customButton py-1 px-3 hover:bg-customButton hover:text-white">
+              <Link className="border border-customButton rounded-md text-customButton py-3 text-center px-6">
                 Download App
               </Link>
               <Link
                 to="/signin"
-                className="bg-customButton border rounded-md text-white text-center py-2 px-3 hover:bg-blue-900"
+                className="bg-customButton border rounded-md text-white text-center py-3 px-6 hover:bg-blue-900"
               >
                 Sign in
               </Link>

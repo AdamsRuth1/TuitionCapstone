@@ -2,7 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import Mock1 from "../../assets/images/Mockup & Blob 1.png";
 import Mock2 from "../../assets/images/Mockup & Blob 2.png";
-import Mock3 from "../../assets/images/Mockup and Blob 3.png";
+import Mock3 from "../../assets/images/Mockup and Blob 3 (1).png";
 import Mock4 from "../../assets/images/Frame 327.png";
 import Step1 from "../../assets/images/Number1 container.png";
 import Step2 from "../../assets/images/Number container2.png";
@@ -22,23 +22,23 @@ export default function AltWaveExplore() {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 1 }}>
            <Testimonial />
-  <div className='mx-6  '>
+  <div className='mx-6  md:ml-[100px] md:mr-[100px]'>
   <div className='text-center mb-24 md:mb-36'> <h1 className="mt-32 text-center mb-0 md:mb-4 text-26 md:text-2 leading-10 text-customBlack font-millik font-normal ">
             Explore New Features
   </h1>
   <p className='mb-12 font-Modarat text-sm md:leading leading-6 text-center font-normal md:text-xl text-customGray'>Tailored to improve your experience. Worry less! Study More!!</p></div>
-  <div className='flex justify-between px-5 flex-col md:flex-row sm:flex-col'>
+  <div className='flex gap-32 justify-between px-5 flex-col md:flex-row sm:flex-col'>
     <div className='flex-1 hidden md:flex'>
         <img  src={Mock1}
               alt="Header Image"/>
     </div>
-    <div className='flex-1 md:ml-32'>
+    <div className='flex-1'>
     <h1 className="mt-8 mb-8 text-4 md:mt-12 md:text-3 font-normal font-millik sm:text-3xl text-customBlack ">
     Digital Wallet
-  </h1><p className='leading-8 mb-8 font-normal font-Modarat text-customLightGray'>
-  This isn't just a wallet; it's your launchpad to a smoother ‘study abroad’ experience. Forget the stress of accessing money in a new country, our Digital Wallet lets you hit the ground running, so you worry less about getting access to spendable money and focus on what truly matters: immersing yourself in the culture and excelling in your studies.
+  </h1><p className='leading-8 mb-8 text-xl font-normal font-Modarat text-customLightGray'>
+  This isn't just a wallet; it's your <span className='font-bold text-black'>launchpad</span> to a smoother ‘study abroad’ experience. Forget the stress of accessing money in a new country, our <span className="font-bold text-black">Digital Wallet </span>lets you hit the ground running, so you worry less about getting access to spendable money and focus on what truly matters: immersing yourself in the culture and excelling in your studies.
   </p>
-  <button className="bg-customButton flex mt-10 border rounded-md text-white px-6 py-2 hover:bg-blue-900  font-Modarat">
+  <button className="bg-customButton flex mt-10 border rounded-md text-white px-6 py-3 hover:bg-blue-900  font-Modarat">
     Explore Wallet
     <FiArrowRight className='mx-2 my-1 ' />
     </button>
@@ -49,16 +49,16 @@ export default function AltWaveExplore() {
     </div>
 
   </div>
-  <div className='flex md:mt-20 justify-between px-5 flex-col md:flex-row sm:flex-col'>
+  <div className='flex gap-28 md:mt-20 justify-between px-5 flex-col md:flex-row sm:flex-col'>
   
-  <div className='flex-1 md:mr-32'>
+  <div className='flex-1 '>
     <h1 className="mt-12 mb-8  text-4 md:text-3 font-normal  font-millik  sm:text-3xl text-customBlack ">
     Target Savings
   </h1>
- <p className='leading-8 mb-8 font-normal font-Modarat text-customLightGray'>
+ <p className='leading-8 mb-8 font-normal text-xl  font-Modarat text-customLightGray'>
   We understand that achieving your dream of studying abroad comes with its own set of challenges, especially when it comes to managing finances in the face of inflation and unstable exchange rates. <br/> <br/> That's why we've launched our new Target Savings feature – a flexible and empathetic solution designed to help you save towards your educational goals in a stress-free manner.
   </p>
-  <button className="bg-customButton flex  mt-10 border rounded-md text-white px-6 py-2 my-2 hover:bg-blue-900 font-Modarat ">
+  <button className="bg-customButton flex  mt-10 border rounded-md text-white px-6  py-3 my-2 hover:bg-blue-900 font-Modarat ">
     Explore Savings
     <FiArrowRight className='mx-2 my-1 ' />
     </button>
@@ -71,21 +71,21 @@ export default function AltWaveExplore() {
    
 
   </div>
-  <div className='flex mt-28 justify-between px-5 flex-col md:flex-row sm:flex-col'>
+  <div className='flex mt-28 gap-32 justify-between px-5 flex-col md:flex-row sm:flex-col'>
     <div className='flex-1 hidden md:flex '>
         <img src={Mock3}
               alt="Mock3"/>
     </div>
-    <div className='flex-1 md:ml-32'>
+    <div className='flex-1'>
     <h1 className="mt-12 mb-8  text-4 md:text-3 font-millik font-normal  sm:text-3xl text-customBlack">
     Informative Blog
   </h1>
- <p className='leading-8 mb-8 font-normal font-Modarat text-customLightGray'>
+ <p className='leading-8 mb-8 font-normal text-xl  font-Modarat text-customLightGray'>
   We get it. Studying abroad sounds incredible, but the journey can feel overwhelming. Sifting through countless websites, unsure which are reliable and which are scams, can leave you feeling lost.<br /><br />
   The Tuition by Flutterwave Blog is your one-stop source for reliable information, from school applications to securing your dream scholarship and preparing for your journey.<br /><br />
   Explore our Blog today and take the first step towards a brighter future with our empathetic and reliable guidance – because we believe in making your dreams a reality, one post at a time.
   </p>
-  <button className="bg-customButton flex mt-10 border rounded-md text-white px-6 py-2 my-2 font-Modarat hover:bg-blue-900 ">
+  <button className="bg-customButton flex mt-10 border rounded-md text-white px-6 py-3 my-2 font-Modarat hover:bg-blue-900 ">
     Explore Blog
     <FiArrowRight className='mx-2 my-1 ' />
     </button>
@@ -96,14 +96,14 @@ export default function AltWaveExplore() {
     </div>
 
   </div>
-  <div className='flex mt-20 justify-between px-5 flex-col md:flex-row sm:flex-col'>
-  <div className='flex-1 md:mr-32'>
+  <div className='flex mt-20 gap-32 justify-between flex-col md:flex-row sm:flex-col'>
+  <div className='flex-1 '>
     <h1 className="mt-12 mb-8 text-4 md:text-3 font-normal  sm:text-3xl text-customBlack font-millik">
     Pay Online Courses
-  </h1>  <p className='leading-8 mb-8 font-normal font-Modarat text-customLightGray'>
+  </h1>  <p className='leading-8 mb-8 font-normal text-xl  font-Modarat text-customLightGray'>
   Whether you're sharpening your professional skills on Udemy, or delving deep into fascinating topics on Coursera, we got you covered. We offer different payment pathways specifically designed for you, ensuring a smooth and stress-free learning experience. <br/> <br/> We're committed to creating pathways that empower you to achieve your educational goals, regardless of where you are.
   </p>
-  <button className="bg-customButton font-Modarat flex mt-10 border rounded-md text-white px-5 py-2 my-12 hover:bg-blue-900 ">
+  <button className="bg-customButton font-Modarat flex mt-10 border rounded-md text-white px-6 py-3 my-12 hover:bg-blue-900 ">
     Explore Payments
     <FiArrowRight className='mx-2 my-1 ' />
     </button>
@@ -223,8 +223,8 @@ export default function AltWaveExplore() {
       </div>
     </div>
           <Faq/>
-          <div className='bg-customLightBlueGray md:py-32 py-16 px-5 mt-36'>
-            <div className='md:ml-24 md:mr-24 '>
+          <div className='bg-customLightBlueGray  py-16 px-5 mt-36'>
+            <div className='md:ml-24 md:mr-24 mr-[100px] ml-[100px]'>
           <h1 className="  mb-16 text-3xl md:text-50 font-normal font-millik text-customBlack leading-56 text-center">
            Safety and security guaranteed
               </h1> <p className='mb-12  font-Modarat text-customBlack text-xl'>At Flutterwave, we take security seriously, so every payment made on our platform is 100% secure, even exceeding industry standards.!</p> 
