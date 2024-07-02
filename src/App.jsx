@@ -1,18 +1,19 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import { SignupContextProvider } from "./context/SignupContext";
+import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
+import Dashboard from "./components/dashboard/dashbord/DashboardHome";
+import Faq from "./components/landingPage/faq";
 import Landing from "./components/landingPage/landingPage";
+import Blog from "./components/onboarding/BlogPage";
 import EnrollPage from "./components/onboarding/Enroll";
+import EnrollSuccess from "./components/onboarding/EnrollSuccess";
 import SignIn from "./components/onboarding/SignIn";
 import SignUp from "./components/onboarding/SignUp";
-import Blog from "./components/onboarding/BlogPage";
-import EnrollSuccess from "./components/onboarding/EnrollSuccess";
 import ContactUs from "./components/onboarding/contactUs/contactus";
-import Faq from "./components/landingPage/faq";
-import Dashboard from "./components/dashboard/DashboardHome";
+import { SignupContextProvider } from "./context/SignupContext";
 // import PayTuition from "./components/dashboard/PayTuition/InstituteInfor";
 import Tuition from "./components/dashboard/PayTuition/Tuition";
 // import PaymentInformation from "./components/dashboard/PayTuition/PaymentInformation";
-import Wallet from "./components/dashboard/Wallets";
+import Wallet from "./components/dashboard/wallet/Wallets";
+import PayService from "./components/dashboard/Pay E-Service/PayService";
 import "./index.css";
 
 function App() {
@@ -34,6 +35,7 @@ function App() {
           <Route path="/dashboard/Tuition" element={<Tuition />} />
           {/* <Route path="/dashboard/Tuition/payment" element={<PaymentInformation />} /> */}
           <Route path="/dashboard/wallet" element={<Wallet />} />
+          <Route path="/dashboard/payService" element={<PayService />} />
         </Routes>
       </Router>
     </SignupContextProvider>

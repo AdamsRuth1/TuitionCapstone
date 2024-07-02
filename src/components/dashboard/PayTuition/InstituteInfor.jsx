@@ -25,7 +25,7 @@ const InstituteInfor = ({ Next }) => {
   };
   return (
     // <div className=" flex justify-between gap-[19.75rem]">
-    <div className="w-full  pt-[4rem] mb-[18rem] ">
+    <div className="w-full ml-32 pt-[4rem] mb-[18rem] ">
       <TuitionHeader
         count="1"
         Header="Institution Information"
