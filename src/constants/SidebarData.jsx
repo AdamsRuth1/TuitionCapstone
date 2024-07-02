@@ -23,7 +23,7 @@ export const Navbar = [
   {
     name: "Pay E-Service",
     Icon: Piggi,
-    to:"E-service"
+    to:"payService"
  
   },
   {

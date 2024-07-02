@@ -12,7 +12,8 @@ import { SignupContextProvider } from "./context/SignupContext";
 // import PayTuition from "./components/dashboard/PayTuition/InstituteInfor";
 import Tuition from "./components/dashboard/PayTuition/Tuition";
 // import PaymentInformation from "./components/dashboard/PayTuition/PaymentInformation";
-import Wallet from "./components/dashboard/Wallets";
+import Wallet from "./components/dashboard/wallet/Wallets";
+import PayService from "./components/dashboard/Pay E-Service/PayService";
 import "./index.css";
 
 function App() {
@@ -34,6 +35,7 @@ function App() {
           <Route path="/dashboard/Tuition" element={<Tuition />} />
           {/* <Route path="/dashboard/Tuition/payment" element={<PaymentInformation />} /> */}
           <Route path="/dashboard/wallet" element={<Wallet />} />
+          <Route path="/dashboard/payService" element={<PayService />} />
         </Routes>
       </Router>
     </SignupContextProvider>

@@ -16,8 +16,8 @@ export default function ContactUs() {
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
-    firstName: "",
-    lastName: "",
+    first_name: "",
+    last_name: "",
     email: "",
     message:"",
   });
@@ -27,18 +27,18 @@ export default function ContactUs() {
     try {
      setIsLoading(true);
       if (
-        !formData.firstName ||
-        !formData.lastName ||
+        !formData.first_name ||
+        !formData.last_name ||
         !formData.email ||
         !formData.message
       ) 
       {
         alert("Please fill in all fields");
-        return;
+        return setIsLoading(false);
       }
 
       const endpoint =
-        "https://mole-relevant-salmon.ngrok-free.app/api/institution/institutions";
+        "https://mole-relevant-salmon.ngrok-free.app/api/contact/contacts/";
       const response = await fetch(endpoint, {
         method: "POST",
         headers: {
@@ -90,7 +90,7 @@ export default function ContactUs() {
               </label>
               <br />
               <input
-              id="firstName"
+              id="first_name"
                 type="text"
                 onChange={handleInputChange}
                 className="border px-5 py-2 border-customLine my-2 rounded-md "
@@ -104,7 +104,7 @@ export default function ContactUs() {
               </label>
               <br />
               <input
-              id="lastName"
+              id="last_name"
                 type="text"
                 onChange={handleInputChange}
                 className="border  px-5 text-customBlack py-2 border-customLine my-2 rounded-md "
@@ -207,7 +207,7 @@ export default function ContactUs() {
           </div>
           <div className="">
           <img src={Bob} alt="Blob Image" className="absolute bottom-0 right-0 " />
-        <img src={Small} alt="Small People Image" className="absolute bottom-0 end-32  " />
+        <img src={Small} alt="Small People Image" className="absolute bottom-0 end-24  " />
           </div>
         </div>
       </div>
