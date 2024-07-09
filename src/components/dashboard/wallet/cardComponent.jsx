@@ -1,7 +1,10 @@
 import React from "react";
 import Looper from "../../../assets/images/Looper-1 (1).png";
 import ReactFlagsSelect from "react-flags-select";
+import Framer from "../../../assets/images/Frame.png";
+import Framer2 from "../../../assets/images/Frame (1).png";
 import { BsEye, BsEyeSlash } from "react-icons/bs";
+import Button from "./button";
 
 import { useState } from "react";
 export default function Card() {
@@ -17,14 +20,17 @@ export default function Card() {
       return "******";
     }
   };
+  const topUp = () => {
+    alert("top-up");
+  };
   return (
     <>
       <div
-        className="flex bg-customBlack ml-10 rounded-2xl"
+        className="flex bg-customBlack  rounded-2xl"
         style={{ width: "620px", height: "269px", marginTop: "64px" }}
       >
         <div className="ml-8 mt-9" style={{ marginBottom: "37px" }}>
-          <div className="flex align-center text-center ">
+          <div className="flex align-center text-center items-center ">
             <p className="text-center" style={{ color: "#A1A4A8" }}>
               Wallet Balance
             </p>
@@ -45,6 +51,17 @@ export default function Card() {
             >
               {" "}
               {showAmount ? <BsEye /> : <BsEyeSlash />}
+            </button>
+          </div>
+          <div className="mt-4 flex">
+            <Button onClick={topUp} className="flex text-white text-lg mr-6 ">
+              <img src={Framer} /> TopUp
+            </Button>
+            <button
+              className="flex text-white text-lg bg-customBlack rounded-lg  rounded-white ml-4"
+              style={{ border: "1px solid white", padding: "8px 24px" }}
+            >
+              Send <img src={Framer2} />
             </button>
           </div>
         </div>
