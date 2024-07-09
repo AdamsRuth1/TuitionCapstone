@@ -9,16 +9,14 @@ const Dashboard = ({ children }) => {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 1 }}
-        className="flex flex-row w-full h-full"
+        className=" w-full h-full relative"
       >
-        <DashboardSideBar />
-        <div className="flex flex-col w-[100%]">
-          <SidebarHeader />
-          <div className="flex items-center   w-full flex-grow ">
-            <section className="w-full bg-[#FAFAFB] items-center flex flex-col   ">
-              {children}
-            </section>
-          </div>
+        <SidebarHeader />
+        <div className="flex">
+          <DashboardSideBar />
+          <section className="w-full bg-[#FAFAFB] items-center ml-[15rem] flex flex-col">
+            {children}
+          </section>
         </div>
       </motion.div>
     </main>

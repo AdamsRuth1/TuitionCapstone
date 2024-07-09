@@ -1,1 +1,1 @@
-export const base_URL = "http://localhost:8000/api";
+export const base_URL = "https://mole-relevant-salmon.ngrok-free.app";

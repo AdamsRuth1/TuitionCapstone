@@ -9,9 +9,8 @@ import EnrollSuccess from "./components/onboarding/EnrollSuccess";
 import ContactUs from "./components/onboarding/contactUs/contactus";
 import Faq from "./components/landingPage/faq";
 import Dashboard from "./components/dashboard/DashboardHome";
-// import PayTuition from "./components/dashboard/PayTuition/InstituteInfor";
+import Eservice from "./components/E-service/Services";
 import Tuition from "./components/dashboard/PayTuition/Tuition";
-// import PaymentInformation from "./components/dashboard/PayTuition/PaymentInformation";
 import Wallet from "./components/dashboard/Wallets";
 import "./index.css";
 
@@ -30,9 +29,9 @@ function App() {
           <Route path="/faq" element={<Faq />} />
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="*" element={"Not Found"} />
-
           <Route path="/dashboard/Tuition" element={<Tuition />} />
-          {/* <Route path="/dashboard/Tuition/payment" element={<PaymentInformation />} /> */}
+          <Route path="/dashboard/E-service" element={<Eservice />} />
+
           <Route path="/dashboard/wallet" element={<Wallet />} />
         </Routes>
       </Router>

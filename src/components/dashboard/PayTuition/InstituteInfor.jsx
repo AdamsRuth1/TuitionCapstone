@@ -1,6 +1,7 @@
 import { useState } from "react";
 import ArrowDown from "../../../assets/Icons/Arrrow-down.svg";
 import TuitionHeader from "./TuitionHeader";
+import Button from "../Button";
 const InstituteInfor = ({ Next }) => {
   const [isCountryOpen, setIsCountryOpen] = useState(false);
   const [isInstituteOpen, setIsInstituteOpen] = useState(false);
@@ -25,11 +26,12 @@ const InstituteInfor = ({ Next }) => {
   };
   return (
     // <div className=" flex justify-between gap-[19.75rem]">
-    <div className="w-full  pt-[4rem] mb-[18rem] ">
+    <div className="w-full -ml-[4rem] pt-[4rem] mb-[18rem] ">
       <TuitionHeader
         count="1"
+        Total="5"
         Header="Institution Information"
-        Paragraph="   Enter your school’s details to begin your payment process."
+        Paragraph="Enter your school’s details to begin your payment process."
       />
 
       <form>
@@ -99,13 +101,7 @@ const InstituteInfor = ({ Next }) => {
           />
         </div>
         <div className="pt-[2rem]">
-          <button
-            // disabled={disable}
-            onClick={Next}
-            className={`w-[436px] h-[70px] rounded-[5px] bg-[#252E6A] text-[#FFFFFF] font-normal text-[18px] leading-[22px] moderat-font`}
-          >
-            Continue
-          </button>
+          <Button text="Continue" Next={Next} />
         </div>
       </form>
     </div>

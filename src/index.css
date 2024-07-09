@@ -135,6 +135,7 @@
   .dropdown-item:hover {
     background-color: #f0f0f0;
   }
+
   .markBG {
     background-color: rgba(246, 213, 213, 1);
   }
@@ -145,7 +146,16 @@
   .tuitionLabel {
     @apply font-Modarat text-[18px] font-normal leading-[22px] text-[#0A0E27] mb-[0.5rem]
   }
+
   .tuitionSelect {
     @apply w-[436px] h-[48px] rounded-[4px] px-[1.25rem] outline-none border border-[#CCCCCC] text-[16px] font-Modarat font-normal leading-[16px] text-[#A1A4A8]
+  }
+
+  .paymentSelect {
+    @apply w-[100px] h-[48px] rounded-[4px] px-[0.6rem] outline-none border border-[#CCCCCC] text-[16px] font-Modarat font-normal leading-[16px] text-[#000000]
+  }
+
+  .tuitionSelected {
+    @apply w-[340px] h-[48px] rounded-[4px] px-[1.25rem] outline-none border border-[#CCCCCC] text-[16px] font-Modarat font-normal leading-[16px] text-[#A1A4A8]
   }
 }

@@ -5,7 +5,8 @@ import Button from "../Auth/Button";
 import { Error } from "../../constants/ErrorMessage";
 import axios from "axios";
 import Loading from "../Auth/Loading";
-import { useSignInContext } from "../../context/SignInContext";
+// import { useSignInContext } from "../../context/SignInContext";
+import { base_URL } from "../../config/api_url";
 import { useNavigate } from "react-router-dom";
 
 const SiginInput = () => {
@@ -13,7 +14,7 @@ const SiginInput = () => {
   const [loading, setLoading] = useState(false);
   const [disabled, setDisabled] = useState(true);
   const [showpassword, setShowPassword] = useState(false);
-  const { signInData, setSignInData } = useSignInContext();
+  // const { signInData, setSignInData } = useSignInContext();
   const [state, setState] = useState({
     email: "",
     password: "",
@@ -50,7 +51,7 @@ const SiginInput = () => {
     }
 
     setState((prevState) => ({ ...prevState, [name]: value }));
-    setSignInData((prevState) => ({ ...prevState, [name]: value }));
+    // setSignInData((prevState) => ({ ...prevState, [name]: value }));
 
     setErrorMessage((prev) => ({
       ...prev,
@@ -63,16 +64,30 @@ const SiginInput = () => {
     setLoading(true);
 
     try {
+      const userSignIn = new URLSearchParams();
+      userSignIn.append("username", state.email);
+      userSignIn.append("password", state.password);
+      console.log(userSignIn);
+
       const signIn = await axios.post(
-        "https://mole-relevant-salmon.ngrok-free.app/api/auth/signin",
-        signInData
+        `${base_URL}/api/auth/signin`,
+        userSignIn,
+        {
+          headers: {
+            "Content-Type": "application/x-www-form-urlencoded",
+          },
+        }
       );
-      console.log(signIn);
-      console.log(signInData);
-      navigate("/dashboard");
+
+      if (signIn.status === 200) {
+        const data = signIn.data;
+        console.log(signIn);
+        localStorage.setItem("token", data.access_token);
+        navigate("/dashboard/");
+      }
     } catch (error) {
-      alert(error.message);
-       setLoading(false);
+      console.log(error);
+      setLoading(false);
     }
   };
   return (

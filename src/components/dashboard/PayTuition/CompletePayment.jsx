@@ -3,9 +3,9 @@ import TuitionHeader from "./TuitionHeader";
 import PaymentMethod from "./PaymentMethod";
 
 const CompletePayment = ({ Next }) => {
-  const style = "mr-[3rem]"
+
   return (
-    <div className="ml-5  pt-[4rem] mb-[18rem] ">
+    <div className="w-full ml-[3rem] pt-[4rem] mb-[18rem] ">
       <TuitionHeader
         count="5"
         Header=" Complete Payment"
@@ -32,13 +32,14 @@ const CompletePayment = ({ Next }) => {
         Method="Google Pay"
         description="Make instant payment to your school via Google Pay"
       />
-
-      <TuitionButton
-        back="Back"
-        forward="continue"
-        Next={Next}
-        className={style}
-      />
+      {/* <div className="w-[436px]"> */}
+        <TuitionButton
+          back="Back"
+          forward="continue"
+          Next={Next}
+          // className={style}
+        />
+      {/* </div> */}
     </div>
   );
 };

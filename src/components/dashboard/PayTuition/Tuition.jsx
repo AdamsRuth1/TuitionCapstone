@@ -6,9 +6,10 @@ import StudentInfor from "./StudentInfor";
 import TransactionSummary from "./TransactionSummary";
 import CompletePayment from "./CompletePayment";
 import { useState } from "react";
+import { Steps } from "../../../constants/SidebarData";
 const Tuition = () => {
   const [currentForm, setCurrentForm] = useState(1);
-  // const [active, setActive] = useState(1);
+
   const handleNext = () => {
     setCurrentForm((prevForm) => Math.min(prevForm + 1, 5)); // Ensure it doesn't exceed the number of steps
   };
@@ -34,7 +35,7 @@ const Tuition = () => {
       <div className=" flex gap-[10rem]">
         <div className="">{renderForm()}</div>
         <div className=" mr-5">
-          <TuitionStatus activeState={currentForm} />
+          <TuitionStatus Steps={Steps} activeState={currentForm} />
         </div>
       </div>
     </Dashboard>
