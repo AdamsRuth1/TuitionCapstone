@@ -1,12 +1,11 @@
 import React from "react";
-import Looper from "../../../assets/images/Looper-1 (1).png";
+import Looper from "../../../assets/images/Looper-1.png";
 import ReactFlagsSelect from "react-flags-select";
 import Framer from "../../../assets/images/Frame.png";
 import Framer2 from "../../../assets/images/Frame (1).png";
 import { BsEye, BsEyeSlash } from "react-icons/bs";
 import History from "./history";
 import Button from "./button";
-
 
 import { useState } from "react";
 export default function Card() {
@@ -88,7 +87,7 @@ export default function Card() {
           </div>
         </div>
       </div>
-      <div className="" >
+      <div className="">
         <History />
       </div>
     </>
