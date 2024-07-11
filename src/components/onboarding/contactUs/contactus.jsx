@@ -38,7 +38,7 @@ export default function ContactUs() {
       }
 
       const endpoint =
-        "https://mole-relevant-salmon.ngrok-free.app/api/contact/contacts/";
+        "https://flutter-backend-54cafc79c811.herokuapp.com/api/contact/contacts/";
       const response = await fetch(endpoint, {
         method: "POST",
         headers: {
