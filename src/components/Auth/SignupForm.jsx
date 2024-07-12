@@ -117,7 +117,7 @@ const SignupForm = () => {
     setLoading(true);
     try {
       const userData = await axios.post(
-        "https://mole-relevant-salmon.ngrok-free.app/api/users/signup",
+        "https://flutter-backend-54cafc79c811.herokuapp.com/api/users/signup",
         signupData
       );
       console.log(signupData);

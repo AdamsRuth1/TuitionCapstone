@@ -9,11 +9,11 @@ const history = () => {
           border: "#CCCCCC",
           marginTop: "60px",
           width: "620px",
-          marginLeft: "-240px",
+          marginLeft: "240px",
         }}
       >
         <div
-          className="flex justify-between items-center p-4"
+          className="flex py-4 justify-between items-center border-b "
           style={{ marginLeft: "32px", marginRight: "32px" }}
         >
           <p className="font-Modarat font-bold text-customBlack text-lg">
@@ -21,7 +21,7 @@ const history = () => {
           </p>
           <p className="font-Modarat text-base">View all</p>
         </div>
-        <div
+        {/* <div
           style={{
             marginLeft: "32px",
             marginRight: "32px",
@@ -30,7 +30,7 @@ const history = () => {
             backgroundColor: "#CCCCCC",
           }}
           className="mb-10"
-        ></div>
+        ></div> */}
         <div>
           <HistoryComponent />
         </div>
