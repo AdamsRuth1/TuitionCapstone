@@ -32,7 +32,7 @@ export default function Card() {
             style={{
               width: "620px",
               marginTop: "64px",
-              marginLeft: "-240px",
+              marginLeft: "240px",
               backgroundImage: `url(${Looper})`,
               backgroundSize: "cover",
               backgroundPosition: "center",
