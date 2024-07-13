@@ -1,4 +1,5 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import React from "react";
+import { BrowserRouter as Router, Routes, Route,Navigate } from "react-router-dom";
 import { SignupContextProvider } from "./context/SignupContext";
 import Landing from "./components/landingPage/landingPage";
 import EnrollPage from "./components/onboarding/Enroll";
@@ -12,9 +13,12 @@ import Dashboard from "./components/dashboard/DashboardHome";
 import Eservice from "./components/E-service/Services";
 import Tuition from "./components/dashboard/PayTuition/Tuition";
 import Wallet from "./components/dashboard/Wallets";
+
 import "./index.css";
 
 function App() {
+  // const isLoggedIn = localStorage.getItem("token"); 
+
   return (
     <SignupContextProvider>
       <Router>
@@ -27,12 +31,41 @@ function App() {
           <Route path="/enrollsuccess" element={<EnrollSuccess />} />
           <Route path="/contactus" element={<ContactUs />} />
           <Route path="/faq" element={<Faq />} />
-          <Route path="/dashboard" element={<Dashboard />} />
-          <Route path="*" element={"Not Found"} />
-          <Route path="/dashboard/Tuition" element={<Tuition />} />
-          <Route path="/dashboard/E-service" element={<Eservice />} />
+          <Route path="*" element={<div>Not Found</div>} />
 
-          <Route path="/dashboard/wallet" element={<Wallet />} />
+          {/* <Route
+            path="/dashboard"
+            element={isLoggedIn ? <Dashboard /> : <SignIn />}
+          />
+          <Route
+            path="/dashboard/tuition"
+            element={isLoggedIn ? <Tuition /> : <SignIn />}
+          />
+          <Route
+            path="/dashboard/e-service"
+            element={isLoggedIn ? <Eservice /> : <SignIn />}
+          />
+          <Route
+            path="/dashboard/wallet"
+            element={isLoggedIn ? <Wallet /> : <SignIn />}
+          /> */}
+
+          <Route
+            path="/dashboard/"
+            element={ <Dashboard />}
+          />
+          <Route
+            path="/dashboard/tuition"
+            element={<Tuition /> }
+          />
+          <Route
+            path="/dashboard/e-service"
+            element={ <Eservice /> }
+          />
+          <Route
+            path="/dashboard/wallet"
+            element={ <Wallet />}
+          />
         </Routes>
       </Router>
     </SignupContextProvider>

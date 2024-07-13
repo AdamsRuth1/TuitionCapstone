@@ -116,12 +116,9 @@ const SignupForm = () => {
     e.preventDefault();
     setLoading(true);
     try {
-      const userData = await axios.post(
-        `${base_URL}/api/users/signup`,
-        signupData
-      );
-      console.log(signupData);
-      console.log(userData);
+      const userData = await axios.post(`${base_URL}users/signup`, signupData);
+      // console.log(signupData);
+      // console.log(userData);
       navigate("/signin");
       localStorage.setItem("email", JSON.stringify(userData.data.email));
       localStorage.setItem(
@@ -134,10 +131,10 @@ const SignupForm = () => {
       );
       alert("Signup Success");
     } catch (error) {
-      alert(error.message);
+      alert(error.response.data.detail);
       setLoading(false);
     }
-    console.log(signupData);
+    // console.log(signupData);
   };
 
   const toggleDropdown = () => setIsOpen(!isOpen);

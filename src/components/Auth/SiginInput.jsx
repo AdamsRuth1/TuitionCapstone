@@ -69,26 +69,28 @@ const SiginInput = () => {
       userSignIn.append("password", state.password);
       console.log(userSignIn);
 
-      const signIn = await axios.post(
-        `${base_URL}/api/auth/signin`,
-        userSignIn,
-        {
-          headers: {
-            "Content-Type": "application/x-www-form-urlencoded",
-          },
-        }
-      );
+      const signIn = await axios.post(`${base_URL}auth/signin`, userSignIn, {
+        headers: {
+          "Content-Type": "application/x-www-form-urlencoded",
+        },
+      });
 
       if (signIn.status === 200) {
         const data = signIn.data;
-        console.log(signIn);
-        localStorage.setItem("token", data.access_token);
+        // console.log(signIn);
         navigate("/dashboard/");
+        localStorage.setItem("token", data.access_token);
+        
       }
     } catch (error) {
-      console.log(error);
+      // console.log(error.response.data.detail);
+      alert(error.response.data.detail);
       setLoading(false);
     }
+  };
+
+  const LogOut = () => {
+    localStorage.removeItem("token");
   };
   return (
     <form onSubmit={handleSubmit}>
@@ -140,6 +142,7 @@ const SiginInput = () => {
           />
         )}
       </div>
+      <div onClick={LogOut}>Log Out</div>
     </form>
   );
 };

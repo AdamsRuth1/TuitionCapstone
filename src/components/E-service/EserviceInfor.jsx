@@ -1,8 +1,10 @@
 import TuitionHeader from "../../components/dashboard/PayTuition/TuitionHeader";
 import Button from "../dashboard/Button";
 import ArrowDown from "../../assets/Icons/Arrrow-down.svg";
+import CourseraPopup from "../E-service/CourseraPopup";
 import { useState } from "react";
 const EserviceInfor = ({ Next }) => {
+  const [isOpen, setIsOpen] = useState(false);
   const PlatForm = ["Coursera", "Udemy", "WES Application", "Other"];
   const Countries = ["USA", "Canada", "Nigeria", "Litva", "United Kingdom"];
   const currency = ["NGN", "USD"];
@@ -35,14 +37,30 @@ const EserviceInfor = ({ Next }) => {
     setCountryInput(country);
     setIsCountryOpen(false);
   };
+
+  const handleCourseraPopup = () => {
+    setIsPlatform(false);
+    setIsOpen(!isOpen);
+  };
+  const handleClose = () => {
+    setIsOpen(false);
+  };
   return (
-    <div className="w-full mb-10">
+    <div className="w-full mb-10 relative">
+      <div>
+        {isOpen && (
+          <div>
+            <CourseraPopup handleClose={handleClose} />
+          </div>
+        )}
+      </div>
       <TuitionHeader
         count="1"
         Total="3"
         Header="E-Service Information"
         Paragraph="Select E-service platform you want to pay for"
       />
+
       <form>
         <div className="flex flex-col">
           <label htmlFor="Country" className="tuitionLabel">
@@ -59,15 +77,15 @@ const EserviceInfor = ({ Next }) => {
                 {PlatForm.map((platform, index) => (
                   <div
                     key={index}
+                    onClick={
+                      index === 0
+                        ? () => handleCourseraPopup()
+                        : () => handlePlateformSelected(platform)
+                    }
                     className=" bg-white border-b border-gray  shadow-lg pl-[2rem] pt-4 hover:bg-[#CCCCCC] hover:rounded-t-lg lg:w-[16rem] font-Modarat text-[18px] font-normal text-[#0A0E27] relative top-[2rem] left-[2.5rem] cursor-pointer"
                   >
                     <ul className="pt-3 ">
-                      <li
-                        onClick={() => handlePlateformSelected(platform)}
-                        className="pb-3"
-                      >
-                        {platform}
-                      </li>
+                      <li className="pb-3">{platform}</li>
                     </ul>
                   </div>
                 ))}
