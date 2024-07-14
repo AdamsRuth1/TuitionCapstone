@@ -1,7 +1,12 @@
 import PenIcon from "../../../assets/Icons/pencil-edit-01.svg";
 import TuitionHeader from "./TuitionHeader";
 import StudentInformation from "./StudentInformation";
-const TransactionSummary = ({ Next }) => {
+const TransactionSummary = ({
+  Next,
+  ThreeStepsBack,
+  TwoStepsBack,
+  OneStepBack,
+}) => {
   const style = "w-[470px]";
   return (
     <div className=" pt-[4rem]  ">
@@ -17,7 +22,10 @@ const TransactionSummary = ({ Next }) => {
         <h3 className="font-Modarat font-medium text-[20px] leading-[24px] text-[#51575D]">
           Institution Information
         </h3>
-        <div className="flex w-[100px] h-[40px] -mt-[0.4rem] rounded-[99px] bg-[#E0E2F0]  px-[17px] pt-[12px] gap-5">
+        <div
+          className="flex w-[100px] h-[40px] -mt-[0.4rem] rounded-[99px] bg-[#E0E2F0] cursor-pointer  px-[17px] pt-[12px] gap-5"
+          onClick={ThreeStepsBack}
+        >
           <h3 className="font-Modarat font-normal text-[16px] leading-[16px] text-[#252E6A]">
             Edit
           </h3>
@@ -49,7 +57,10 @@ const TransactionSummary = ({ Next }) => {
         <h3 className="font-Modarat font-medium text-[20px] leading-[24px] text-[#51575D]">
           Payment Information
         </h3>
-        <div className="flex w-[100px] h-[40px] -mt-[0.4rem] rounded-[99px] bg-[#E0E2F0]  px-[17px] pt-[12px] gap-5">
+        <div
+          className="flex w-[100px] h-[40px] -mt-[0.4rem] rounded-[99px] bg-[#E0E2F0]  px-[17px] pt-[12px] gap-5"
+          onClick={TwoStepsBack}
+        >
           <h3 className="font-Modarat font-normal text-[16px] leading-[16px] text-[#252E6A]">
             Edit
           </h3>
@@ -124,7 +135,10 @@ const TransactionSummary = ({ Next }) => {
         <h3 className="font-Modarat font-medium text-[20px] leading-[24px] text-[#51575D]">
           Student Information
         </h3>
-        <div className="flex w-[100px] h-[40px] -mt-[0.4rem] rounded-[99px] bg-[#E0E2F0]  px-[17px] pt-[12px] gap-5">
+        <div
+          className="flex w-[100px] h-[40px] -mt-[0.4rem] rounded-[99px] bg-[#E0E2F0]  px-[17px] pt-[12px] gap-5"
+          onClick={OneStepBack}
+        >
           <h3 className="font-Modarat font-normal text-[16px] leading-[16px] text-[#252E6A]">
             Edit
           </h3>
@@ -136,9 +150,14 @@ const TransactionSummary = ({ Next }) => {
       <div className="border-b  border-[#51575D] mb-[2rem]"></div>
       <StudentInformation />
       <div>
-        <button onClick={Next} className="w-full bg-[#252E6A] py-[24px] px-[12px] mb-[2.5rem] font-Modarat font-normal text-[16px] leading-[16px] text-white rounded-[8px] ">Proceed to payment</button>
-    </div>
+        <button
+          onClick={Next}
+          className="w-full bg-[#252E6A] py-[24px] px-[12px] mb-[2.5rem] font-Modarat font-normal text-[16px] leading-[16px] text-white rounded-[8px] "
+        >
+          Proceed to payment
+        </button>
       </div>
+    </div>
     // </div>
   );
 };
