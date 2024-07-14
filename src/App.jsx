@@ -1,5 +1,10 @@
-import React from "react";
-import { BrowserRouter as Router, Routes, Route,Navigate } from "react-router-dom";
+
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  // Navigate,
+} from "react-router-dom";
 import { SignupContextProvider } from "./context/SignupContext";
 import Landing from "./components/landingPage/landingPage";
 import EnrollPage from "./components/onboarding/Enroll";
@@ -17,7 +22,7 @@ import Wallet from "./components/dashboard/Wallets";
 import "./index.css";
 
 function App() {
-  // const isLoggedIn = localStorage.getItem("token"); 
+  // const isLoggedIn = localStorage.getItem("token");
 
   return (
     <SignupContextProvider>
@@ -50,22 +55,10 @@ function App() {
             element={isLoggedIn ? <Wallet /> : <SignIn />}
           /> */}
 
-          <Route
-            path="/dashboard/"
-            element={ <Dashboard />}
-          />
-          <Route
-            path="/dashboard/tuition"
-            element={<Tuition /> }
-          />
-          <Route
-            path="/dashboard/e-service"
-            element={ <Eservice /> }
-          />
-          <Route
-            path="/dashboard/wallet"
-            element={ <Wallet />}
-          />
+          <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/dashboard/tuition" element={<Tuition />} />
+          <Route path="/dashboard/e-service" element={<Eservice />} />
+          <Route path="/dashboard/wallet" element={<Wallet />} />
         </Routes>
       </Router>
     </SignupContextProvider>

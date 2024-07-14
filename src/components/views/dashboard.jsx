@@ -3,6 +3,7 @@ import SidebarHeader from "./dashboardHeader";
 import DashboardSideBar from "./DashboardSideBar";
 
 const Dashboard = ({ children }) => {
+  
   return (
     <main className="min-h-screen flex">
       <motion.div

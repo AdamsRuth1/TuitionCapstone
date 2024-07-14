@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import EyeOpen from "../../assets/Icons/eyeOpen.svg";
 import EyeClose from "../../assets/Icons/eyeClose.svg";
 import Button from "../Auth/Button";
@@ -35,6 +35,7 @@ const SiginInput = () => {
     /^(?=.*\d)(?=.*[A-Z])(?=.*[a-z])[a-zA-Z._\=\:\*\&\^\%\$\@\#\/-\w]{8,}$/.test(
       value
     );
+
   const handleChange = (event) => {
     const { name, value } = event.target;
     const isValid =
@@ -82,9 +83,19 @@ const SiginInput = () => {
         localStorage.setItem("token", data.access_token);
         
       }
+      const signInResponse = await axios.post(
+        "https://flutter-backend-54cafc79c811.herokuapp.com/api/auth/signin",
+        {
+          email: state.email,
+          password: state.password,
+        }
+      );
+      console.log(signInResponse.data); // Assuming your API returns data upon successful sign-in
+
+      navigate("/dashboard");
     } catch (error) {
-      // console.log(error.response.data.detail);
-      alert(error.response.data.detail);
+      alert(error.message); // Basic error handling, improve as per your app's needs
+    } finally {
       setLoading(false);
     }
   };
@@ -92,6 +103,7 @@ const SiginInput = () => {
   const LogOut = () => {
     localStorage.removeItem("token");
   };
+
   return (
     <form onSubmit={handleSubmit}>
       <div className="pb-4">
@@ -106,20 +118,22 @@ const SiginInput = () => {
             errorMessage.email ? "error-border" : ""
           }`}
         />
+        <p className="text-red-600" style={{ fontSize: "14px" }}>
+          {errorMessage.email}
+        </p>
       </div>
       <label className="moderat-font">Password</label> <br />
       <input
         type={showpassword ? "text" : "password"}
         name="password"
         value={state.password}
-        placeholder="Enter email here"
+        placeholder="Enter Password here"
         onChange={handleChange}
-        className={`input-style w-[81%]   h-[48px] `}
+        className={`input-style w-[81%] h-[48px] ${
+          errorMessage.password ? "error-border" : ""
+        }`}
       />
-      <span
-        className="eyeIcon cursor-pointer"
-        onClick={handlePasswordVisibility}
-      >
+      <span className="eyeIcon cursor-pointer" onClick={handlePasswordVisibility}>
         {showpassword ? (
           <img src={EyeOpen} alt="eye icon" />
         ) : (
@@ -135,11 +149,7 @@ const SiginInput = () => {
       <div>
         {loading && <Loading text="Loading..." />}
         {!loading && (
-          <Button
-            text="Sign In"
-            handleSubmit={handleSubmit}
-            disable={disabled}
-          />
+          <Button text="Sign In" disable={disabled} />
         )}
       </div>
       <div onClick={LogOut}>Log Out</div>

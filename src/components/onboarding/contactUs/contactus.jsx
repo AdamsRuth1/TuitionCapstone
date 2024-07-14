@@ -9,8 +9,58 @@ import Phone from "../../../assets/images/Phone container.png";
 import X from "../../../assets/images/X socials container.png";
 import Faq from "../../../assets/images/FAQs container.png";
 import Bob from "../../../assets/images/Blob 1 (1).png";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import Small from "../../../assets/images/3d_small_people_-_global_manager-removebg-preview 1 (1).png";
 export default function ContactUs() {
+  const [isLoading, setIsLoading] = useState(false);
+  const navigate = useNavigate();
+  const [formData, setFormData] = useState({
+    first_name: "",
+    last_name: "",
+    email: "",
+    message:"",
+  });
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    try {
+     setIsLoading(true);
+      if (
+        !formData.first_name ||
+        !formData.last_name ||
+        !formData.email ||
+        !formData.message
+      ) 
+      {
+        alert("Please fill in all fields");
+        return setIsLoading(false);
+      }
+
+      const endpoint =
+        "https://flutter-backend-54cafc79c811.herokuapp.com/api/contact/contacts/";
+      const response = await fetch(endpoint, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+      console.log("sending data", formData);
+      if (response.ok) {
+        navigate("/enrollsuccess");
+      } 
+    } catch (error) {
+      alert(error.message);
+      setIsLoading(false);
+    }
+  };
+
+  const handleInputChange = (event) => {
+    const { id, value } = event.target;
+    setFormData({ ...formData, [id]: value });
+  };
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -24,37 +74,39 @@ export default function ContactUs() {
           <h1 className="ml-6"> Let’s sort you out </h1>
         </div>
         <p className="font-Modarat font-normal text-customGray text-base leading-6 my-5 mb-24">
-          {" "}
+         
           Need help with something? Our 24/7 support team is ready to assist you
           on <br /> your preferred channel
         </p>
       </div>
 
       <div className="relative  ml-24 flex mb-28">
-        <form className="flex-1">
+        <form onSubmit={handleSubmit} className="flex-1">
           <div className="flex ">
             <div className="mr-6">
               <label className="font-Modarat text-lg text-customBlack">
-                {" "}
+               
                 First name
-              </label>{" "}
+              </label>
               <br />
               <input
-              id="firstName"
+              id="first_name"
                 type="text"
+                onChange={handleInputChange}
                 className="border px-5 py-2 border-customLine my-2 rounded-md "
                 placeholder="Enter first name"
               />
             </div>
             <div>
               <label className="font-Modarat text-lg text-customBlack">
-                {" "}
+                
                 Last name
-              </label>{" "}
+              </label>
               <br />
               <input
-              id="lastName"
+              id="last_name"
                 type="text"
+                onChange={handleInputChange}
                 className="border  px-5 text-customBlack py-2 border-customLine my-2 rounded-md "
                 placeholder="Enter Last name"
               />
@@ -69,6 +121,7 @@ export default function ContactUs() {
             <input
               type="email"
               id="email"
+              onChange={handleInputChange}
               className="border px-5 py-2 border-customLine my-2 rounded-md  w-full"
               placeholder="example@flutterwave.com"
             />
@@ -81,6 +134,7 @@ export default function ContactUs() {
             <div className="">
               <textarea
               id="message"
+              onChange={handleInputChange}
                 className="border w-full py-5 px-3 mt-2 border-customLine rounded-md resize-none"
                 placeholder="Leave an enquiry or complaint for us..."
                 style={{ height: "150px", paddingTop: "1rem" }}
@@ -88,9 +142,13 @@ export default function ContactUs() {
             </div>
           </div>
 
-          <button className="bg-customBlack font-Modarat py-4 w-full text-white  border rounded-md mt-10 mb-28">
-            Send Message
-          </button>
+          <button
+                  type="submit"
+                  className={`border w-96 p-6 mt-8 ml-28 rounded-lg bg-customBlack text-white font-Modarat ${isLoading ? 'opacity-50 cursor-not-allowed' : ''}`}
+                  disabled={isLoading} 
+                >
+                  {isLoading ? 'Sending...' : 'Send Message'}
+                </button>
         </form>
         <div className="bg-customLine w-px mb-52 mr-16 ml-16 mt-4"> </div>
         <div className="mr-56">
@@ -149,7 +207,7 @@ export default function ContactUs() {
           </div>
           <div className="">
           <img src={Bob} alt="Blob Image" className="absolute bottom-0 right-0 " />
-        <img src={Small} alt="Small People Image" className="absolute bottom-0 end-32  " />
+        <img src={Small} alt="Small People Image" className="absolute bottom-0 end-24  " />
           </div>
         </div>
       </div>

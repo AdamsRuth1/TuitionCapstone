@@ -1,5 +1,6 @@
 /** @type {import('tailwindcss').Config} */
-export default {
+module.exports = {
+  mode: "jit",
   content: ["./index.html", "./src/**/*.{js,jsx,ts,tsx}"],
   theme: {
     extend: {
@@ -20,10 +21,13 @@ export default {
       colors: {
         customLightBlueGray: "#F8FAFD",
         customBlack: "#0A0E27",
+        inputText: "#A1A4A8",
+        BlackFont: "#000000",
         customButton: "#252E6A",
         customButtonBtn: "#1B2025",
         customGray: "#51575D",
         customLightGray: "#606569",
+        borderColor: "#F5F5F5",
         customLine: "#CCCCCC",
         customEnroll: "#606569",
         customrAdd: "#F8FAFE",

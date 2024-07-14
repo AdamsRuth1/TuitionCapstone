@@ -46,7 +46,7 @@ const Faq = () => {
   ];
 
   return (
-    <div className="mt-32 mb-64">
+    <div className="mt-32 mb-64 ml-[100px] mr-[100px]">
         <h1 className=" text-3xl  font-normal font-millik text-customBlack text-50 leading-13 text-center my-14 ">
                Frequently Asked Questions
               </h1>
