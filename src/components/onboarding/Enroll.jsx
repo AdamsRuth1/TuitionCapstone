@@ -33,7 +33,7 @@ export default function Enroll() {
       }
 
       const endpoint =
-        "https://mole-relevant-salmon.ngrok-free.app/api/institution/institutions";
+        "https://flutter-backend-54cafc79c811.herokuapp.com/api/institution/institutions";
       const response = await fetch(endpoint, {
         method: "POST",
         headers: {
@@ -41,7 +41,7 @@ export default function Enroll() {
         },
         body: JSON.stringify(formData),
       });
-      console.log("sending data", formData);
+      // console.log("sending data", formData);
       if (response.ok) {
         navigate("/enrollsuccess");
       } 

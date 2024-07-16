@@ -35,11 +35,11 @@ export default function Landing() {
               </p>
             </div>
             <div className="flex space-x-4 md:my-12 my-8 ml-0">
-              <NavLink to="/signup" className="bg-customButton border rounded-md text-white px-3 py-2 hover:bg-blue-500">
+              <NavLink to="/signup" className="bg-customButton border rounded-md text-white py-3 px-6 hover:bg-blue-900">
                 {" "}
                 Get started
               </NavLink>
-              <button className="border-customButton border-2 text-blue-900 rounded-md px-3 py-2 hover:bg-blue-900 hover:text-white">
+              <button className="border-customButton border text-blue-900 rounded-md px-6 py-3 ">
                 <NavLink to="/enroll">Enroll your institution</NavLink>
                 
               </button>
