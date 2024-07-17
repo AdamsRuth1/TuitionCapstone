@@ -1,6 +1,6 @@
 const TuitionButton = ({ disable, handleSubmit, back, forward, Next, className }) => {
   return (
-    <div className="flex justify-between mb-[2.5rem]">
+    <div className="flex justify-between w-[436px] mb-[2.5rem]">
       <button
         disabled={disable}
         // onClick={handleSubmit}

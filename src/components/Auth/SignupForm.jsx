@@ -7,6 +7,7 @@ import { Error } from "../../constants/ErrorMessage";
 import { useState, useEffect } from "react";
 import { useSignupContext } from "../../context/SignupContext";
 import axios from "axios";
+import { base_URL } from "../../config/api_url";
 import Loading from "../Auth/Loading";
 import { useNavigate } from "react-router-dom";
 
@@ -76,7 +77,6 @@ const SignupForm = () => {
       setDisabled(false);
     }
 
-    
     setErrorMessage((prev) => ({
       ...prev,
       [name]: isValid ? "" : Error[name],
@@ -116,21 +116,24 @@ const SignupForm = () => {
     e.preventDefault();
     setLoading(true);
     try {
-      const userData = await axios.post(
-        "https://flutter-backend-54cafc79c811.herokuapp.com/api/users/signup",
-        signupData
-      );
-      console.log(signupData);
-      console.log(userData);
+      const userData = await axios.post(`${base_URL}users/signup`, signupData);
+     
       navigate("/signin");
       localStorage.setItem("email", JSON.stringify(userData.data.email));
-      localStorage.setItem("first_name", JSON.stringify(userData.data.first_name));
+      localStorage.setItem(
+        "first_name",
+        JSON.stringify(userData.data.first_name)
+      );
+      localStorage.setItem(
+        "last_name",
+        JSON.stringify(userData.data.last_name)
+      );
       alert("Signup Success");
     } catch (error) {
-      alert(error.message);
+      alert(error.response.data.detail);
       setLoading(false);
     }
-    console.log(signupData);
+ 
   };
 
   const toggleDropdown = () => setIsOpen(!isOpen);

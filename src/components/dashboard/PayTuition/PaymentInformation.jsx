@@ -37,7 +37,7 @@ const PaymentInformation = ({ Next }) => {
   };
 
   return (
-    <div>
+    <div className="-ml-[2rem]">
       <div className="w-full  pt-[4rem]">
         <TuitionHeader
           count="2"

@@ -7,7 +7,6 @@ const Wallets = () => {
   return (
     <Dashboard className="flex">
       <Card />
-      
     </Dashboard>
   );
 };
