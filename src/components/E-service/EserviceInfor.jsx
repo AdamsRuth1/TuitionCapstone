@@ -46,7 +46,7 @@ const EserviceInfor = ({ Next }) => {
     setIsOpen(false);
   };
   return (
-    <div className="w-full mb-10 relative">
+    <div className="w-full mb-10 relative ml-[2.5rem]">
       <div>
         {isOpen && (
           <div>

@@ -1,20 +1,23 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import EyeOpen from "../../assets/Icons/eyeOpen.svg";
 import EyeClose from "../../assets/Icons/eyeClose.svg";
 import Button from "../Auth/Button";
 import { Error } from "../../constants/ErrorMessage";
 import axios from "axios";
 import Loading from "../Auth/Loading";
-// import { useSignInContext } from "../../context/SignInContext";
+import { useSignInContext } from "../../context/SignInContext";
 import { base_URL } from "../../config/api_url";
 import { useNavigate } from "react-router-dom";
+import ErrorMessage from "./ErrorMessage";
 
 const SiginInput = () => {
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
   const [disabled, setDisabled] = useState(true);
   const [showpassword, setShowPassword] = useState(false);
-  // const { signInData, setSignInData } = useSignInContext();
+  const { setSignInData } = useSignInContext();
+  const [showErrorMessage, setShowErrorMessage] = useState("");
+
   const [state, setState] = useState({
     email: "",
     password: "",
@@ -52,7 +55,7 @@ const SiginInput = () => {
     }
 
     setState((prevState) => ({ ...prevState, [name]: value }));
-    // setSignInData((prevState) => ({ ...prevState, [name]: value }));
+    setSignInData((prevState) => ({ ...prevState, [name]: value }));
 
     setErrorMessage((prev) => ({
       ...prev,
@@ -68,7 +71,7 @@ const SiginInput = () => {
       const userSignIn = new URLSearchParams();
       userSignIn.append("username", state.email);
       userSignIn.append("password", state.password);
-      console.log(userSignIn);
+      // console.log(userSignIn);
 
       const signIn = await axios.post(`${base_URL}auth/signin`, userSignIn, {
         headers: {
@@ -81,20 +84,9 @@ const SiginInput = () => {
         // console.log(signIn);
         navigate("/dashboard/");
         localStorage.setItem("token", data.access_token);
-        
       }
-      const signInResponse = await axios.post(
-        "https://flutter-backend-54cafc79c811.herokuapp.com/api/auth/signin",
-        {
-          email: state.email,
-          password: state.password,
-        }
-      );
-      console.log(signInResponse.data); // Assuming your API returns data upon successful sign-in
-
-      navigate("/dashboard");
     } catch (error) {
-      alert(error.message); // Basic error handling, improve as per your app's needs
+      setShowErrorMessage(error.response.data.detail);
     } finally {
       setLoading(false);
     }
@@ -105,55 +97,65 @@ const SiginInput = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <div className="pb-4">
-        <label className="moderat-font">Email</label> <br />
+    <div>
+      <form onSubmit={handleSubmit}>
+        <div className="pb-4">
+          <label className="moderat-font">Email</label> <br />
+          <input
+            type="email"
+            name="email"
+            value={state.email}
+            onChange={handleChange}
+            placeholder="Enter Email here"
+            className={`input-style w-[81%] h-[48px] ${
+              errorMessage.email ? "error-border" : ""
+            }`}
+          />
+          <p className="text-red-600" style={{ fontSize: "14px" }}>
+            {errorMessage.email}
+          </p>
+        </div>
+        <label className="moderat-font">Password</label> <br />
         <input
-          type="email"
-          name="email"
-          value={state.email}
+          type={showpassword ? "text" : "password"}
+          name="password"
+          value={state.password}
+          placeholder="Enter Password here"
           onChange={handleChange}
-          placeholder="Enter Email here"
           className={`input-style w-[81%] h-[48px] ${
-            errorMessage.email ? "error-border" : ""
+            errorMessage.password ? "error-border" : ""
           }`}
         />
+        <span
+          className="eyeIcon cursor-pointer"
+          onClick={handlePasswordVisibility}
+        >
+          {showpassword ? (
+            <img src={EyeOpen} alt="eye icon" />
+          ) : (
+            <img src={EyeClose} alt="eye icon" />
+          )}
+        </span>
         <p className="text-red-600" style={{ fontSize: "14px" }}>
-          {errorMessage.email}
+          {errorMessage.password}
         </p>
-      </div>
-      <label className="moderat-font">Password</label> <br />
-      <input
-        type={showpassword ? "text" : "password"}
-        name="password"
-        value={state.password}
-        placeholder="Enter Password here"
-        onChange={handleChange}
-        className={`input-style w-[81%] h-[48px] ${
-          errorMessage.password ? "error-border" : ""
-        }`}
-      />
-      <span className="eyeIcon cursor-pointer" onClick={handlePasswordVisibility}>
-        {showpassword ? (
-          <img src={EyeOpen} alt="eye icon" />
-        ) : (
-          <img src={EyeClose} alt="eye icon" />
-        )}
-      </span>
-      <p className="text-red-600" style={{ fontSize: "14px" }}>
-        {errorMessage.password}
-      </p>
-      <p className="pt-[1rem] moderat-font text-[#606569] font-normal text-[1rem] leading-[1rem]">
-        Forgot password?
-      </p>
-      <div>
-        {loading && <Loading text="Loading..." />}
-        {!loading && (
-          <Button text="Sign In" disable={disabled} />
-        )}
-      </div>
-      <div onClick={LogOut}>Log Out</div>
-    </form>
+        <p className="pt-[1rem] moderat-font text-[#606569] font-normal text-[1rem] leading-[1rem]">
+          Forgot password?
+        </p>
+        <div>
+          {loading && <Loading text="Loading..." />}
+          {!loading && <Button text="Sign In" disable={disabled} />}
+        </div>
+        <div onClick={LogOut}>Log Out</div>
+      </form>
+
+      {showErrorMessage && (
+        <ErrorMessage
+          errormessage={showErrorMessage}
+          onClose={() => setShowErrorMessage("")}
+        />
+      )}
+    </div>
   );
 };
 

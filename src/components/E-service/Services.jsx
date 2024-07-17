@@ -27,7 +27,7 @@ const Services = () => {
   return (
     <Dashboard>
       <div className="w-full flex justify-between">
-        <div className="ml-[2.5rem]">{renderPage()}</div>
+        <div className="">{renderPage()}</div>
         <div className=" mr-[4rem]">
           <TuitionStatus Steps={servicesStatus} activeState={currentPage} />
         </div>

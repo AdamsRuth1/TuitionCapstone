@@ -2,7 +2,7 @@ import TuitionHeader from "../../components/dashboard/PayTuition/TuitionHeader";
 import TuitionButton from "../dashboard/PayTuition/TuitionButton";
 const PaymentInformation = ({ Next }) => {
   return (
-    <div>
+    <div className="ml-[2.5rem]">
       <TuitionHeader
         count="2"
         Total="3"

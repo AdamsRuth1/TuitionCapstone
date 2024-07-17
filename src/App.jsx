@@ -14,10 +14,11 @@ import Blog from "./components/onboarding/BlogPage";
 import EnrollSuccess from "./components/onboarding/EnrollSuccess";
 import ContactUs from "./components/onboarding/contactUs/contactus";
 import Faq from "./components/landingPage/faq";
-import Dashboard from "./components/dashboard/DashboardHome";
+// import Dashboard from "./components/dashboard/DashboardHome";
+import Dashboard from "./components/dashboard/dashbord/DashboardHome"
 import Eservice from "./components/E-service/Services";
 import Tuition from "./components/dashboard/PayTuition/Tuition";
-import Wallet from "./components/dashboard/Wallets";
+import Wallet from "./components/dashboard/wallet/Wallets";
 
 import "./index.css";
 

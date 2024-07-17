@@ -47,12 +47,12 @@ export default function Header() {
             </div>
             <ul className="hidden md:flex space-x-4">
               <li>
-              <Link
-  to="/"
-  className="text-black hover:bg-white hover:text-customButton hover:border-customButton px-4 py-2 border-b border-transparent transition-all duration-300 relative inline-block"
->
-  Home
-</Link>
+                <Link
+                  to="/"
+                  className="text-black hover:bg-white hover:text-customButton hover:border-customButton px-4 py-2 border-b border-transparent transition-all duration-300 relative inline-block"
+                >
+                  Home
+                </Link>
               </li>
               <li>
                 <Link
@@ -65,7 +65,7 @@ export default function Header() {
               <li>
                 <Link
                   to=""
-                  className="text-black hover:bg-white hover:text-customButton hover:border-customButton hover:rounded-full px-4 py-2 border-2 border-transparent transition-all duration-300"
+                  className="text-black hover:bg-white hover:text-customButton hover:border-customButton px-4 py-2 border-b border-transparent transition-all duration-300 relative inline-block"
                 >
                   Testimonial
                 </Link>
@@ -118,8 +118,9 @@ export default function Header() {
                   )}
                 </div>
               </li> */}
-              <li> 
-                <NavLink to="/contactUs"
+              <li>
+                <NavLink
+                  to="/contactUs"
                   className="text-black hover:bg-white hover:text-customButton hover:border-customButton px-4 py-2 border-b border-transparent transition-all duration-300 relative inline-block"
                 >
                   Support
@@ -151,7 +152,7 @@ export default function Header() {
               </li>
               <li>
                 <Link
-                  to="/dashboard"
+                  to="/dashboard/"
                   className="text-black hover:bg-white hover:text-customButton hover:border-customButton hover:rounded-full px-4 py-2 border-2 border-transparent transition-all duration-300"
                 >
                   Testimonial

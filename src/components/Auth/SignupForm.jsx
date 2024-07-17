@@ -117,8 +117,7 @@ const SignupForm = () => {
     setLoading(true);
     try {
       const userData = await axios.post(`${base_URL}users/signup`, signupData);
-      // console.log(signupData);
-      // console.log(userData);
+     
       navigate("/signin");
       localStorage.setItem("email", JSON.stringify(userData.data.email));
       localStorage.setItem(
@@ -134,7 +133,7 @@ const SignupForm = () => {
       alert(error.response.data.detail);
       setLoading(false);
     }
-    // console.log(signupData);
+ 
   };
 
   const toggleDropdown = () => setIsOpen(!isOpen);
