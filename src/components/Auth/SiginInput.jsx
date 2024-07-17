@@ -92,9 +92,7 @@ const SiginInput = () => {
     }
   };
 
-  const LogOut = () => {
-    localStorage.removeItem("token");
-  };
+ 
 
   return (
     <div>
@@ -146,7 +144,7 @@ const SiginInput = () => {
           {loading && <Loading text="Loading..." />}
           {!loading && <Button text="Sign In" disable={disabled} />}
         </div>
-        <div onClick={LogOut}>Log Out</div>
+        {/* <div onClick={LogOut}>Log Out</div> */}
       </form>
 
       {showErrorMessage && (
