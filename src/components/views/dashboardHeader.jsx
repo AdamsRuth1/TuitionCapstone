@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 // import { useSignupContext } from "../../context/SignupContext";
 
+
 import Notification from "../../assets/images/Notification icon.png";
 import Profile from "../../assets/images/Profile empty.png";
 

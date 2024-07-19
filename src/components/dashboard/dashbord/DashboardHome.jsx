@@ -4,6 +4,7 @@ import Profile from "../../../assets/images/Profile empty.png";
 import logo from "../../../assets/images/Vector (4).png";
 import Dashboard from "../../views/dashboard";
 import PaginationBtn from './pagination';
+import HeaderMessage from "../../views/messageDashboard";
 const DashboardHome = () => {
   const [hasMadePayment, setHasMadePayment] = useState(false);
   const [transactions, setTransactions] = useState([]);
@@ -29,7 +30,10 @@ const DashboardHome = () => {
     fetchPaymentData();
   }, []);
   return (
-    <Dashboard>
+    <Dashboard className="relative">
+      <div className="absolute right-10 top-[18]">
+      <HeaderMessage  />
+      </div>
       <div className="mt-16 flex flex-col items-center">
         <div className="mb-4">
           <img src={Profile} alt="Profile" />
