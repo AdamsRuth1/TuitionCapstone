@@ -53,6 +53,16 @@ export default function Card() {
                   selected={selected}
                   onSelect={(code) => setSelected(code)}
                 />
+                  {/* <select
+          className="block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline"
+          // value={selectedOption}
+          // onChange={handleSelectChange}
+        >
+          <option value="" disabled>Select an option</option>
+          <option value="Country">Country</option>
+          <option value="USD">USD</option>
+          <option value="Naira">Naira</option>
+        </select> */}
               </div>
               <div className=" flex mt-4 relative">
                 <h3 className="text-white font-millik text-3xl">
