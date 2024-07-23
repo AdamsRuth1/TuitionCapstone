@@ -4,8 +4,6 @@ import  HeaderMessage from "../../views/messageDashboard";
 const Wallets = () => {
   return (
     <Dashboard >
-     
-
       <Card />
     </Dashboard>
   );

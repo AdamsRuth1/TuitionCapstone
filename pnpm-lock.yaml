@@ -13,7 +13,7 @@ importers:
         version: 1.7.2
       framer-motion:
         specifier: ^11.2.10
-        version: 11.2.10(react-dom@18.3.1)(react@18.3.1)
+        version: 11.2.10(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       react:
         specifier: ^18.2.0
         version: 18.3.1
@@ -22,16 +22,19 @@ importers:
         version: 18.3.1(react@18.3.1)
       react-flags-select:
         specifier: ^2.2.3
-        version: 2.2.3(react-dom@18.3.1)(react@18.3.1)
+        version: 2.2.3(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       react-icons:
         specifier: ^5.2.1
         version: 5.2.1(react@18.3.1)
       react-intersection-observer:
         specifier: ^9.10.3
-        version: 9.10.3(react-dom@18.3.1)(react@18.3.1)
+        version: 9.10.3(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       react-router-dom:
         specifier: ^6.23.1
-        version: 6.23.1(react-dom@18.3.1)(react@18.3.1)
+        version: 6.23.1(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      swiper:
+        specifier: ^11.1.5
+        version: 11.1.5
     devDependencies:
       '@types/react':
         specifier: ^18.2.66
@@ -41,7 +44,7 @@ importers:
         version: 18.3.0
       '@vitejs/plugin-react':
         specifier: ^4.2.1
-        version: 4.3.0(vite@5.2.12)
+        version: 4.3.0(vite@5.2.12(sass@1.77.5))
       autoprefixer:
         specifier: ^10.4.19
         version: 10.4.19(postcss@8.4.38)
@@ -65,7 +68,7 @@ importers:
         version: 3.4.3
       vite:
         specifier: ^5.2.0
-        version: 5.2.12
+        version: 5.2.12(sass@1.77.5)
 
 packages:
 
@@ -1626,6 +1629,10 @@ packages:
     resolution: {integrity: sha512-ot0WnXS9fgdkgIcePe6RHNk1WA8+muPa6cSjeR3V8K27q9BB1rTE3R1p7Hv0z1ZyAc8s6Vvv8DIyWf681MAt0w==}
     engines: {node: '>= 0.4'}
 
+  swiper@11.1.5:
+    resolution: {integrity: sha512-JJQWFXdxiMGC2j6ZGTYat5Z7NN9JORJBgHp0/joX9uPod+cRj0wr5H5VnWSNIz9JeAamQvYKaG7aFrGHIF9OEg==}
+    engines: {node: '>= 4.7.0'}
+
   tailwindcss@3.4.3:
     resolution: {integrity: sha512-U7sxQk/n397Bmx4JHbJx/iSOOv5G+II3f1kpLpY2QeUv5DcPdcTsYLlusZfq1NthHS1c1cZoyFmmkex1rzke0A==}
     engines: {node: '>=14.0.0'}
@@ -2144,14 +2151,14 @@ snapshots:
 
   '@ungap/structured-clone@1.2.0': {}
 
-  '@vitejs/plugin-react@4.3.0(vite@5.2.12)':
+  '@vitejs/plugin-react@4.3.0(vite@5.2.12(sass@1.77.5))':
     dependencies:
       '@babel/core': 7.24.6
       '@babel/plugin-transform-react-jsx-self': 7.24.6(@babel/core@7.24.6)
       '@babel/plugin-transform-react-jsx-source': 7.24.6(@babel/core@7.24.6)
       '@types/babel__core': 7.20.5
       react-refresh: 0.14.2
-      vite: 5.2.12
+      vite: 5.2.12(sass@1.77.5)
     transitivePeerDependencies:
       - supports-color
 
@@ -2713,11 +2720,12 @@ snapshots:
 
   fraction.js@4.3.7: {}
 
-  framer-motion@11.2.10(react-dom@18.3.1)(react@18.3.1):
+  framer-motion@11.2.10(react-dom@18.3.1(react@18.3.1))(react@18.3.1):
     dependencies:
+      tslib: 2.6.3
+    optionalDependencies:
       react: 18.3.1
       react-dom: 18.3.1(react@18.3.1)
-      tslib: 2.6.3
 
   fs.realpath@1.0.0: {}
 
@@ -3155,8 +3163,9 @@ snapshots:
   postcss-load-config@4.0.2(postcss@8.4.38):
     dependencies:
       lilconfig: 3.1.1
-      postcss: 8.4.38
       yaml: 2.4.3
+    optionalDependencies:
+      postcss: 8.4.38
 
   postcss-nested@6.0.1(postcss@8.4.38):
     dependencies:
@@ -3196,7 +3205,7 @@ snapshots:
       react: 18.3.1
       scheduler: 0.23.2
 
-  react-flags-select@2.2.3(react-dom@18.3.1)(react@18.3.1):
+  react-flags-select@2.2.3(react-dom@18.3.1(react@18.3.1))(react@18.3.1):
     dependencies:
       classnames: 2.5.1
       react: 18.3.1
@@ -3207,16 +3216,17 @@ snapshots:
     dependencies:
       react: 18.3.1
 
-  react-intersection-observer@9.10.3(react-dom@18.3.1)(react@18.3.1):
+  react-intersection-observer@9.10.3(react-dom@18.3.1(react@18.3.1))(react@18.3.1):
     dependencies:
       react: 18.3.1
+    optionalDependencies:
       react-dom: 18.3.1(react@18.3.1)
 
   react-is@16.13.1: {}
 
   react-refresh@0.14.2: {}
 
-  react-router-dom@6.23.1(react-dom@18.3.1)(react@18.3.1):
+  react-router-dom@6.23.1(react-dom@18.3.1(react@18.3.1))(react@18.3.1):
     dependencies:
       '@remix-run/router': 1.16.1
       react: 18.3.1
@@ -3437,6 +3447,8 @@ snapshots:
 
   supports-preserve-symlinks-flag@1.0.0: {}
 
+  swiper@11.1.5: {}
+
   tailwindcss@3.4.3:
     dependencies:
       '@alloc/quick-lru': 5.2.0
@@ -3541,13 +3553,14 @@ snapshots:
 
   util-deprecate@1.0.2: {}
 
-  vite@5.2.12:
+  vite@5.2.12(sass@1.77.5):
     dependencies:
       esbuild: 0.20.2
       postcss: 8.4.38
       rollup: 4.18.0
     optionalDependencies:
       fsevents: 2.3.3
+      sass: 1.77.5
 
   which-boxed-primitive@1.0.2:
     dependencies:
