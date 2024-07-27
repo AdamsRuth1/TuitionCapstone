@@ -109,9 +109,9 @@ const SiginInput = () => {
               errorMessage.email ? "error-border" : ""
             }`}
           />
-          <p className="text-red-600" style={{ fontSize: "14px" }}>
+          {/* <p className="text-red-600" style={{ fontSize: "14px" }}>
             {errorMessage.email}
-          </p>
+          </p> */}
         </div>
         <label className="moderat-font">Password</label> <br />
         <input
@@ -134,7 +134,7 @@ const SiginInput = () => {
             <img src={EyeClose} alt="eye icon" />
           )}
         </span>
-        <p className="text-red-600" style={{ fontSize: "14px" }}>
+        <p className="text-red-600 text-[12px]" >
           {errorMessage.password}
         </p>
         <p className="pt-[1rem] moderat-font text-[#606569] font-normal text-[1rem] leading-[1rem]">
