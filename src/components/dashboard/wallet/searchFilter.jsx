@@ -5,7 +5,6 @@ export default function Search({ searchTerm, onSearch }) {
   return (
     <div className="mb-3 xl:w-96 relative">
       <div className="flex items-center">
-        {/* Search icon */}
         <span className="absolute left-8  top-1/2 transform -translate-y-1/2 z-10">
           <img src={Icon} alt="Search Icon" />
         </span>

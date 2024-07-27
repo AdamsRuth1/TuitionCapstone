@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import EyeOpen from "../../assets/Icons/eyeOpen.svg";
 import EyeClose from "../../assets/Icons/eyeClose.svg";
 import Button from "../Auth/Button";
@@ -10,11 +10,11 @@ import { base_URL } from "../../config/api_url";
 import { useNavigate } from "react-router-dom";
 import ErrorMessage from "./ErrorMessage";
 
-const SiginInput = () => {
+const SignInInput = () => {
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
   const [disabled, setDisabled] = useState(true);
-  const [showpassword, setShowPassword] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
   const { setSignInData } = useSignInContext();
   const [showErrorMessage, setShowErrorMessage] = useState("");
 
@@ -27,10 +27,6 @@ const SiginInput = () => {
     password: "",
   });
 
-  const handlePasswordVisibility = () => {
-    setShowPassword(!showpassword);
-  };
-
   const validateEmail = (value) =>
     /^[a-zA-Z0-9._-]+@[a-zA-Z0-9]+\.[a-zA-Z]{2,3}$/.test(value);
 
@@ -39,8 +35,23 @@ const SiginInput = () => {
       value
     );
 
+  const handlePasswordVisibility = () => {
+    setShowPassword(!showPassword);
+  };
+
   const handleChange = (event) => {
     const { name, value } = event.target;
+
+    setState((prevState) => ({
+      ...prevState,
+      [name]: value,
+    }));
+
+    setSignInData((prevState) => ({
+      ...prevState,
+      [name]: value,
+    }));
+
     const isValid =
       name === "email"
         ? validateEmail(value)
@@ -48,20 +59,17 @@ const SiginInput = () => {
         ? validatePassword(value)
         : true;
 
-    if (!isValid) {
-      setDisabled(true);
-    } else {
-      setDisabled(false);
-    }
-
-    setState((prevState) => ({ ...prevState, [name]: value }));
-    setSignInData((prevState) => ({ ...prevState, [name]: value }));
-
     setErrorMessage((prev) => ({
       ...prev,
       [name]: isValid ? "" : Error[name],
     }));
   };
+
+  // Use useEffect to validate the form when the state changes
+  useEffect(() => {
+    const isFormValid = validateEmail(state.email) && validatePassword(state.password);
+    setDisabled(!isFormValid);
+  }, [state.email, state.password]); // Only run the effect when email or password changes
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -71,7 +79,6 @@ const SiginInput = () => {
       const userSignIn = new URLSearchParams();
       userSignIn.append("username", state.email);
       userSignIn.append("password", state.password);
-      // console.log(userSignIn);
 
       const signIn = await axios.post(`${base_URL}auth/signin`, userSignIn, {
         headers: {
@@ -81,7 +88,6 @@ const SiginInput = () => {
 
       if (signIn.status === 200) {
         const data = signIn.data;
-        // console.log(signIn);
         navigate("/dashboard/");
         localStorage.setItem("token", data.access_token);
       }
@@ -91,8 +97,6 @@ const SiginInput = () => {
       setLoading(false);
     }
   };
-
- 
 
   return (
     <div>
@@ -105,9 +109,7 @@ const SiginInput = () => {
             value={state.email}
             onChange={handleChange}
             placeholder="Enter Email here"
-            className={`input-style w-[81%] h-[48px] ${
-              errorMessage.email ? "error-border" : ""
-            }`}
+            className={`input-style w-[81%] h-[48px] ${errorMessage.email ? "error-border" : ""}`}
           />
           {/* <p className="text-red-600" style={{ fontSize: "14px" }}>
             {errorMessage.email}
@@ -115,24 +117,15 @@ const SiginInput = () => {
         </div>
         <label className="moderat-font">Password</label> <br />
         <input
-          type={showpassword ? "text" : "password"}
+          type={showPassword ? "text" : "password"}
           name="password"
           value={state.password}
           placeholder="Enter Password here"
           onChange={handleChange}
-          className={`input-style w-[81%] h-[48px] ${
-            errorMessage.password ? "error-border" : ""
-          }`}
+          className={`input-style w-[81%] h-[48px] ${errorMessage.password ? "error-border" : ""}`}
         />
-        <span
-          className="eyeIcon cursor-pointer"
-          onClick={handlePasswordVisibility}
-        >
-          {showpassword ? (
-            <img src={EyeOpen} alt="eye icon" />
-          ) : (
-            <img src={EyeClose} alt="eye icon" />
-          )}
+        <span className="eyeIcon cursor-pointer" onClick={handlePasswordVisibility}>
+          {showPassword ? <img src={EyeOpen} alt="eye icon" /> : <img src={EyeClose} alt="eye icon" />}
         </span>
         <p className="text-red-600 text-[12px]" >
           {errorMessage.password}
@@ -144,7 +137,6 @@ const SiginInput = () => {
           {loading && <Loading text="Loading..." />}
           {!loading && <Button text="Sign In" disable={disabled} />}
         </div>
-        {/* <div onClick={LogOut}>Log Out</div> */}
       </form>
 
       {showErrorMessage && (
@@ -157,4 +149,4 @@ const SiginInput = () => {
   );
 };
 
-export default SiginInput;
+export default SignInInput;
