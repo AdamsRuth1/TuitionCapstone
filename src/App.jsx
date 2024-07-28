@@ -23,7 +23,7 @@ import Wallet from "./components/dashboard/wallet/Wallets";
 import "./index.css";
 
 function App() {
-  // const isLoggedIn = localStorage.getItem("token");
+  const isLoggedIn = localStorage.getItem("token");
 
   return (
     <SignupContextProvider>
@@ -39,7 +39,7 @@ function App() {
           <Route path="/faq" element={<Faq />} />
           <Route path="*" element={<div>Not Found</div>} />
 
-          {/* <Route
+          <Route
             path="/dashboard"
             element={isLoggedIn ? <Dashboard /> : <SignIn />}
           />
@@ -54,12 +54,12 @@ function App() {
           <Route
             path="/dashboard/wallet"
             element={isLoggedIn ? <Wallet /> : <SignIn />}
-          /> */}
+          />
 
-          <Route path="/dashboard" element={<Dashboard />} />
+          {/* <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/dashboard/tuition" element={<Tuition />} />
           <Route path="/dashboard/e-service" element={<Eservice />} />
-          <Route path="/dashboard/wallet" element={<Wallet />} />
+          <Route path="/dashboard/wallet" element={<Wallet />} /> */}
         </Routes>
       </Router>
     </SignupContextProvider>
