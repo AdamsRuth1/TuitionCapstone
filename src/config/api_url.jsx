@@ -1,1 +1,1 @@
-export const base_URL = "http://localhost:8000/api";
+export const base_URL = "https://flutter-backend-54cafc79c811.herokuapp.com/api/";

@@ -1,13 +1,10 @@
 import Dashboard from "../../views/dashboard";
-import TuitionHeader from "../PayTuition/TuitionHeader";
-import TuitionStatus from "../PayTuition/TuitionStatus";
 import Card from "./cardComponent";
-import History from "./history";
+import  HeaderMessage from "../../views/messageDashboard";
 const Wallets = () => {
   return (
-    <Dashboard className="flex">
+    <Dashboard >
       <Card />
-      
     </Dashboard>
   );
 };

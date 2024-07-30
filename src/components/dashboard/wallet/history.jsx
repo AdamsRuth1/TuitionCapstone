@@ -9,7 +9,6 @@ const history = () => {
           border: "#CCCCCC",
           marginTop: "60px",
           width: "620px",
-          marginLeft: "240px",
         }}
       >
         <div
