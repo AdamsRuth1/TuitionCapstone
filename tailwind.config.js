@@ -70,6 +70,7 @@ module.exports = {
         customBackgroundImage:
           "url('/src/assets/images/Map background (1).png')",
       },
+      
     },
   },
   plugins: [],

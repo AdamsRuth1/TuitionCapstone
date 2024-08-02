@@ -3,13 +3,15 @@ import Close from "../../../assets/images/close.png";
 import USFlag from "../../../assets/images/Frame 373.png";
 import Arrow from "../../../assets/images/Icons Right.png";
 import PrepingCard from "./prepingCard";
+import { useCardContext } from "../../../context/CardContext"; // Adjust path as necessary
+
 
 export default function TopUpCard({ onClose }) {
   const [selectedCurrency, setSelectedCurrency] = useState("USD");
   const [showPrepingCard, setShowPrepingCard] = useState(false);
 
   const handleProceedClick = (event) => {
-    event.preventDefault(); // Prevent form from submitting if using manual handling
+    event.preventDefault();
     setShowPrepingCard(true);
   }
 
@@ -113,3 +115,45 @@ export default function TopUpCard({ onClose }) {
     </div>
   );
 }
+
+// import React, { useState } from "react";
+// import { useCardContext } from "../../../context/CardContext"; // Adjust path as necessary
+// import USFlag from "../../../assets/images/Frame 373.png";
+// import Arrow from "../../../assets/images/Icons Right.png";
+
+// export default function TopUpCard({ onClose }) {
+//   const [selectedCurrency, setSelectedCurrency] = useState("USD");
+//   const [amount, setAmount] = useState("");
+//   const { setTopUpDetails } = useCardContext();
+
+//   const handleProceedClick = (event) => {
+//     event.preventDefault();
+//     setTopUpDetails({ amount, currency: selectedCurrency });
+//     // Show the PrepingCard component
+//   };
+
+//   return (
+//     <form onSubmit={handleProceedClick}>
+//           <div className="flex justify-between items-center mb-[36px]">
+//           <h6 className="font-millik text-customBlack text-lg text-center flex-1">
+//               Top-Up Card
+//             </h6>
+//           </div>
+//       <select
+//         value={selectedCurrency}
+//         onChange={(e) => setSelectedCurrency(e.target.value)}
+//       >
+//         <option value="USD">USD</option>
+//         <option value="NGN">NGN</option>
+//       </select>
+//       <input
+//         type="number"
+//         placeholder="Enter amount"
+//         value={amount}
+//         onChange={(e) => setAmount(e.target.value)}
+//       />
+//       <br/>
+//       <button type="submit">Proceed</button>
+//     </form>
+//   );
+// }
