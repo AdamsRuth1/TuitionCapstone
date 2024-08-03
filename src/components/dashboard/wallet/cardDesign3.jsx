@@ -3,7 +3,7 @@ import Card3 from "../../../assets/images/Group 56.png";
 export default function CardThree() {
   return (
     <div>
-      <div className="mb-[144px] " 
+      <div className=" " 
         style={{
           backgroundImage: `url(${Card3})`,
           width: '364px', 

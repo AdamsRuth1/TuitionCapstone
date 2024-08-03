@@ -53,7 +53,7 @@ export default function Swip() {
             navigation={true}
             modules={[Navigation]}
             
-            className="mySwiper"
+            className="mySwiper w-full h-full"
           >
             <SwiperSlide onClick={() => handleCardClick(<FirstCard />)} className="swiper-slide img mr-10 ml-4">
               <FirstCard />
@@ -64,7 +64,7 @@ export default function Swip() {
             <SwiperSlide onClick={() => handleCardClick(<ThirdCard />)} className="swiper-slide img  mr-10 ml-10">
               <ThirdCard />
             </SwiperSlide>
-            <SwiperSlide onClick={() => handleCardClick(<FourthCard />)} className="swiper-slide img mr-10 ml-4">
+            <SwiperSlide onClick={() => handleCardClick(<FourthCard />)} className="swiper-slide img">
               <FourthCard />
             </SwiperSlide>
           </Swiper>
@@ -72,7 +72,7 @@ export default function Swip() {
 
           <button
             onClick={handleProceedClick}
-            className="bg-[#252E6A] text-white py-[12px] px-[24px] rounded-lg"
+            className="bg-[#252E6A] text-white py-[12px] px-[24px] rounded-lg mt-10"
             style={{ width: "100%" }}
           >
             Proceed

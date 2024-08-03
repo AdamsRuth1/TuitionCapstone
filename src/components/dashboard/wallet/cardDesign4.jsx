@@ -4,7 +4,7 @@ import Card4 from "../../../assets/images/Card 10.png";
 export default function CardFour() {
   return (
     <div>
-      <div className="mb-[144px] " 
+      <div className="" 
         style={{
           backgroundImage: `url(${Card4})`,
           width: '364px', 
@@ -14,7 +14,7 @@ export default function CardFour() {
           borderRadius: '16px' 
         }}
       >
-        hello world
+       
       </div>
     </div>
   );

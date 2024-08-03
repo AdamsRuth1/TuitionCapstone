@@ -4,7 +4,7 @@ import Card1 from "../../../assets/images/Card 7.png";
 export default function CardOne() {
   return (
     <div>
-      <div className="mb-[144px] " 
+      <div className="" 
         style={{
           backgroundImage: `url(${Card1})`,
           width: '364px', 
