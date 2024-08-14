@@ -3,34 +3,38 @@ import SignUpWithGoogle from "../Auth/SignUpWithGoogle";
 import SiginInput from "../Auth/SiginInput";
 import SignInFooter from "../Auth/SignInFooter";
 import Formside from "../Auth/Formside";
+// import { GoogleLogin } from 'react-google-login';
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 const SignIn = () => {
-  const HandleGoogleSignIn = async (e) => {
-    e.preventDefault();
+  const naviage = useNavigate()
+  const handleSuccess = async (response) => {
+    const { tokenId } = response;
+    
     try {
-      const GoogleSignIn = await axios.post(
-        "https://mole-relevant-salmon.ngrok-free.app/api/auth/signin/google"
-      );
-      if (!GoogleSignIn.ok) {
-        alert("message");
-      } else {
-        const Response = await GoogleSignIn;
-        console.log(Response);
-      }
+      
+      const res = await axios.post('https://alt-wave-b-project-backend.onrender.com/api/flutter_app/auth/google', { idToken: tokenId });
+      
+      // Handle successful response from your backend
+      console.log('Backend Response:', res.data);
+      navigate("/dashboard/");
+      
+      // You can store user data or token received from the backend here
     } catch (error) {
-      alert(error);
+      console.error('Error during authentication:', error);
     }
-  };
+  }; 
 
   return (
-    <main className="grid grid-cols-2  bg-white">
-      <div className="pl-[7.5rem]">
-        <div className="">
+    <main className="grid lg:grid-cols-2 md:grid-cols-1 lg:bg-white max-sm:bg-AuthBackground bg-cover bg-no-repeat">
+      <div className="lg:pl-[7.5rem]">
+        {/* <div className="w-full"> */}
           <SignInHeader
             header="Welcome Back"
             Paragraph="Sign in to Tuition to continue"
+            MobileParagraph="Sign in to Tuition to continue"
           />
-          <SignUpWithGoogle HandleGoogleSignIn={HandleGoogleSignIn} />
+          <SignUpWithGoogle HandleGoogleSignIn={handleSuccess} />
 
           <SiginInput />
 
@@ -40,7 +44,7 @@ const SignIn = () => {
             to="/signup"
             footerText="Sign in"
           />
-        </div>
+        {/* </div> */}
       </div>
       <div className="sm:hidden max-sm:hidden lg:block ">
         <Formside />

@@ -1,9 +1,9 @@
-import Nigeria from "../../assets/Icons/Nigeria.svg";
 import Arrow from "../../assets/Icons/Arrrow-down.svg";
 import eyeOpen from "../../assets/Icons/eyeOpen.svg";
 import eyeClose from "../../assets/Icons/eyeClose.svg";
 import Button from "../Auth/Button";
 import { Error } from "../../constants/ErrorMessage";
+import Nigeria from "../../assets/Icons/Nigeria.svg";
 import { useState, useEffect } from "react";
 import { useSignupContext } from "../../context/SignupContext";
 import axios from "axios";
@@ -22,10 +22,10 @@ const SignupForm = () => {
   const [countries, setCountries] = useState([]);
   const [state, setState] = useState({
     email: "",
+    password: "",
     first_name: "",
     last_name: "",
     phone_number: "+",
-    password: "",
   });
 
   const [errorMessage, setErrorMessage] = useState({
@@ -116,24 +116,29 @@ const SignupForm = () => {
     e.preventDefault();
     setLoading(true);
     try {
-      const userData = await axios.post(`${base_URL}users/signup`, signupData);
-     
+      const userData = await axios.post(`${base_URL}auth/register`,signupData);
+      const { email, first_name, last_name } = response.data;
+      
+      localStorage.setItem("email", JSON.stringify(email));
+      localStorage.setItem("first_name", JSON.stringify(first_name));
+      localStorage.setItem("last_name", JSON.stringify(last_name));
+
       navigate("/signin");
-      localStorage.setItem("email", JSON.stringify(userData.data.email));
-      localStorage.setItem(
-        "first_name",
-        JSON.stringify(userData.data.first_name)
-      );
-      localStorage.setItem(
-        "last_name",
-        JSON.stringify(userData.data.last_name)
-      );
+      // localStorage.setItem("email", JSON.stringify(userData.data.email));
+      // localStorage.setItem(
+      //   "first_name",
+      //   JSON.stringify(userData.data.first_name)
+      // );
+      // localStorage.setItem(
+      //   "last_name",
+      //   JSON.stringify(userData.data.last_name)
+      // );
+      console.log(userData);
       alert("Signup Success");
     } catch (error) {
       alert(error.response.data.detail);
       setLoading(false);
     }
- 
   };
 
   const toggleDropdown = () => setIsOpen(!isOpen);
@@ -150,7 +155,7 @@ const SignupForm = () => {
 
   return (
     <form onSubmit={handleSubmit}>
-      <div className="pt-[3rem]">
+      <div className="pt-[3rem] max-sm:w-full ">
         <label className="moderat-font">Email</label> <br />
         <input
           type="email"
@@ -158,12 +163,13 @@ const SignupForm = () => {
           value={state.email}
           placeholder="Enter email here"
           onChange={handleChange}
-          className={`input-style w-[81%] h-[48px] ${
+          className={`input-style max-sm:w-full sm:w-full lg:w-[81%] h-[48px] ${
             errorMessage.email ? "error-border" : ""
           }`}
+          required
         />
-        <div className="flex  py-[1.5rem]">
-          <div>
+        <div className="lg:flex max-sm:block lg:gap-4 sm:block lg:w-[81%]  py-[1.5rem]">
+          <div className="lg:w-[50%]">
             <label className="moderat-font">First Name</label>
             <br />
             <input
@@ -172,12 +178,13 @@ const SignupForm = () => {
               value={state.first_name}
               placeholder="Enter First Name here"
               onChange={handleChange}
-              className={`input-style h-[48px] w-[92%] ${
+              className={`input-style h-[48px] max-sm:w-full sm:w-full  ${
                 errorMessage.first_name ? "error-border" : ""
               }`}
+              required
             />
           </div>
-          <div>
+          <div className="max-sm:pt-6 sm:pt-6 lg:pt-0 ">
             <label className="moderat-font"> Last name</label>
             <br />
             <input
@@ -186,9 +193,10 @@ const SignupForm = () => {
               value={state.last_name}
               placeholder="Enter your last name"
               onChange={handleChange}
-              className={`input-style w-[84%]  h-[48px] ${
+              className={`input-style lg:w-[100%] max-sm:w-full sm:w-full h-[48px] ${
                 errorMessage.last_name ? "error-border" : ""
               }`}
+              required
             />
           </div>
         </div>
@@ -200,11 +208,14 @@ const SignupForm = () => {
             value={state.password}
             placeholder="Choose your password"
             onChange={handleChange}
-            className={`input-style w-[81%]   h-[48px] ${
+            className={`input-style relative lg:w-[81%] max-sm:w-full sm:w-full  h-[48px] ${
               errorMessage.password ? "error-border" : ""
             }`}
           />
-          <span className="eyeIcon" onClick={handlePasswordVisibility}>
+          <span
+            className="cursor-pointer absolute pt-5 -ml-10"
+            onClick={handlePasswordVisibility}
+          >
             {showpassword ? (
               <img src={eyeOpen} alt="eye icon" />
             ) : (
@@ -215,10 +226,10 @@ const SignupForm = () => {
         <p className="text-red-600" style={{ fontSize: "14px" }}>
           {errorMessage.password}
         </p>
-        <div className="pb-[0.7rem] pt-5">
+        <div className="pb-[0.7rem] pt-5 max-sm:w-full lg:w-[81%]">
           <label className="moderat-font"> Phone Number</label> <br />
           <div className="flex gap-0">
-            <div className="dropdown-container absolute">
+            <div className="dropdown-container lg:w-[150px] max-sm:w-[140px] sm:w-[150px]">
               <div className="dropdown-header" onClick={toggleDropdown}>
                 {selectedCountry ? (
                   <div className="dropdown-selected">
@@ -261,9 +272,10 @@ const SignupForm = () => {
             </div>
             <input
               type="tel"
-              className="input-style w-[54.9%] h-[48px] pl-[4rem]  "
+              className="input-style lg:w-[80%] sm:w-full max-sm:w-full h-[48px] pl-[4rem]  "
               name="phone_number"
               value={state.phone_number}
+              required
               onChange={handleChange}
               placeholder="+ Country Code Phone Number"
             />
@@ -272,7 +284,7 @@ const SignupForm = () => {
       </div>
       {/* </div> */}
 
-      <div>
+      
         {loading && <Loading text="Loading..." />}
         {!loading && (
           <Button
@@ -281,7 +293,7 @@ const SignupForm = () => {
             disable={disabled}
           />
         )}
-      </div>
+      {/* </div> */}
     </form>
   );
 };
