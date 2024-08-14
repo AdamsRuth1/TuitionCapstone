@@ -29,7 +29,7 @@ const SignUpWithGoogle = ({ HandleAppleSignIn, HandleGoogleSignIn }) => {
         </div>
       </div>
       <div className="flex pt-[2rem]  text-center pb-3 lg:w-[480px] max-sm:w-[350px]">
-        <div className="line  w-[215px] h-0"></div>
+        <div className="line  ml-4 w-[200px] h-0"></div>
 
         <span className="text-center ">Or</span>
         <div className="line  w-[215px] h-0"></div>

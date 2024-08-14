@@ -99,9 +99,9 @@ const SignInInput = () => {
   };
 
   return (
-    <div>
+    <div className="max-sm:px-[1rem]">
       <form onSubmit={handleSubmit}>
-        <div className="pb-4 max-sm:px-[1rem]">
+        <div className="pb-4 ">
           <label className="moderat-font">Email</label> <br />
           <input
             type="email"
@@ -115,7 +115,7 @@ const SignInInput = () => {
             {errorMessage.email}
           </p> */}
         </div>
-        <div className="max-sm:px-[1rem]">
+        <div className="">
         <label className="moderat-font">Password</label> <br />
         <input
           type={showPassword ? "text" : "password"}

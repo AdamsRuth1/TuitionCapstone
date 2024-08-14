@@ -26,7 +26,7 @@ const SignIn = () => {
   }; 
 
   return (
-    <main className="grid lg:grid-cols-2 md:grid-cols-1 bg-white">
+    <main className="grid lg:grid-cols-2 md:grid-cols-1 lg:bg-white max-sm:bg-AuthBackground bg-cover bg-no-repeat">
       <div className="lg:pl-[7.5rem]">
         {/* <div className="w-full"> */}
           <SignInHeader

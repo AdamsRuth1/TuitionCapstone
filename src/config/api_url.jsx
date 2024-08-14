@@ -1,1 +1,1 @@
-export const base_URL = "https://flutter-backend-54cafc79c811.herokuapp.com/api/";
+export const base_URL = "https://alt-wave-b-project-backend.onrender.com/api/flutter_app/";

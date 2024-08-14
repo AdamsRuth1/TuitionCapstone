@@ -117,17 +117,22 @@ const SignupForm = () => {
     setLoading(true);
     try {
       const userData = await axios.post(`${base_URL}auth/register`,signupData);
+      const { email, first_name, last_name } = response.data;
+      
+      localStorage.setItem("email", JSON.stringify(email));
+      localStorage.setItem("first_name", JSON.stringify(first_name));
+      localStorage.setItem("last_name", JSON.stringify(last_name));
 
       navigate("/signin");
-      localStorage.setItem("email", JSON.stringify(userData.data.email));
-      localStorage.setItem(
-        "first_name",
-        JSON.stringify(userData.data.first_name)
-      );
-      localStorage.setItem(
-        "last_name",
-        JSON.stringify(userData.data.last_name)
-      );
+      // localStorage.setItem("email", JSON.stringify(userData.data.email));
+      // localStorage.setItem(
+      //   "first_name",
+      //   JSON.stringify(userData.data.first_name)
+      // );
+      // localStorage.setItem(
+      //   "last_name",
+      //   JSON.stringify(userData.data.last_name)
+      // );
       console.log(userData);
       alert("Signup Success");
     } catch (error) {
@@ -158,12 +163,12 @@ const SignupForm = () => {
           value={state.email}
           placeholder="Enter email here"
           onChange={handleChange}
-          className={`input-style max-sm:w-full sm:w-full w-[81%] h-[48px] ${
+          className={`input-style max-sm:w-full sm:w-full lg:w-[81%] h-[48px] ${
             errorMessage.email ? "error-border" : ""
           }`}
           required
         />
-        <div className="lg:flex max-sm:block sm:block w-full  py-[1.5rem]">
+        <div className="lg:flex max-sm:block lg:gap-4 sm:block lg:w-[81%]  py-[1.5rem]">
           <div className="lg:w-[50%]">
             <label className="moderat-font">First Name</label>
             <br />
@@ -173,13 +178,13 @@ const SignupForm = () => {
               value={state.first_name}
               placeholder="Enter First Name here"
               onChange={handleChange}
-              className={`input-style h-[48px] max-sm:w-full sm:w-full lg:w-[92%] ${
+              className={`input-style h-[48px] max-sm:w-full sm:w-full  ${
                 errorMessage.first_name ? "error-border" : ""
               }`}
               required
             />
           </div>
-          <div className="max-sm:pt-6 sm:pt-6 lg:pt-0 lg:w-[50%]">
+          <div className="max-sm:pt-6 sm:pt-6 lg:pt-0 ">
             <label className="moderat-font"> Last name</label>
             <br />
             <input
@@ -203,7 +208,7 @@ const SignupForm = () => {
             value={state.password}
             placeholder="Choose your password"
             onChange={handleChange}
-            className={`input-style relative w-[81%] max-sm:w-full sm:w-full  h-[48px] ${
+            className={`input-style relative lg:w-[81%] max-sm:w-full sm:w-full  h-[48px] ${
               errorMessage.password ? "error-border" : ""
             }`}
           />
@@ -221,7 +226,7 @@ const SignupForm = () => {
         <p className="text-red-600" style={{ fontSize: "14px" }}>
           {errorMessage.password}
         </p>
-        <div className="pb-[0.7rem] pt-5 w-full">
+        <div className="pb-[0.7rem] pt-5 max-sm:w-full lg:w-[81%]">
           <label className="moderat-font"> Phone Number</label> <br />
           <div className="flex gap-0">
             <div className="dropdown-container lg:w-[150px] max-sm:w-[140px] sm:w-[150px]">
@@ -267,7 +272,7 @@ const SignupForm = () => {
             </div>
             <input
               type="tel"
-              className="input-style lg:w-[100%] sm:w-full max-sm:w-full h-[48px] pl-[4rem]  "
+              className="input-style lg:w-[80%] sm:w-full max-sm:w-full h-[48px] pl-[4rem]  "
               name="phone_number"
               value={state.phone_number}
               required

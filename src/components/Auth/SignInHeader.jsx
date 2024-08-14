@@ -10,11 +10,11 @@ const SignInHeader = ({ header, Paragraph, MobileParagraph }) => {
           </h1>
           <img src={SignLogo} height="40" alt="Your Logo" />
         </div>
-        <p className=" max-sm:hidden text-[1rem] leading-[1rem] font-normal text-[#606569] w-[354px] moderat-font">
+        <p className=" max-sm:hidden text-[1rem] leading-[1rem] font-normal text-[#606569] lg:w-[354px] sm:w-full moderat-font">
           {Paragraph}
         </p>
         <div className="">
-          <p className="lg:hidden text-[1rem] leading-[1rem] font-normal text-[#606569] w-[354px] moderat-font">
+          <p className="lg:hidden text-[1rem] sm:hidden leading-[1rem] font-normal text-[#606569] w-[354px] moderat-font">
             {MobileParagraph}
           </p>
         </div>
