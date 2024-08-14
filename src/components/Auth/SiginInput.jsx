@@ -80,7 +80,7 @@ const SignInInput = () => {
       userSignIn.append("username", state.email);
       userSignIn.append("password", state.password);
 
-      const signIn = await axios.post(`${base_URL}auth/signin`, userSignIn, {
+      const signIn = await axios.post(`${base_URL}auth/login`, userSignIn, {
         headers: {
           "Content-Type": "application/x-www-form-urlencoded",
         },
@@ -101,7 +101,7 @@ const SignInInput = () => {
   return (
     <div>
       <form onSubmit={handleSubmit}>
-        <div className="pb-4">
+        <div className="pb-4 max-sm:px-[1rem]">
           <label className="moderat-font">Email</label> <br />
           <input
             type="email"
@@ -109,12 +109,13 @@ const SignInInput = () => {
             value={state.email}
             onChange={handleChange}
             placeholder="Enter Email here"
-            className={`input-style w-[81%] h-[48px] ${errorMessage.email ? "error-border" : ""}`}
+            className={`input-style max-sm:w-full  w-[81%] h-[48px] ${errorMessage.email ? "error-border" : ""}`}
           />
           {/* <p className="text-red-600" style={{ fontSize: "14px" }}>
             {errorMessage.email}
           </p> */}
         </div>
+        <div className="max-sm:px-[1rem]">
         <label className="moderat-font">Password</label> <br />
         <input
           type={showPassword ? "text" : "password"}
@@ -122,17 +123,19 @@ const SignInInput = () => {
           value={state.password}
           placeholder="Enter Password here"
           onChange={handleChange}
-          className={`input-style w-[81%] h-[48px] ${errorMessage.password ? "error-border" : ""}`}
+          className={`input-style max-sm:w-full relative w-[81%] h-[48px] ${errorMessage.password ? "error-border" : ""}`}
         />
-        <span className="eyeIcon cursor-pointer" onClick={handlePasswordVisibility}>
+        <span className="absolute pt-5 -ml-10 cursor-pointer" onClick={handlePasswordVisibility}>
           {showPassword ? <img src={EyeOpen} alt="eye icon" /> : <img src={EyeClose} alt="eye icon" />}
         </span>
         <p className="text-red-600 text-[12px]" >
           {errorMessage.password}
         </p>
-        <p className="pt-[1rem] moderat-font text-[#606569] font-normal text-[1rem] leading-[1rem]">
+        </div>
+        
+        {/* <p className="pt-[1rem] moderat-font text-[#606569] font-normal text-[1rem] leading-[1rem]">
           Forgot password?
-        </p>
+        </p> */}
         <div>
           {loading && <Loading text="Loading..." />}
           {!loading && <Button text="Sign In" disable={disabled} />}

@@ -1,40 +1,48 @@
-import { useState } from "react";
-import NextArrow from "../../assets/Icons/NextArrow.png"
-import preArrow from "../../assets/Icons/preArrow.png"
-const Pagination = () => {
-  const [paginate, setPaginate] = useState(false);
 
-  const handlePaginate = () => {
-    setPaginate(paginate);
+
+
+import { useState } from "react";
+import NextArrow from "../../assets/Icons/NextArrow.png";
+import preArrow from "../../assets/Icons/preArrow.png";
+
+const Pagination = ({ currentPage, totalPages, onPageChange }) => {
+  const handlePageChange = (page) => {
+    if (page >= 1 && page <= totalPages) {
+      onPageChange(page);
+    }
   };
-  const pages = [1, 2, 3, 4];
+
   return (
-    <div className="flex justify-center pt-[3.8rem] pb-[13.3rem]">
-      <div className="flex gap-[7.5rem]">
-        <button className="flex gap-[0.45rem] font-Moderat font-normal text-[18px] leading-[22px] text-[#A1A4A8]">
-          <img src={preArrow} alt="previous icon " />
-          Previous
+    <div className="flex flex-col items-center pt-4 pb-8 sm:pt-6 sm:pb-12 md:pt-8 md:pb-16">
+      <div className="flex flex-wrap justify-center gap-4 sm:gap-6 md:gap-8">
+        <button
+          className="flex items-center gap-2 font-Moderat font-normal text-lg leading-6 text-gray-600 disabled:opacity-50 disabled:cursor-not-allowed"
+          onClick={() => handlePageChange(currentPage - 1)}
+          disabled={currentPage === 1}
+        >
+          <img src={preArrow} alt="Previous" className="w-4 h-4 sm:w-5 sm:h-5" />
+          <span className="hidden sm:inline">Previous</span>
         </button>
-        <div className="flex gap-[2.5rem]">
-          {pages.map((num, index) => (
-            <div key={index}>
-              <span
-                className={`w-[27px] h-[38px] bg-[#252E6A] text-white px-[8px] py-[10px] rounded-[4px] ${
-                  paginate === true ? "bg-[#252E6A] text-white" : ""
-                }`}
-              >
-                {num}
-              </span>
-            </div>
+        <div className="flex flex-wrap items-center gap-2 sm:gap-3">
+          {Array.from({ length: totalPages }, (_, index) => (
+            <button
+              key={index}
+              className={`w-8 h-10 flex items-center justify-center bg-blue-900 text-white rounded-md cursor-pointer ${
+                currentPage === index + 1 ? "bg-[#252E6A] text-white" : "bg-gray-400 text-[#252E6A]"
+              } hover:bg-blue-800`}
+              onClick={() => handlePageChange(index + 1)}
+            >
+              {index + 1}
+            </button>
           ))}
         </div>
-
         <button
-          className="font-Moderat flex gap-[0.45rem]  font-normal text-[18px] leading-[22px] text-[#A1A4A8]"
-          onClick={handlePaginate}
+          className="flex items-center gap-2 font-Moderat font-normal text-lg leading-6 text-gray-600 disabled:opacity-50 disabled:cursor-not-allowed"
+          onClick={() => handlePageChange(currentPage + 1)}
+          disabled={currentPage === totalPages}
         >
-          Next
-          <img src={NextArrow} alt="Next icon " />
+          <span className="hidden sm:inline">Next</span>
+          <img src={NextArrow} alt="Next" className="w-4 h-4 sm:w-5 sm:h-5" />
         </button>
       </div>
     </div>

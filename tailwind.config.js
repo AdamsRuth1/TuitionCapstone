@@ -69,6 +69,7 @@ module.exports = {
       backgroundImage: {
         customBackgroundImage:
           "url('/src/assets/images/Map background (1).png')",
+          AuthBackground: "url('/src/assets/images/SignIn-image.svg')",
       },
       
     },

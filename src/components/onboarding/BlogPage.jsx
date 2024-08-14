@@ -1,3 +1,5 @@
+
+
 import Header from "../views/header";
 import Logo from "../../assets/images/SigninLogo copy.svg";
 import Input from "../Blog/Input";
@@ -14,123 +16,74 @@ import Pagination from "../Blog/Pagination";
 import Newsletter from "../Blog/Newletter";
 import searchIcon from "../../assets/Icons/search-icon.png";
 import Footer from "../views/footer";
+
 const BlogPage = () => {
+  const [searchTerm, setSearchTerm] = useState("");
+  const [currentPage, setCurrentPage] = useState(1);
+  const postsPerPage = 3;
+
   const Blogs = [
-    {
-      imgUrl: Blog1,
-      heading: "So You Want To Study Abroad? Top 10 Schools To Choose",
-      choice1: "Study abroad",
-      choice2: "School",
-      choice3: "Finance",
-    },
-    {
-      imgUrl: Blog2,
-      heading:
-        "How To Properly Write A Proposal Letter To Your University Of Choice",
-      choice1: "Travel",
-      choice2: "School",
-      choice3: "Visa",
-    },
-    {
-      imgUrl: Blog3,
-      heading: "Visa Voyage: Demystifying the Application Process",
-      choice1: "Travel",
-      choice2: "Study abroad Visa",
-      choice3: "Visa",
-    },
-    {
-      imgUrl: Blog4,
-      heading: "Easy Steps To Pay For Your Next Coursera Certificate",
-      choice1: "Payment",
-      choice2: "E-learning",
-      choice3: "Finance",
-    },
-    {
-      imgUrl: Blog5,
-      heading: "Easy Steps To Pay For Your Next Coursera Certificate",
-      choice1: "Scholarships",
-      choice2: "E-learning",
-      choice3: "Visa",
-    },
-    {
-      imgUrl: Blog6,
-      heading: "So You Want To Study Abroad? Top 10 Schools To Choose",
-      choice1: "Study abroad",
-      choice2: "School",
-    },
-    {
-      imgUrl: Blog4,
-      heading: "Easy Steps To Pay For Your Next Coursera Certificate",
-      choice1: "Payment",
-      choice2: "E-learning",
-      choice3: "Finance",
-    },
-    {
-      imgUrl: Blog1,
-      heading: "So You Want To Study Abroad? Top 10 Schools To Choose",
-      choice1: "Study abroad",
-      choice2: "School",
-      choice3: "Finance",
-    },
-    {
-      imgUrl: Blog3,
-      heading: "Visa Voyage: Demystifying the Application Process",
-      choice1: "Travel",
-      choice2: "Study abroad Visa",
-      choice3: "Visa",
-    },
+    { imgUrl: Blog1, heading: "So You Want To Study Abroad? Top 10 Schools To Choose", choice1: "Study abroad", choice2: "School", choice3: "Finance" },
+    { imgUrl: Blog2, heading: "How To Properly Write A Proposal Letter To Your University Of Choice", choice1: "Travel", choice2: "School", choice3: "Visa" },
+    { imgUrl: Blog3, heading: "Visa Voyage: Demystifying the Application Process", choice1: "Travel", choice2: "Study abroad Visa", choice3: "Visa" },
+    { imgUrl: Blog4, heading: "Easy Steps To Pay For Your Next Coursera Certificate", choice1: "Payment", choice2: "E-learning", choice3: "Finance" },
+    { imgUrl: Blog5, heading: "Easy Steps To Pay For Your Next Coursera Certificate", choice1: "Scholarships", choice2: "E-learning", choice3: "Visa" },
+    { imgUrl: Blog6, heading: "So You Want To Study Abroad? Top 10 Schools To Choose", choice1: "Study abroad", choice2: "School" },
+    { imgUrl: Blog4, heading: "Easy Steps To Pay For Your Next Coursera Certificate", choice1: "Payment", choice2: "E-learning", choice3: "Finance" },
+    { imgUrl: Blog1, heading: "So You Want To Study Abroad? Top 10 Schools To Choose", choice1: "Study abroad", choice2: "School", choice3: "Finance" },
+    { imgUrl: Blog3, heading: "Visa Voyage: Demystifying the Application Process", choice1: "Travel", choice2: "Study abroad Visa", choice3: "Visa" }
   ];
+
   const [active, setActiveTab] = useState("All");
+  
   const Tabs = [
     "All",
     "Study Abroad",
     "School",
     "Scholarships",
     "Travel",
-    "Student Loans",
+    "Student Loans"
   ];
+
   const handleTabs = (tab) => {
     setActiveTab(tab);
+    setCurrentPage(1); 
   };
 
-  const contentToRender = (blogs) => {
+  const filteredBlogs = Blogs.filter(blog => blog.heading.toLowerCase().includes(searchTerm.toLowerCase()));
+
+  const getPaginatedBlogs = () => {
+    let filtered = filteredBlogs;
+    
     switch (active) {
       case "All":
-        return <Post Blogs={Blogs} />;
+        filtered = filteredBlogs;
+        break;
       case "Study Abroad":
-        return (
-          <Post
-            Blogs={blogs.filter((abroad) => abroad.choice1 === "Study abroad")}
-          />
-        );
-
+        filtered = filteredBlogs.filter(blog => blog.choice1 === "Study abroad");
+        break;
       case "Scholarships":
-        return (
-          <Post
-            Blogs={blogs.filter((abroad) => abroad.choice1 === "Scholarships")}
-          />
-        );
+        filtered = filteredBlogs.filter(blog => blog.choice1 === "Scholarships");
+        break;
       case "Travel":
-        return (
-          <Post Blogs={blogs.filter((school) => school.choice3 === "Visa")} />
-        );
+        filtered = filteredBlogs.filter(blog => blog.choice1 === "Travel");
+        break;
       case "Student Loans":
-        return (
-          <Post
-            Blogs={blogs.filter((school) => school.choice3 === "Finance")}
-          />
-        );
+        filtered = filteredBlogs.filter(blog => blog.choice3 === "Finance");
+        break;
       case "School":
-        return (
-          <Post Blogs={blogs.filter((school) => school.choice2 === "School")} />
-        );
+        filtered = filteredBlogs.filter(blog => blog.choice2 === "School");
+        break;
       default:
-        return null;
+        filtered = [];
+        break;
     }
+
+    const startIndex = (currentPage - 1) * postsPerPage;
+    return filtered.slice(startIndex, startIndex + postsPerPage);
   };
-  const handleGo = () => {
-    alert("clicked Goal.......");
-  };
+
+  const totalPages = Math.ceil(filteredBlogs.length / postsPerPage);
 
   return (
     <section className="relative">
@@ -141,14 +94,18 @@ const BlogPage = () => {
       >
         <Header />
         <div className="">
-          <div className="flex justify-center gap-[1.5rem] lg:pt-[5.75rem]">
-            <img src={Logo} alt=" website logo" />
-            <h1 className="font-millik font-normal text-[38px] leading-[48px] text-[#0A0E27]">
+          <div className="flex justify-center gap-[1.5rem] lg:pt-[5.75rem] max-sm:pt-12 sm:pt-[5rem]">
+            <img
+              src={Logo}
+              alt="website logo"
+              className="max-sm:hidden sm:hidden"
+            />
+            <h1 className="font-millik font-normal lg:text-[38px] sm:text-[1.5rem] max-sm:text-[25px] leading-[48px] text-[#0A0E27]">
               All you need in one place
             </h1>
           </div>
-          <div className="text-center m-auto w-[609px] lg:pt-[1rem]">
-            <p className="font-Modarat font-normal text-[16px] leading-[24px] text-[#606569]">
+          <div className="text-center m-auto lg:w-[609px] max-sm:w-[300px] sm:w-[500px] max-sm:pt-2 lg:pt-[1rem]">
+            <p className="font-Modarat font-normal text-[16px] max-sm:leading-[1.2rem] lg:leading-[24px] text-[#606569]">
               Find essential resources on everything you need to know, from
               program options and visa requirements to budgeting and cultural
               do's and don'ts
@@ -157,22 +114,17 @@ const BlogPage = () => {
           <Input
             text="Go"
             placeholder="Search topics, information"
-            handleClick={handleGo}
             icon={searchIcon}
+            onChange={(e) => setSearchTerm(e.target.value)}
           />
-          <div className=" lg:mx-[6rem] pt-[5.125rem]">
+          <div className="lg:mx-[6rem] pt-[5.125rem] sm:mx-0">
             <div className="flex justify-between lg:pr-[3rem]">
-              <div className="flex gap-[1.5rem]">
+              <div className="flex lg:gap-[1.5rem] max-sm:hidden sm:hidden lg:flex">
                 {Tabs.map((tab, index) => (
                   <div key={index}>
                     <h4
-                      className={`py-[12px] px-[24px] font-Modarat
-                       font-normal text-[16px] leading-[16px] cursor-pointer
-                       ${
-                         active === tab
-                           ? "text-[#0A0E27] border-b border-[#0A0E27]"
-                           : "text-[#51575D]"
-                       }
+                      className={`lg:py-[12px] max-sm:lg:px-[24px] max-sm:pl-2 font-Modarat font-normal lg:text-[16px] max-sm:text-[0.7rem] lg:leading-[16px] cursor-pointer
+                       ${active === tab ? "text-[#0A0E27] border-b border-[#0A0E27]" : "text-[#51575D]"}
                        `}
                       onClick={() => handleTabs(tab)}
                     >
@@ -181,21 +133,28 @@ const BlogPage = () => {
                   </div>
                 ))}
               </div>
-              <div className="">
-                <select className=" py-[12px] px-[24px] -mt-[1.6rem] text-[#51575D] font-normal text-[16px] leading-[16px] cursor-pointer outline-none border border-[#CCCCCC] rounded-[8px]">
-                  <option>See all</option>
+              <div className="max-sm:hidden sm:hidden lg:flex">
+                <select
+                  className="lg:px-2 -mt-[1.6rem] text-[#51575D] font-normal text-[16px] leading-[16px] cursor-pointer outline-none border border-[#CCCCCC] rounded-[8px]"
+                  onChange={(e) => handleTabs(e.target.value)}
+                >
+                  <option value="All">See all</option>
                   <option value="All">All</option>
                   <option value="Study Abroad">Study Abroad</option>
                   <option value="School">School</option>
                   <option value="Scholarships">Scholarships</option>
-                  <option value="Travel">Student Loans</option>
+                  <option value="Travel">Travel</option>
+                  <option value="Student Loans">Student Loans</option>
                 </select>
               </div>
             </div>
-            {contentToRender(Blogs)}
-            <Pagination />
+            <Post Blogs={getPaginatedBlogs()} />
+            <Pagination
+              currentPage={currentPage}
+              totalPages={totalPages}
+              onPageChange={setCurrentPage}
+            />
             <Newsletter />
-           
           </div>
         </div>
       </motion.div>
@@ -205,3 +164,4 @@ const BlogPage = () => {
 };
 
 export default BlogPage;
+
