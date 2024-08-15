@@ -12,6 +12,7 @@ const PaymentInformation = ({ Next }) => {
   const [isPaymentForOpen, setIsPaymentForOpen] = useState(false);
   const [isCountryPaymentOpen, setIsCountryPaymentOpen] = useState(false);
   const [Paymentselect, setPaymentselect] = useState(null);
+  const [CAD, setCAD] = useState("")
   const [selectCountryPayment, setselectCountryPayment] = useState(null);
   const [PaymentSelectFor, setPaymentSelectFor] = useState(null);
   const handlePaymentBy = () => {
@@ -29,6 +30,7 @@ const PaymentInformation = ({ Next }) => {
   };
   const handlePaymentSelectFor = (PayFor) => {
     setPaymentSelectFor(PayFor);
+    setCAD("100")
     setIsPaymentForOpen(false);
   };
   const handleCountrySelect = (Payment) => {
@@ -152,7 +154,7 @@ const PaymentInformation = ({ Next }) => {
                 <img src={ArrowDown} alt="Arrow down icon" />
               </div>
             </div>
-            <div className="w-[298px] h-[48px] border border-[#CCCCCC]"></div>
+            <div className="w-[298px] h-[48px] border border-[#CCCCCC]"> { CAD   }</div>
           </div>
         </div>
 

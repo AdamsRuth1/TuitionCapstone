@@ -9,10 +9,10 @@ export const useSignupContext = () => {
 export const SignupContextProvider = ({ children }) => {
   const [signupData, setSignupData] = useState({
     email: "",
+    password: "",
     first_name: "",
     last_name: "",
-    phone_number: "",
-    password: "",
+    phone_number: "+",
   });
 
   return (

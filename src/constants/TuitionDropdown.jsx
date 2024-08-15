@@ -11,7 +11,7 @@ export const paymentCountry = [
   "Cameroon(XAF)",
   "Cote D'lvoir(XOF)",
   "Kenya(KES)",
-  "Nigeria(USD)",
+  "Nigeria(NAIRA)",
   "South Africa(ZAR)",
   "Uganda(UGX)",
 ];

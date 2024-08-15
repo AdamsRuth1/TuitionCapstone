@@ -25,7 +25,7 @@ const SignupForm = () => {
     password: "",
     first_name: "",
     last_name: "",
-    phone_number: "+",
+    phone_number: "",
   });
 
   const [errorMessage, setErrorMessage] = useState({
@@ -116,25 +116,16 @@ const SignupForm = () => {
     e.preventDefault();
     setLoading(true);
     try {
-      const userData = await axios.post(`${base_URL}auth/register`,signupData);
-      const { email, first_name, last_name } = response.data;
-      
-      localStorage.setItem("email", JSON.stringify(email));
-      localStorage.setItem("first_name", JSON.stringify(first_name));
-      localStorage.setItem("last_name", JSON.stringify(last_name));
+      const userData = await axios.post(`${base_URL}auth/register`, signupData);
+
+      console.log(userData.data.data.user);
+     
 
       navigate("/signin");
-      // localStorage.setItem("email", JSON.stringify(userData.data.email));
-      // localStorage.setItem(
-      //   "first_name",
-      //   JSON.stringify(userData.data.first_name)
-      // );
-      // localStorage.setItem(
-      //   "last_name",
-      //   JSON.stringify(userData.data.last_name)
-      // );
+
       console.log(userData);
-      alert("Signup Success");
+
+      alert(userData.data.message);
     } catch (error) {
       alert(error.response.data.detail);
       setLoading(false);
@@ -284,15 +275,10 @@ const SignupForm = () => {
       </div>
       {/* </div> */}
 
-      
-        {loading && <Loading text="Loading..." />}
-        {!loading && (
-          <Button
-            text="Sign Up"
-            handleSubmit={handleSubmit}
-            disable={disabled}
-          />
-        )}
+      {loading && <Loading text="Loading..." />}
+      {!loading && (
+        <Button text="Sign Up" handleSubmit={handleSubmit} disable={disabled} />
+      )}
       {/* </div> */}
     </form>
   );
