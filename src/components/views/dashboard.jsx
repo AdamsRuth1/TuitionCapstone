@@ -15,7 +15,7 @@ const Dashboard = ({ children }) => {
         <SidebarHeader />
         <div className="flex">
           <DashboardSideBar />
-          <section className="w-full bg-[#FAFAFB] items-center ml-[15rem] flex flex-col">
+          <section className="w-full bg-[#FAFAFB] items-center lg:ml-[15rem] flex flex-col">
             {children}
           </section>
         </div>

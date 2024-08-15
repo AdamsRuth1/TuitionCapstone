@@ -10,6 +10,7 @@ import axios from "axios";
 import { base_URL } from "../../config/api_url";
 import Loading from "../Auth/Loading";
 import { useNavigate } from "react-router-dom";
+import ErrorMessage from "./ErrorMessage";
 
 const SignupForm = () => {
   const navigate = useNavigate();
@@ -20,6 +21,7 @@ const SignupForm = () => {
   const [selectedCountry, setSelectedCountry] = useState(null);
   const [showpassword, setShowPassword] = useState(false);
   const [countries, setCountries] = useState([]);
+  const [showErrorMessage, setShowErrorMessage] = useState("");
   const [state, setState] = useState({
     email: "",
     password: "",
@@ -81,6 +83,8 @@ const SignupForm = () => {
       ...prev,
       [name]: isValid ? "" : Error[name],
     }));
+
+    
   };
 
   const handlePasswordVisibility = () => {
@@ -97,7 +101,7 @@ const SignupForm = () => {
         }));
         setCountries(formattedCountries);
       } catch (error) {
-        console.error("Error fetching countries:", error);
+        // console.error("Error fetching countries:", error);
       }
     };
 
@@ -118,16 +122,16 @@ const SignupForm = () => {
     try {
       const userData = await axios.post(`${base_URL}auth/register`, signupData);
 
-      console.log(userData.data.data.user);
+      // console.log(userData.data.data.user);
      
 
       navigate("/signin");
 
-      console.log(userData);
+      // console.log(userData);
 
-      alert(userData.data.message);
+      // alert(userData.data.message);
     } catch (error) {
-      alert(error.response.data.detail);
+      setShowErrorMessage(error.response?.data?.message || "An error occurred.");
       setLoading(false);
     }
   };
@@ -280,6 +284,13 @@ const SignupForm = () => {
         <Button text="Sign Up" handleSubmit={handleSubmit} disable={disabled} />
       )}
       {/* </div> */}
+
+      {showErrorMessage && (
+        <ErrorMessage
+          errormessage={showErrorMessage}
+          onClose={() => setShowErrorMessage("")}
+        />
+      )}
     </form>
   );
 };

@@ -5,6 +5,7 @@ import logo from "../../../assets/images/Vector (4).png";
 import Dashboard from "../../views/dashboard";
 import PaginationBtn from './pagination';
 import HeaderMessage from "../../views/messageDashboard";
+import DashboardSideBar from "../../views/DashboardSideBar";
 const DashboardHome = () => {
   const [hasMadePayment, setHasMadePayment] = useState(false);
   const [transactions, setTransactions] = useState([]);
@@ -44,7 +45,8 @@ const DashboardHome = () => {
   }, []);
 
   return (
-    <Dashboard className="relative">
+    <Dashboard className=" mx-[10rem]">
+      {/* <DashboardSideBar /> */}
       <div className="absolute right-10 top-[18]">
         <HeaderMessage />
       </div>
@@ -63,7 +65,7 @@ const DashboardHome = () => {
       </div>
 
       {savedCardDetails.length > 0 ? (
-        <div className="bg-customLightBlueGray mt-16 rounded-lg border-b shadow-sm w-[90%] mx-auto flex flex-col text-center">
+        <div className="bg-customLightBlueGray mt-16 rounded-lg border-b shadow-sm w-[90%]  flex flex-col text-center">
           <div className="my-20">
             <div className="mb-10 flex justify-center">
               <img src={logo} alt="Logo" />
@@ -96,8 +98,8 @@ const DashboardHome = () => {
           </div>
         </div>
       ) : hasMadePayment ? (
-        <div className="bg-customLightBlueGray mt-16 rounded-lg border-b shadow-sm w-[90%] flex flex-col text-center">
-          <div className="my-20">
+        <div className="bg-customLightBlueGray mt-16 rounded-lg border-b shadow-sm w-full flex flex-col text-center">
+          <div className="lg:my-20">
             <div className="mb-10 flex justify-center">
               <img src={logo} alt="Logo" />
             </div>
@@ -131,7 +133,7 @@ const DashboardHome = () => {
           </div>
         </div>
       ) : (
-        <div className="bg-customLightBlueGray mt-16 rounded-lg border-b shadow-sm w-2/4 flex flex-col text-center">
+        <div className="bg-customLightBlueGray mt-16 rounded-lg border-b shadow-sm w-full  flex flex-col text-center">
           <div className="my-20">
             <div className="mb-10 flex justify-center">
               <img src={logo} alt="Logo" />
