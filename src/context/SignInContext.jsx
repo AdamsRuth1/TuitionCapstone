@@ -8,7 +8,7 @@ export const useSignInContext = () => {
 
 export const SignInContextProvider = ({ children }) => {
   const [signInData, setSignInData] = useState({
-    username: "",
+    email: "",
     password: "",
   });
 
