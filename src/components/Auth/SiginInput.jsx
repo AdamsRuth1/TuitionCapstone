@@ -76,7 +76,7 @@ const SignInInput = () => {
     setLoading(true);
 
     try {
-      console.log("Sending request with data:", signInData);
+      // console.log("Sending request with data:", signInData);
 
       const signIn = await axios.post(`${base_URL}auth/login`, signInData, {
         headers: {
@@ -93,17 +93,18 @@ const SignInInput = () => {
 
       if (signIn.status === 200) {
         const data = signIn.data;
-        console.log("Response data:", data);
+        // console.log("Response data:", data);
         navigate("/dashboard/");
       }
     } catch (error) {
-      console.error("Error response:", error.response);
-      setShowErrorMessage(error.response?.data?.detail || "An error occurred.");
+      // console.error("Error response:", error.response);
+      setShowErrorMessage(error.response?.data?.message || "An error occurred.");
     } finally {
       setLoading(false);
     }
   };
 
+  
   return (
     <div className="max-sm:px-[1rem]">
       <form onSubmit={handleSubmit}>
@@ -163,6 +164,8 @@ const SignInInput = () => {
           onClose={() => setShowErrorMessage("")}
         />
       )}
+
+      
     </div>
   );
 };
