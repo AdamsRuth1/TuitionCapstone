@@ -49,7 +49,7 @@ const Tuition = () => {
     <Dashboard>
       <div className=" flex gap-[10rem]">
         <div className="">{renderForm()}</div>
-        <div className=" mr-5">
+        <div className=" mr-5 max-sm:hidden">
           <TuitionStatus Steps={Steps} activeState={currentForm} />
         </div>
       </div>

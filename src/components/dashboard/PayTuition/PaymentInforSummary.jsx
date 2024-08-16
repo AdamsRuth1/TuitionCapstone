@@ -2,7 +2,7 @@ import React from 'react'
 
 const PaymentInforSummary = () => {
   return (
-    <div className="w-[436px] h-[184px] bg-[#F2F2F2] py-[24px] px-[16px] rounded-[8px] mb-[2.5rem]">
+    <div className="lg:w-[436px] h-[184px] bg-[#F2F2F2] lg:py-[24px] max-sm:py-5 max-sm:px-2 lg:px-[16px] rounded-[8px] mb-[2.5rem] max-sm:max-10">
       <div className="flex justify-between mb-[1.5rem]">
         <h3 className="font-Modarat font-normal text-[16px] leading-[16px] text-[#51575D]">
           Delivery time

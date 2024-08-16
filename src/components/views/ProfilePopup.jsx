@@ -5,7 +5,11 @@ import LogOut from "../../assets/Icons/LogOut-icon.svg";
 const ProfilePopup = () => {
   const navigate = useNavigate();
   const handleLogOut = () => {
-    localStorage.removeItem("token");
+    // localStorage.removeItem("token");
+    // localStorage.removeItem("email");
+    // localStorage.removeItem("first_name");
+    // localStorage.removeItem("last_name");
+    // localStorage.removeItem("u-id");
     navigate("/signin");
   };
 

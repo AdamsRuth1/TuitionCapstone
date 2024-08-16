@@ -3,7 +3,7 @@ import TuitionHeader from "./TuitionHeader";
 import TuitionButton from "./TuitionButton";
 const StudentInfor = ({ Next }) => {
   return (
-    <div className="w-full pt-[4rem] -ml-[3rem]  ">
+    <div className="w-full pt-[4rem] lg:-ml-[3rem]  ">
       <TuitionHeader
         count="3"
         Total={5}
