@@ -17,24 +17,34 @@ export default function Enroll() {
     contactEmail: "",
   });
 
+  const [errors, setErrors] = useState({
+    schoolName: "",
+    countryName: "",
+    address: "",
+    paymentType: "",
+    contactEmail: "",
+  });
+
   const handleSubmit = async (event) => {
     event.preventDefault();
+
+    // Validation
+    const newErrors = {};
+    if (!formData.schoolName) newErrors.schoolName = "Kindly fill out this field";
+    if (!formData.countryName) newErrors.countryName = "Kindly select your country";
+    if (!formData.address) newErrors.address = "Kindly fill out this field";
+    if (!formData.paymentType) newErrors.paymentType = "Kindly fill out this field";
+    if (!formData.contactEmail) newErrors.contactEmail = "Kindly fill out this field";
+
+    if (Object.keys(newErrors).length > 0) {
+      setErrors(newErrors);
+      return;
+    }
+
     try {
       setIsLoading(true);
-      if (
-        !formData.schoolName ||
-        !formData.countryName ||
-        !formData.address ||
-        !formData.paymentType ||
-        !formData.contactEmail
-      ) {
-        alert("Please fill in all fields");
-        setIsLoading(false);
-        return;
-      }
-
       const endpoint =
-        "https://flutter-backend-54cafc79c811.herokuapp.com/api/institution/institutions";
+        "https://alt-wave-b-project-backend.onrender.com/api/flutter_app/institutions";
       const response = await fetch(endpoint, {
         method: "POST",
         headers: {
@@ -45,9 +55,12 @@ export default function Enroll() {
 
       if (response.ok) {
         navigate("/enrollsuccess");
-      } 
+      } else {
+        throw new Error("Failed to submit the form");
+      }
     } catch (error) {
       alert(error.message);
+    } finally {
       setIsLoading(false);
     }
   };
@@ -55,6 +68,7 @@ export default function Enroll() {
   const handleInputChange = (event) => {
     const { id, value } = event.target;
     setFormData({ ...formData, [id]: value });
+    setErrors({ ...errors, [id]: "" }); // Clear error for the field being edited
   };
 
   return (
@@ -81,13 +95,14 @@ export default function Enroll() {
             <form onSubmit={handleSubmit}>
               <div className="mb-4">
                 <input
-                  className="border rounded w-full md:w-96 py-2 px-3 text-gray-700 border-gray-700 border-opacity-30"
+                  className={`border rounded w-full md:w-96 py-2 px-3 text-gray-700 border-gray-700 border-opacity-30 ${errors.schoolName ? 'border-red-500' : ''}`}
                   id="schoolName"
                   value={formData.schoolName}
                   onChange={handleInputChange}
                   type="text"
                   placeholder="School name"
                 />
+                {errors.schoolName && <p className="text-red-500 text-sm mt-1">{errors.schoolName}</p>}
               </div>
               <div className="mb-4">
                 <ReactFlagsSelect
@@ -95,40 +110,45 @@ export default function Enroll() {
                   onSelect={(code) => {
                     setSelected(code);
                     setFormData({ ...formData, countryName: code });
+                    setErrors({ ...errors, countryName: "" }); // Clear error when country is selected
                   }}
                   searchable
-                  className="text-gray-700 w-full md:w-96"
+                  className={`text-gray-700 w-full md:w-96 ${errors.countryName ? 'border-red-500' : ''}`}
                 />
+                {errors.countryName && <p className="text-red-500 text-sm mt-1">{errors.countryName}</p>}
               </div>
               <div className="mb-4">
                 <input
-                  className="p-4 border border-gray-700 border-opacity-30 rounded w-full md:w-96 h-32"
+                  className={`p-4 border border-gray-700 border-opacity-30 rounded w-full md:w-96 h-32 ${errors.address ? 'border-red-500' : ''}`}
                   placeholder="Address"
                   type="text"
                   value={formData.address}
                   onChange={handleInputChange}
                   id="address"
                 />
+                {errors.address && <p className="text-red-500 text-sm mt-1">{errors.address}</p>}
               </div>
               <div className="mb-4">
                 <input
-                  className="border rounded w-full md:w-96 py-2 px-3 text-gray-700 border-gray-700 border-opacity-30"
+                  className={`border rounded w-full md:w-96 py-2 px-3 text-gray-700 border-gray-700 border-opacity-30 ${errors.paymentType ? 'border-red-500' : ''}`}
                   id="paymentType"
                   type="text"
                   value={formData.paymentType}
                   onChange={handleInputChange}
                   placeholder="Payment type"
                 />
+                {errors.paymentType && <p className="text-red-500 text-sm mt-1">{errors.paymentType}</p>}
               </div>
               <div className="mb-4">
                 <input
-                  className="border rounded w-full md:w-96 py-2 px-3 text-gray-700 border-gray-700 border-opacity-30"
+                  className={`border rounded w-full md:w-96 py-2 px-3 text-gray-700 border-gray-700 border-opacity-30 ${errors.contactEmail ? 'border-red-500' : ''}`}
                   id="contactEmail"
                   type="email"
                   value={formData.contactEmail}
                   onChange={handleInputChange}
                   placeholder="Contact Email"
                 />
+                {errors.contactEmail && <p className="text-red-500 text-sm mt-1">{errors.contactEmail}</p>}
               </div>
               <div className="relative inline-block mb-6">
                 <button

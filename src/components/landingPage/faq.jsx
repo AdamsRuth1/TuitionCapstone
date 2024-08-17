@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 
 const Faq = () => {
   const [activeItem, setActiveItem] = useState(null);
@@ -46,15 +47,18 @@ const Faq = () => {
   ];
 
   return (
-    <div className="mt-32 mb-64 ml-[100px] mr-[100px]">
-        <h1 className=" text-3xl  font-normal font-millik text-customBlack text-50 leading-13 text-center my-14 ">
-               Frequently Asked Questions
-              </h1>
-      <div className="max-w-screen-xlg  mx-12 font-Modarat   ">
+    <div className="my-8 mx-4 sm:mx-8 md:mx-12 lg:mx-24">
+      <h1 className="text-2xl md:text-3xl lg:text-4xl font-millik font-normal text-customBlack text-center my-8">
+        Frequently Asked Questions
+      </h1>
+      <div className="max-w-screen-lg mx-auto font-Modarat">
         {faqs.map((faq) => (
-          <div key={faq.id} className="border-b my-2 border-gray-200">
+          <div
+            key={faq.id}
+            className="border-b my-2 border-gray-200"
+          >
             <button
-              className="flex  justify-between items-center w-full font-medium text-gray-700 hover:text-gray-900 focus:outline-none px-4 py-8"
+              className="flex justify-between items-center w-full font-medium text-gray-700 hover:text-gray-900 focus:outline-none px-4 py-4 md:py-6"
               onClick={() => handleItemClick(faq.id)}
             >
               <span>{faq.question}</span>
@@ -74,11 +78,19 @@ const Faq = () => {
                 />
               </svg>
             </button>
-            {activeItem === faq.id && (
-              <div className="px-4 py-2 text-gray-700">
-                {faq.answer}
-              </div>
-            )}
+            <AnimatePresence>
+              {activeItem === faq.id && (
+                <motion.div
+                  className="px-4 py-2 md:px-6 md:py-4 text-gray-700"
+                  initial={{ height: 0, opacity: 0 }}
+                  animate={{ height: "auto", opacity: 1 }}
+                  exit={{ height: 0, opacity: 0 }}
+                  transition={{ duration: 0.3 }}
+                >
+                  {faq.answer}
+                </motion.div>
+              )}
+            </AnimatePresence>
           </div>
         ))}
       </div>

@@ -18,6 +18,7 @@ import Eservice from "./components/E-service/Services";
 import Tuition from "./components/dashboard/PayTuition/Tuition";
 import Wallet from "./components/dashboard/wallet/Wallets";
 import TargetSavings from "./components/dashboard/target-Savings/target";
+import Profile from "./components/dashboard/profileInput";
 
 import "./index.css";
 
@@ -58,6 +59,10 @@ function App() {
              <Route
               path="/dashboard/target-savings"
               element={isLoggedIn ? <TargetSavings /> : <SignIn />}
+            />
+              <Route
+              path="/dashboard/profile"
+              element={isLoggedIn ? <Profile /> : <SignIn />}
             />
           </Routes>
         </Router>
