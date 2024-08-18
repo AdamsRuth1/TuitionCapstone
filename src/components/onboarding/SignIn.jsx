@@ -16,7 +16,7 @@ const SignIn = () => {
       const res = await axios.post('https://alt-wave-b-project-backend.onrender.com/api/flutter_app/auth/google', { idToken: tokenId });
       
       // Handle successful response from your backend
-      console.log('Backend Response:', res.data);
+      // console.log('Backend Response:', res.data);
       navigate("/dashboard/");
       
       // You can store user data or token received from the backend here

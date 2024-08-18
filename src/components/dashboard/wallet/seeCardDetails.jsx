@@ -1,6 +1,8 @@
 import React from "react";
 import { useCardContext } from "../../../context/CardContext"; // Update path as necessary
 import barner from "../../../assets/images/Banner how to pay.png"
+import { NavLink, Link } from "react-router-dom";
+
 export default function SeeCardDetails() {
   const { cardDetails, enteredDetails, topUpDetails } = useCardContext();
   const Exp = "12/23";
@@ -8,12 +10,12 @@ export default function SeeCardDetails() {
 
   return (
     <div className="mt-10 ">
-         <button
+         <Link to="/dashboard"
         //   className="bg-[#252E6A] text-white py-6 px-6 rounded-lg"
         //   style={{ width: "100%" }}
         >
           <img src={barner}/>
-        </button>
+        </Link>
       <div className=" flex justify-center">
        
         <div className=" mt-[26px] mb-[29px]">
@@ -21,7 +23,7 @@ export default function SeeCardDetails() {
         </div>
       </div>
 
-      <div className="flex justify-between mt-[-120px]">
+      <div className="flex justify-between">
         <div className="flex flex-col">
           <p className="mb-[8px] moderat-font text-base text-[#A1A4A8]">Card Name</p>
           <p className="moderat-font text-lg font-bold text-[#0A0E27]">{enteredDetails.cardType || "N/A"}</p>

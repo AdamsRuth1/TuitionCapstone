@@ -19,7 +19,6 @@ import Tuition from "./components/dashboard/PayTuition/Tuition";
 import Wallet from "./components/dashboard/wallet/Wallets";
 import TargetSavings from "./components/dashboard/target-Savings/target";
 import Profile from "./components/dashboard/profileInput";
-
 import "./index.css";
 
 function App() {

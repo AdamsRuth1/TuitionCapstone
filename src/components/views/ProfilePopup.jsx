@@ -2,6 +2,7 @@ import { useNavigate } from "react-router-dom";
 import Profile from "../../assets/Icons/Profile-icon.svg";
 import Setting from "../../assets/Icons/Settings-icon.svg";
 import LogOut from "../../assets/Icons/LogOut-icon.svg";
+import SignInLogo from "../../assets/images/home.png";
 import { NavLink, Link } from "react-router-dom";
 
 
@@ -14,7 +15,7 @@ const ProfilePopup = () => {
 
   return (
     <div className="">
-      <div className="absolute bg-white w-[248px] h-[200px] top-14 -right-20 p-[1.5rem] rounded-[8px]">
+      <div className="absolute bg-white w-[248px] h-[230px] top-14 -right-20 p-[1.5rem] rounded-[8px]">
         <Link to="/dashboard/profile" className="flex gap-[0.8rem] py-3 w-[224px] h-[48px] rounded-[8px]  padding-[12px]  font-Modarat font-bold text-[#0A0E27] leading-[16px] text-[14px] cursor-pointer">
           <div>
             <img src={Profile} alt="profile icon" />
@@ -39,6 +40,13 @@ const ProfilePopup = () => {
 
           <h4 className="pt-1">Log Out</h4>
         </div>
+        <Link to="/" className="flex gap-[0.8rem] py-3 w-[224px] h-[48px] rounded-[8px]  padding-[12px]  font-Modarat font-bold text-[#0A0E27] leading-[16px] text-[14px] cursor-pointer">
+          <div>
+            <img src={SignInLogo} alt="profile icon" style={{width:"20px", height:"20px"}} />
+          </div>
+
+          <h4 className="pt-1">Home Page</h4>
+        </Link>
       </div>
     </div>
   );

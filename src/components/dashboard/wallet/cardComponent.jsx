@@ -9,8 +9,8 @@ import { BsEye, BsEyeSlash } from "react-icons/bs";
 import History from "./history";
 import Button from "./button";
 import AddWallet from "./addWallet";
-
 import { useState } from "react";
+
 export default function Card() {
   const [selected, setSelected] = useState("US");
   const [showAmount, setShowAmount] = useState(true);
