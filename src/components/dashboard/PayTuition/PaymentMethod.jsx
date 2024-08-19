@@ -1,8 +1,12 @@
-const PaymentMethod = ({ Method, description, image, className }) => {
+
+const PaymentMethod = ({ Method, description, image, className, handleDeposit }) => {
+
   return (
-    <div className="w-[528px] py-[24px] mb-[2.5rem] cursor-pointer  px-[16px] bg-white border border-[#CCCCCC] rounded-[8px]">
+    <div className="w-[528px] py-[24px] mb-[2.5rem] cursor-pointer  px-[16px] bg-white border border-[#CCCCCC] rounded-[8px]" onClick={handleDeposit}>
       <div className="flex gap-[1.7rem]">
-        <div className={`w-[72px] h-[72px] flex items-center pl-1 rounded-full bg-[#D9D9D9] ${className}`}>
+        <div
+          className={`w-[72px] h-[72px] flex items-center pl-1 rounded-full bg-[#D9D9D9] ${className}`}
+        >
           <img src={image} alt="payment method icon" />
         </div>
         <div className="pt-2 ">

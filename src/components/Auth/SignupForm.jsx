@@ -27,7 +27,7 @@ const SignupForm = () => {
     password: "",
     first_name: "",
     last_name: "",
-    phone_number: "",
+    // phone_number: "",
   });
 
   const [errorMessage, setErrorMessage] = useState({
@@ -40,10 +40,13 @@ const SignupForm = () => {
   const validateEmail = (value) =>
     /^[a-zA-Z0-9._-]+@[a-zA-Z0-9]+\.[a-zA-Z]{2,3}$/.test(value);
   const validateName = (value) => /^[a-zA-Z\-']{3,}$/.test(value.trim());
+  // const validatePassword = (value) =>
+  //   /^(?=.*\d)(?=.*[A-Z])(?=.*[a-z])[a-zA-Z._\=\:\*\&\^\%\$\@\#\/-\w]{8,}$/.test(
+  //     value
+  //   );
   const validatePassword = (value) =>
-    /^(?=.*\d)(?=.*[A-Z])(?=.*[a-z])[a-zA-Z._\=\:\*\&\^\%\$\@\#\/-\w]{8,}$/.test(
-      value
-    );
+    /^(?=.*\d)(?=.*[A-Z])(?=.*[a-z])(?=.*[!@#$%^&*()_+{}\[\]:;"'<>,.?/~`|\\-]).{8,}$/.test(value);
+  
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -91,22 +94,22 @@ const SignupForm = () => {
     setShowPassword(!showpassword);
   };
 
-  useEffect(() => {
-    const fetchCountries = async () => {
-      try {
-        const response = await axios.get("https://restcountries.com/v3.1/all");
-        const formattedCountries = response.data.map((country) => ({
-          code: country.ccn3,
-          flagUrl: country.flags.svg,
-        }));
-        setCountries(formattedCountries);
-      } catch (error) {
-        // console.error("Error fetching countries:", error);
-      }
-    };
+  // useEffect(() => {
+  //   const fetchCountries = async () => {
+  //     try {
+  //       const response = await axios.get("https://restcountries.com/v3.1/all");
+  //       const formattedCountries = response.data.map((country) => ({
+  //         code: country.ccn3,
+  //         flagUrl: country.flags.svg,
+  //       }));
+  //       setCountries(formattedCountries);
+  //     } catch (error) {
+  //       // console.error("Error fetching countries:", error);
+  //     }
+  //   };
 
-    fetchCountries();
-  }, []);
+  //   fetchCountries();
+  // }, []);
 
   //  useEffect(() => {
   //    setCountries([
@@ -136,17 +139,17 @@ const SignupForm = () => {
     }
   };
 
-  const toggleDropdown = () => setIsOpen(!isOpen);
-  const handleSelect = (country) => {
-    setSelectedCountry(country);
-    const phoneNumber = `+${country.code}`;
-    setState((prevState) => ({ ...prevState, phone_number: phoneNumber }));
-    setSignupData((prevState) => ({
-      ...prevState,
-      phone_number: phoneNumber,
-    }));
-    setIsOpen(false);
-  };
+  // const toggleDropdown = () => setIsOpen(!isOpen);
+  // const handleSelect = (country) => {
+  //   setSelectedCountry(country);
+  //   const phoneNumber = `+${country.code}`;
+  //   setState((prevState) => ({ ...prevState, phone_number: phoneNumber }));
+  //   setSignupData((prevState) => ({
+  //     ...prevState,
+  //     phone_number: phoneNumber,
+  //   }));
+  //   setIsOpen(false);
+  // };
 
   return (
     <form onSubmit={handleSubmit}>
@@ -221,7 +224,7 @@ const SignupForm = () => {
         <p className="text-red-600" style={{ fontSize: "14px" }}>
           {errorMessage.password}
         </p>
-        <div className="pb-[0.7rem] pt-5 max-sm:w-full lg:w-[81%]">
+        {/* <div className="pb-[0.7rem] pt-5 max-sm:w-full lg:w-[81%]">
           <label className="moderat-font"> Phone Number</label> <br />
           <div className="flex gap-0">
             <div className="dropdown-container lg:w-[150px] max-sm:w-[140px] sm:w-[150px]">
@@ -276,8 +279,8 @@ const SignupForm = () => {
             />
           </div>
         </div>
+      </div> */}
       </div>
-      {/* </div> */}
 
       {loading && <Loading text="Loading..." />}
       {!loading && (

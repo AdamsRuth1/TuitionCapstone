@@ -11,7 +11,9 @@ const Tuition = () => {
   const [currentForm, setCurrentForm] = useState(1);
 
   const handleNext = () => {
-    setCurrentForm((prevForm) => Math.min(prevForm + 1, 5)); // Ensure it doesn't exceed the number of steps
+    setCurrentForm((prevForm) => Math.min(prevForm + 1, 5));
+    
+     // Ensure it doesn't exceed the number of steps
   };
   const handleThreeBack = () => {
     setCurrentForm((prevForm) => Math.max(prevForm - 3, 1)); // Ensure it doesn't go below the first step

@@ -18,11 +18,11 @@ const InstituteInfo = ({ Next }) => {
 
   const Countries = ["USA", "Canada", "Nigeria", "Lithuania", "United Kingdom"];
   const Institutions = [
-    { School: "Unilag", Address: "Unilag Lagos" },
-    { School: "Lasu", Address: "Lasu Lagos" },
-    { School: "Yabatech", Address: "Yaba Lagos" },
-    { School: "UI", Address: "UI Lagos" },
-    { School: "OOU", Address: "OOU Lagos" },
+    { School: "Unilag", Address: "University of Lagos, University Road Lagos Mainland Akoka Yaba, Lagos" },
+    { School: "Lasu", Address: "F58X+87G, Lagos State University, Igbolerin, Lagos 102101, Lagos" },
+    { School: "Yabatech", Address: "Hussey Road,Abule ijesha, Lagos 100001, Lagos" },
+    { School: "UI", Address: "Box 4078, University of Ibadan Post, Ibadan 200001, Oyo." },
+    { School: "OOU", Address: "WRFP+9HF, Ago-Iwoye - Ilisan road, Ago-Iwoye" },
   ];
 
   const toggleCountryDropdown = () => {
@@ -64,7 +64,7 @@ const InstituteInfo = ({ Next }) => {
       });
       Next();
     }
-  };
+  }; 
 
   return (
     <div className="w-full lg:-ml-[4rem] pt-[4rem] mb-[18rem]">
