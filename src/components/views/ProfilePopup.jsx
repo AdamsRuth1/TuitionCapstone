@@ -9,7 +9,11 @@ import { NavLink, Link } from "react-router-dom";
 const ProfilePopup = () => {
   const navigate = useNavigate();
   const handleLogOut = () => {
-    localStorage.removeItem("token");
+    // localStorage.removeItem("token");
+    // localStorage.removeItem("email");
+    // localStorage.removeItem("first_name");
+    // localStorage.removeItem("last_name");
+    // localStorage.removeItem("u-id");
     navigate("/signin");
   };
 

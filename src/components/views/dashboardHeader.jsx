@@ -19,24 +19,26 @@ const dashboardHead = () => {
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 1 }}
     >
-      <div className="flex md:flex justify-end p-2 sticky top-0 bg-white z-10 dashboardheader">
-       <div className="flex flex-col md:flex-col"> 
-        <div className="">
+      <div className="flex md:flex justify-end p-2  max-sm:py-3 sticky top-0 bg-white z-10 dashboardheader">
+       <div className="flex lg:flex-col max-sm:flex-row-reverse  md:flex-col"> 
+        <div className="flex gap-5">
         <button className="">
-          <img src={Notification} alt="Notification icon" className="mr-10" />
+          <img src={Notification} alt="Notification icon" className="" />
         </button>
 
         <button className="" onClick={toggleprofile}>
-          <img src={Profile} alt="Profile icon" className="mr-6" />
+          <img src={Profile} alt="Profile icon" className="lg:mr-6" />
         </button>
         </div>
        
         <div className="mr-10 text-customBlack font-Modarat">
+
           <h1 className="text-base">
             {firstname} {lastname}
           </h1>
           <p className="text-customGray text-xs">{email}</p>
-        </div></div>
+        </div>
+        </div>
        
         {isOpen && (
           <div className="relative">

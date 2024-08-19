@@ -27,7 +27,7 @@ const SignupForm = () => {
     password: "",
     first_name: "",
     last_name: "",
-    phone_number: "",
+    // phone_number: "",
   });
 
   const [errorMessage, setErrorMessage] = useState({
@@ -40,8 +40,9 @@ const SignupForm = () => {
   const validateEmail = (value) =>
     /^[a-zA-Z0-9._-]+@[a-zA-Z0-9]+\.[a-zA-Z]{2,3}$/.test(value);
   const validateName = (value) => /^[a-zA-Z\-']{3,}$/.test(value.trim());
+
   const validatePassword = (value) =>
-    /^(?=.*\d)(?=.*[A-Z])(?=.*[a-z])[a-zA-Z._\=\:\*\&\^\%\$\@\#\/-\w]{8,}$/.test(
+    /^(?=.*\d)(?=.*[A-Z])(?=.*[a-z])(?=.*[!@#$%^&*()_+{}\[\]:;"'<>,.?/~`|\\-]).{8,}$/.test(
       value
     );
 
@@ -83,38 +84,11 @@ const SignupForm = () => {
       ...prev,
       [name]: isValid ? "" : Error[name],
     }));
-
-    
   };
 
   const handlePasswordVisibility = () => {
     setShowPassword(!showpassword);
   };
-
-  useEffect(() => {
-    const fetchCountries = async () => {
-      try {
-        const response = await axios.get("https://restcountries.com/v3.1/all");
-        const formattedCountries = response.data.map((country) => ({
-          code: country.ccn3,
-          flagUrl: country.flags.svg,
-        }));
-        setCountries(formattedCountries);
-      } catch (error) {
-        // console.error("Error fetching countries:", error);
-      }
-    };
-
-    fetchCountries();
-  }, []);
-
-  //  useEffect(() => {
-  //    setCountries([
-  //      { name: "United States", code: "1", flagUrl: "path/to/us_flag.png" },
-  //      { name: "Nigeria", code: "234", flagUrl: "path/to/ng_flag.png" },
-
-  //    ]);
-  //  }, []);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -122,30 +96,17 @@ const SignupForm = () => {
     try {
       const userData = await axios.post(`${base_URL}auth/register`, signupData);
 
-      // console.log(userData.data.data.user);
-     
-
       navigate("/signin");
 
       // console.log(userData);
 
       // alert(userData.data.message);
     } catch (error) {
-      setShowErrorMessage(error.response?.data?.message || "An error occurred.");
+      setShowErrorMessage(
+        error.response?.data?.message || "An error occurred."
+      );
       setLoading(false);
     }
-  };
-
-  const toggleDropdown = () => setIsOpen(!isOpen);
-  const handleSelect = (country) => {
-    setSelectedCountry(country);
-    const phoneNumber = `+${country.code}`;
-    setState((prevState) => ({ ...prevState, phone_number: phoneNumber }));
-    setSignupData((prevState) => ({
-      ...prevState,
-      phone_number: phoneNumber,
-    }));
-    setIsOpen(false);
   };
 
   return (
@@ -212,72 +173,17 @@ const SignupForm = () => {
             onClick={handlePasswordVisibility}
           >
             {showpassword ? (
-              <img src={eyeOpen} alt="eye icon" />
+              <img src={eyeOpen} alt="eye icon"  width={25}/>
             ) : (
               <img src={eyeClose} alt="eye icon" />
             )}
           </span>
         </div>
-        <p className="text-red-600" style={{ fontSize: "14px" }}>
+        <p className="text-red-600 lg:w-[28rem]" style={{ fontSize: "14px" }}>
           {errorMessage.password}
         </p>
-        <div className="pb-[0.7rem] pt-5 max-sm:w-full lg:w-[81%]">
-          <label className="moderat-font"> Phone Number</label> <br />
-          <div className="flex gap-0">
-            <div className="dropdown-container lg:w-[150px] max-sm:w-[140px] sm:w-[150px]">
-              <div className="dropdown-header" onClick={toggleDropdown}>
-                {selectedCountry ? (
-                  <div className="dropdown-selected">
-                    <img
-                      src={selectedCountry.flagUrl}
-                      alt={`${selectedCountry.name} flag`}
-                      width={20}
-                    />
-                    <span>
-                      {selectedCountry.name} ({selectedCountry.code})
-                    </span>
-                  </div>
-                ) : (
-                  <div className="dropdown-selected">
-                    <img src={Nigeria} alt="Nigeria Flag" width={20} />
-                  </div>
-                )}
-                <img src={Arrow} alt="Arrow down icon" className="arrow-icon" />
-              </div>
-              {isOpen && (
-                <div className="dropdown-list">
-                  {countries.map((country, index) => (
-                    <div
-                      key={index}
-                      className="dropdown-item"
-                      onClick={() => handleSelect(country)}
-                    >
-                      <img
-                        src={country.flagUrl}
-                        alt={`${country.name} flag`}
-                        width={20}
-                      />
-                      <span>
-                        {country.name} ({country.code})
-                      </span>
-                    </div>
-                  ))}
-                </div>
-              )}
-            </div>
-            <input
-              type="tel"
-              className="input-style lg:w-[80%] sm:w-full max-sm:w-full h-[48px] pl-[4rem]  "
-              name="phone_number"
-              value={state.phone_number}
-              required
-              onChange={handleChange}
-              placeholder="+ Country Code Phone Number"
-            />
-          </div>
-        </div>
+      
       </div>
-      {/* </div> */}
 
       {loading && <Loading text="Loading..." />}
       {!loading && (

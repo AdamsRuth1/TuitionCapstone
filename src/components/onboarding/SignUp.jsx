@@ -5,8 +5,8 @@ import SignInFooter from "../Auth/SignInFooter";
 
 const SignUp = () => {
   return (
-    <section className="relative max-sm:bg-AuthBackground sm:bg-AuthBackground lg:bg-none bg-cover bg-center bg-no-repeat min-h-screen">
-      <div className="absolute inset-0 max-sm:bg-black opacity-20"></div> {/* Optional overlay */}
+    <section className="relative  lg:bg-none bg-cover bg-center bg-no-repeat min-h-screen">
+      <div className="absolute"></div> {/* Optional overlay */}
       <div className="relative z-10 grid lg:grid-cols-2 max-sm:grid-cols-1 max-sm:px-4 sm:px-6 py-8">
         <div className="lg:pl-24 flex flex-col justify-center">
           <SignInHeader

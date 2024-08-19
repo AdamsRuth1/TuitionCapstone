@@ -42,7 +42,7 @@ function App() {
             <Route path="*" element={<div>Not Found</div>} />
 
             <Route
-              path="/dashboard"
+              path="/dashboard/"
               element={isLoggedIn ? <Dashboard /> : <SignIn />}
             />
             <Route

@@ -30,9 +30,7 @@ const SignInInput = () => {
     /^[a-zA-Z0-9._-]+@[a-zA-Z0-9]+\.[a-zA-Z]{2,3}$/.test(value);
 
   const validatePassword = (value) =>
-    /^(?=.*\d)(?=.*[A-Z])(?=.*[a-z])[a-zA-Z._\=\:\*\&\^\%\$\@\#\/-\w]{8,}$/.test(
-      value
-    );
+    /^(?=.*\d)(?=.*[A-Z])(?=.*[a-z])(?=.*[!@#$%^&*()_+{}\[\]:;"'<>,.?/~`|\\-]).{8,}$/.test(value);
 
   const handlePasswordVisibility = () => {
     setShowPassword(!showPassword);
@@ -141,7 +139,7 @@ const SignInInput = () => {
             onClick={handlePasswordVisibility}
           >
             {showPassword ? (
-              <img src={EyeOpen} alt="eye icon" />
+              <img src={EyeOpen} alt="eye icon" width={25}/>
             ) : (
               <img src={EyeClose} alt="eye icon" />
             )}
