@@ -4,6 +4,7 @@ import { useState } from "react";
 import ArrowDown from "../../../assets/Icons/Arrrow-down.svg";
 import TuitionHeader from "./TuitionHeader";
 import Button from "../Button";
+import axios from "axios";
 
 const InstituteInfo = ({ Next }) => {
   const [isCountryOpen, setIsCountryOpen] = useState(false);
@@ -46,7 +47,7 @@ const InstituteInfo = ({ Next }) => {
     setIsInstituteOpen(false);
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit =  (e) => {
     e.preventDefault();
 
     const hasErrors = {

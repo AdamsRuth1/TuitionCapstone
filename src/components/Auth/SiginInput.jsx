@@ -139,7 +139,7 @@ const SignInInput = () => {
             onClick={handlePasswordVisibility}
           >
             {showPassword ? (
-              <img src={EyeOpen} alt="eye icon" />
+              <img src={EyeOpen} alt="eye icon" width={25}/>
             ) : (
               <img src={EyeClose} alt="eye icon" />
             )}
