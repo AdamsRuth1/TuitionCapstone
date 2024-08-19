@@ -3,6 +3,7 @@ import {
   Routes,
   Route,
 } from "react-router-dom";
+import { GoogleOAuthProvider } from '@react-oauth/google';
 import { SignupContextProvider } from "./context/SignupContext";
 import { CardProvider } from "./context/CardContext"; // Updated import name
 import Landing from "./components/landingPage/landingPage";
@@ -18,14 +19,15 @@ import Eservice from "./components/E-service/Services";
 import Tuition from "./components/dashboard/PayTuition/Tuition";
 import Wallet from "./components/dashboard/wallet/Wallets";
 import TargetSavings from "./components/dashboard/target-Savings/target";
-
+import Profile from "./components/dashboard/profileInput";
 import "./index.css";
 
 function App() {
   const isLoggedIn = localStorage.getItem("token");
 
   return (
-    <SignupContextProvider>
+    <GoogleOAuthProvider clientId="1073252734008-7hcm78qd5c72lsfagh081qspat4k1ach.apps.googleusercontent.com">
+       <SignupContextProvider>
       <CardProvider> 
         <Router>
           <Routes>
@@ -59,10 +61,16 @@ function App() {
               path="/dashboard/target-savings"
               element={isLoggedIn ? <TargetSavings /> : <SignIn />}
             />
+              <Route
+              path="/dashboard/profile"
+              element={isLoggedIn ? <Profile /> : <SignIn />}
+            />
           </Routes>
         </Router>
       </CardProvider> {/* Updated provider name */}
     </SignupContextProvider>
+    </GoogleOAuthProvider>
+   
   );
 }
 

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { motion } from "framer-motion";
 import Header from "../../views/header";
 import { NavLink } from "react-router-dom";
@@ -9,9 +9,9 @@ import Phone from "../../../assets/images/Phone container.png";
 import X from "../../../assets/images/X socials container.png";
 import Faq from "../../../assets/images/FAQs container.png";
 import Bob from "../../../assets/images/Blob 1 (1).png";
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
 import Small from "../../../assets/images/3d_small_people_-_global_manager-removebg-preview 1 (1).png";
+import { useNavigate } from "react-router-dom";
+
 export default function ContactUs() {
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
@@ -22,23 +22,32 @@ export default function ContactUs() {
     message: "",
   });
 
+  const [errors, setErrors] = useState({
+    first_name: "",
+    last_name: "",
+    email: "",
+    message: "",
+  });
+
   const handleSubmit = async (event) => {
     event.preventDefault();
+
+    // Validation
+    const newErrors = {};
+    if (!formData.first_name) newErrors.first_name = "Kindly fill out this field";
+    if (!formData.last_name) newErrors.last_name = "Kindly fill out this field";
+    if (!formData.email) newErrors.email = "Kindly fill out this field";
+    if (!formData.message) newErrors.message = "Kindly fill out this field";
+
+    if (Object.keys(newErrors).length > 0) {
+      setErrors(newErrors);
+      return;
+    }
+
     try {
       setIsLoading(true);
-      if (
-        !formData.first_name ||
-        !formData.last_name ||
-        !formData.email ||
-        !formData.message
-      ) {
-        alert("Please fill in all fields");
-        setIsLoading(false);
-        return;
-      }
-
       const endpoint =
-        "https://flutter-backend-54cafc79c811.herokuapp.com/api/contact/contacts/";
+        "https://alt-wave-b-project-backend.onrender.com/api/flutter_app/contact";
       const response = await fetch(endpoint, {
         method: "POST",
         headers: {
@@ -46,12 +55,15 @@ export default function ContactUs() {
         },
         body: JSON.stringify(formData),
       });
-      console.log("sending data", formData);
+
       if (response.ok) {
         navigate("/enrollsuccess");
+      } else {
+        throw new Error("Failed to send message");
       }
     } catch (error) {
       alert(error.message);
+    } finally {
       setIsLoading(false);
     }
   };
@@ -59,6 +71,7 @@ export default function ContactUs() {
   const handleInputChange = (event) => {
     const { id, value } = event.target;
     setFormData({ ...formData, [id]: value });
+    setErrors({ ...errors, [id]: "" }); // Clear error for the field being edited
   };
 
   return (
@@ -88,9 +101,10 @@ export default function ContactUs() {
                 id="first_name"
                 type="text"
                 onChange={handleInputChange}
-                className="border px-5 py-2 border-customLine rounded-md w-full"
+                className={`border px-5 py-2 border-customLine rounded-md w-full ${errors.first_name ? 'border-red-500' : ''}`}
                 placeholder="Enter first name"
               />
+              {errors.first_name && <p className="text-red-500 text-sm mt-1">{errors.first_name}</p>}
             </div>
             <div className="flex-1">
               <label className="font-Modarat text-lg text-customBlack">Last name</label>
@@ -98,9 +112,10 @@ export default function ContactUs() {
                 id="last_name"
                 type="text"
                 onChange={handleInputChange}
-                className="border px-5 py-2 border-customLine rounded-md w-full"
+                className={`border px-5 py-2 border-customLine rounded-md w-full ${errors.last_name ? 'border-red-500' : ''}`}
                 placeholder="Enter last name"
               />
+              {errors.last_name && <p className="text-red-500 text-sm mt-1">{errors.last_name}</p>}
             </div>
           </div>
           <div className="mb-6">
@@ -109,19 +124,21 @@ export default function ContactUs() {
               type="email"
               id="email"
               onChange={handleInputChange}
-              className="border px-5 py-2 border-customLine rounded-md w-full"
+              className={`border px-5 py-2 border-customLine rounded-md w-full ${errors.email ? 'border-red-500' : ''}`}
               placeholder="example@flutterwave.com"
             />
+            {errors.email && <p className="text-red-500 text-sm mt-1">{errors.email}</p>}
           </div>
           <div className="mb-6">
             <label className="font-Modarat text-lg text-customBlack">Message</label>
             <textarea
               id="message"
               onChange={handleInputChange}
-              className="border w-full py-5 px-3 border-customLine rounded-md resize-none"
+              className={`border w-full py-5 px-3 border-customLine rounded-md resize-none ${errors.message ? 'border-red-500' : ''}`}
               placeholder="Leave an enquiry or complaint for us..."
               style={{ height: "150px", paddingTop: "1rem" }}
             />
+            {errors.message && <p className="text-red-500 text-sm mt-1">{errors.message}</p>}
           </div>
           <button
             type="submit"

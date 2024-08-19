@@ -224,7 +224,7 @@ export default function AltWaveExplore() {
     </div>
           <Faq/>
           <div className='bg-customLightBlueGray  py-16 px-5 mt-36'>
-            <div className='md:ml-24 md:mr-24 mr-[100px] ml-[100px]'>
+            <div className='md:ml-24 md:mr-24 mr-[] ml-[]'>
           <h1 className="  mb-16 text-3xl md:text-50 font-normal font-millik text-customBlack leading-56 text-center">
            Safety and security guaranteed
               </h1> <p className='mb-12  font-Modarat text-customBlack text-xl'>At Flutterwave, we take security seriously, so every payment made on our platform is 100% secure, even exceeding industry standards.!</p> 
