@@ -1,47 +1,52 @@
-import React from "react";
+import React from 'react';
 import { GoogleOAuthProvider, GoogleLogin } from '@react-oauth/google';
-import Google from "../../assets/Icons/Google-icon.svg";
-import Apple from "../../assets/Icons/Apple-Icon.svg";
+import Google from '../../assets/Icons/Google-icon.svg';
+import Apple from '../../assets/Icons/Apple-Icon.svg';
+import { useNavigate } from 'react-router-dom';
 
 const SignUpWithGoogle = ({ HandleAppleSignIn }) => {
-  const handleGoogleSignIn = (response) => {
-    // Send tokenId to your backend API
-    fetch("https://alt-wave-b-project-backend.onrender.com/api/flutter_app/auth/google", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ id_Token: response.credential }),
-    })
-      .then((res) => res.json())
-      .then((data) => {
+  const navigate = useNavigate();
+
+  const handleGoogleSignIn = async (response) => {
+    try {
+      if (response.credential) {
+        const res = await fetch('https://alt-wave-b-project-backend.onrender.com/api/flutter_app/auth/google', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ id_token: response.credential }), // Sending id_token as required by the backend
+        });
+
+        const data = await res.json();
+
         if (data.success) {
-          // Redirect to login or any other page after successful sign-in
-          window.location.href = "/dashboard"; // Change this URL to your desired location
+          navigate('/dashboard');
         } else {
-          // Handle errors or unsuccessful sign-in
-          alert("Sign-In Error: " + data.message);
+          alert('Sign-In Error: ' + data.message);
         }
-      })
-      .catch((error) => {
-        alert("Backend Error: " + error.message);
-      });
+      } else {
+        alert('Failed to retrieve Google ID token.');
+      }
+    } catch (error) {
+      alert('Backend Error: ' + error.message);
+    }
   };
 
   return (
     <div className="pt-[4rem]">
       <div className="pb-[1.5rem] max-sm:pr-[1rem] max-sm:pl-[1rem]">
-        <GoogleOAuthProvider clientId="YOUR_GOOGLE_CLIENT_ID">
+        <GoogleOAuthProvider clientId="1073252734008-7hcm78qd5c72lsfagh081qspat4k1ach.apps.googleusercontent.com">
           <GoogleLogin
             onSuccess={handleGoogleSignIn}
             onFailure={(error) => {
-              alert("Google Sign-In Error: " + error.message);
+              alert('Google Sign-In Error: ' + error.message);
             }}
             render={({ onClick }) => (
               <button
                 onClick={onClick}
                 className="Google-border flex bg-white justify-center rounded-[4px] max-sm:m-auto max-sm:w-full w-[81%] h-[48px] gap-[0.62rem]"
-                >
+              >
                 <img src={Google} alt="Google icon" className="-mt-[0.3rem]" />
                 Continue with Google
               </button>
