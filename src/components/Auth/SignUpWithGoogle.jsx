@@ -42,7 +42,7 @@ const SignUpWithGoogle = () => {
     <div className="pt-[4rem]">
       <div className="pb-[1.5rem] max-sm:pr-[1rem] max-sm:pl-[1rem]">
         <button
-          onClick={() => googleLogin()}
+          onClick={handleSignIn}
           className="Google-border flex bg-white justify-center rounded-[4px] max-sm:m-auto max-sm:w-full w-[81%] h-[48px] gap-[0.62rem]"
         >
           <img src={Google} alt="Google icon" className="-mt-[0.3rem]" />
@@ -51,7 +51,7 @@ const SignUpWithGoogle = () => {
       </div>
       <div className="max-sm:pr-[1rem] max-sm:pl-[1rem]">
         <button
-          // onClick={HandleAppleSignIn}
+        }
           className="Google-border flex bg-white justify-center rounded-[4px] max-sm:m-auto max-sm:w-full w-[81%] h-[48px] gap-[0.62rem]"
         >
           <img src={Apple} alt="Apple icon" className="-mt-[0.3rem]" />
