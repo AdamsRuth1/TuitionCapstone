@@ -9,30 +9,33 @@ import { useNavigate } from 'react-router-dom';
 const SignUpWithGoogle = () => {
   const navigate = useNavigate();
 
-  const googleLogin = useGoogleLogin({
-    onSuccess: (codeResponse) => {
-      // Send the authorization code to the backend server
-      fetch('https://alt-wave-b-project-backend.onrender.com/api/flutter_app/auth/google', {
+  const handleSignIn = async () => {
+    // Initialize Google's OAuth client with your client ID
+    const googleAuth = window.gapi.auth2.getAuthInstance();
+    
+    try {
+      // Sign in the user with Google
+      const googleUser = await googleAuth.signIn();
+      
+      // Retrieve the ID token from the signed-in user
+      const idToken = googleUser.getAuthResponse().id_token;
+      
+      // Send the ID token to your backend
+      await fetch('https://alt-wave-b-project-backend.onrender.com/api/flutter_app/auth/google', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ id_token: codeResponse?.id_token}),
-      })
-      .then(response => response.json())
-      .then(data => {
-        console.log('Backend response:', data);
-      })
-      .catch(error => {
-        console.error('Error:', error);
+        body: JSON.stringify({ id_token: idToken }),
       });
-    },
-    onError: () => {
-      // Handle login errors here
-      console.error('Google login failed');
-    },
-    flow: 'auth-code',
-  });
+
+      // Optionally, handle success or redirect to another page
+      console.log('ID token sent to backend successfully!');
+    } catch (error) {
+      console.error('Error signing in with Google:', error);
+      // Handle error appropriately, e.g., show an error message to the user
+    }
+  };
 
 
   return (
