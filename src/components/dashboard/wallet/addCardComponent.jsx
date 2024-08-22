@@ -1,92 +1,95 @@
-import React, { useState, useEffect } from "react";
-import Details from "./detailsComponent";
-import RoundedCircleButton from "./dotted";
+import React, { useEffect, useState } from "react";
+import { useCardContext } from "../../../context/CardContext";
+import RoundedCircleButton from "./dotted"; // Assuming this is the same button component
 import Search from "./searchFilter";
 
-const AddWallet = () => {
-  const [cards, setCards] = useState([]);
+const CardDetails = () => {
+  const { cardId } = useCardContext();
+  const [cardDetails, setCardDetails] = useState(null);
   const [searchTerm, setSearchTerm] = useState("");
-  const [selectedCardIndex, setSelectedCardIndex] = useState(null);
-  const [showRedDot, setShowRedDot] = useState(false);
+  const [showRedDot, setShowRedDot] = useState(true); // Default to true to show red dot initially
 
-  // Fetch card details from API
   useEffect(() => {
-    const fetchCardDetails = async () => {
-      try {
-        const response = await fetch("https://alt-wave-b-project-backend.onrender.com/api/flutter_app/cards/virtual-cards/{card_id}"); // Replace with your API endpoint
-        const data = await response.json();
+    if (!cardId) {
+      console.error("No cardId provided");
+      return; // Exit if cardId is not available
+    }
 
-        if (Array.isArray(data)) {
-          // Sort cards by creation date in descending order
-          const sortedCards = data.sort((a, b) => new Date(b.enteredDetails.creationDate) - new Date(a.enteredDetails.creationDate));
-          setCards(sortedCards);
-        } else {
-          setCards([]);
+    const fetchCardDetails = async () => {
+      const token = JSON.parse(localStorage.getItem("token"));
+
+      try {
+        const response = await fetch(`https://alt-wave-b-project-backend.onrender.com/api/flutter_app/cards/virtual-cards/${cardId}`, {
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`
+          }
+        });
+
+        if (!response.ok) {
+          throw new Error(`HTTP error! Status: ${response.status}`);
         }
+
+        const data = await response.json();
+        setCardDetails(data); // Update state with fetched data
       } catch (error) {
         console.error("Error fetching card details:", error);
-        setCards([]);
       }
     };
 
-    fetchCardDetails();
-  }, []);
+    fetchCardDetails(); // Call the function to fetch card details
+  }, [cardId]); // Dependency on cardId ensures effect runs when cardId changes
 
   // Handle search input
   const handleSearch = (term) => {
     setSearchTerm(term);
   };
 
-  // Filter cards based on search term
-  const filteredCards = cards.filter((card) =>
-    card.enteredDetails?.description.toLowerCase().includes(searchTerm.toLowerCase())
-  );
-
-  // Function to handle selecting a card
-  const handleSelectCard = (index) => {
-    setSelectedCardIndex(index);
-    setShowRedDot(!showRedDot); // Toggle the red dot
-  };
-
-  // Function to handle clicking the Details button
-  const handleDetailsClick = (index) => {
-    setShowRedDot(!showRedDot); // Toggle the red dot
-    setSelectedCardIndex(index); // Update selected card index
-  };
+  // Filter card details based on search term (though here it will only filter the single card)
+  const filteredCard = cardDetails && cardDetails.data.description.toLowerCase().includes(searchTerm.toLowerCase())
+    ? cardDetails
+    : null;
 
   return (
     <div className="mt-10 h-[400px] overflow-y-auto">
       <Search searchTerm={searchTerm} onSearch={handleSearch} />
 
-      {/* Render saved card details if available and filtered */}
-      {filteredCards.length > 0 ? (
-        filteredCards.map((card, index) => (
-          <div key={index} className="mt-10 mb-10 flex justify-between">
-            <RoundedCircleButton showCircle={showRedDot && index === selectedCardIndex} />
-            <div style={{ marginLeft: "-50px" }}>
-              <p className="font-medium font-Modarat text-base text-BlackFont">
-                {card.enteredDetails?.description || "N/A"}
-              </p>
-              <p style={{ color: "#606569" }} className="text-base font-normal font-Modarat">
-                Created: {card.enteredDetails?.creationDate || "N/A"}
-              </p>
-            </div>
-            <Details onClick={() => handleDetailsClick(index)}>Details</Details>
+      {/* Render card details if available and filtered */}
+      {filteredCard ? (
+        <div className="mt-10 mb-10 flex justify-between">
+          <RoundedCircleButton showCircle={showRedDot} />
+          <div style={{ marginLeft: "-50px" }}>
+            <p className="font-medium font-Modarat text-base text-BlackFont">
+              {filteredCard.data.description || "N/A"}
+            </p>
+            <p style={{ color: "#606569" }} className="text-base font-normal font-Modarat">
+              Created: 
+            </p>
           </div>
-        ))
+    
+          <button 
+  onClick={() => setShowRedDot(!showRedDot)} 
+  className="hover:bg-blue-500 hover:text-white text-customBlack" 
+  style={{
+    textAlign: "center", 
+    borderRadius: "99px", 
+    backgroundColor: "rgb(224, 226, 240)", 
+    padding: "8px 16px", 
+    width: "84px", 
+    margin: "10px"
+  }}
+>
+  Details
+</button>
+        </div>
       ) : (
-        // Render "No cards found" message if no saved card details
-        filteredCards.length === 0 && searchTerm ? (
-          <p className="text-center mt-10">No cards found</p>
-        ) : (
-          // Render a placeholder if no filtered cards and no search term
-          <div className="text-center mt-10">
-            <p>No cards available. Please check back later.</p>
-          </div>
-        )
+        <div className="text-center mt-10">
+          <p>No card details available</p>
+        </div>
       )}
     </div>
   );
 };
 
-export default AddWallet;
+export default CardDetails;
