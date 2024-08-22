@@ -16,7 +16,7 @@ export default function EnterCardDetails({ onClose }) {
     const description = form.description.value;
 
     // Send data with key card_type for backend compatibility
-    setEnteredDetails({ description, card_style: selectedOption });
+    setEnteredDetails({ description, card_type: selectedOption });
     setShowTopUpCard(true);
   };
 
