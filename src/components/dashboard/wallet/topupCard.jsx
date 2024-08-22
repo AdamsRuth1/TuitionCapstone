@@ -3,17 +3,20 @@ import Close from "../../../assets/images/close.png";
 import USFlag from "../../../assets/images/Frame 373.png";
 import Arrow from "../../../assets/images/Icons Right.png";
 import PrepingCard from "./prepingCard";
-import { useCardContext } from "../../../context/CardContext"; // Adjust path as necessary
-
+import { useCardContext } from "../../../context/CardContext";
 
 export default function TopUpCard({ onClose }) {
   const [selectedCurrency, setSelectedCurrency] = useState("USD");
+  const [amount, setAmount] = useState("");
   const [showPrepingCard, setShowPrepingCard] = useState(false);
+  const { setTopUpDetails } = useCardContext();
 
   const handleProceedClick = (event) => {
     event.preventDefault();
+    // Pass currency and top_up_amount to context
+    setTopUpDetails({ top_up_amount: amount, currency: selectedCurrency });
     setShowPrepingCard(true);
-  }
+  };
 
   const handleCurrencyChange = (event) => {
     setSelectedCurrency(event.target.value);
@@ -22,13 +25,9 @@ export default function TopUpCard({ onClose }) {
   const getFlag = (currency) => {
     switch (currency) {
       case "USD":
-        return (
-          <img src={USFlag} alt="USD" className="w-6 h-6 inline-block mr-2" />
-        );
+        return <img src={USFlag} alt="USD" className="w-6 h-6 inline-block mr-2" />;
       case "NGN":
-        return (
-          <img src={USFlag} alt="NGN" className="w-6 h-6 inline-block mr-2" />
-        );
+        return <img src={USFlag} alt="NGN" className="w-6 h-6 inline-block mr-2" />;
       default:
         return null;
     }
@@ -54,12 +53,13 @@ export default function TopUpCard({ onClose }) {
           </div>
         </div>
       ) : (
-        <div>
+        <form onSubmit={handleProceedClick}>
           <div className="flex justify-between items-center mb-[36px]">
             <h6 className="font-millik text-customBlack text-lg text-center flex-1">
               Top-Up Card
             </h6>
             <button
+              type="button"
               onClick={onClose}
               className="bg-[#CCCCCC1A] text-white rounded-full p-0 w-12 h-12 flex items-center justify-center"
             >
@@ -97,63 +97,29 @@ export default function TopUpCard({ onClose }) {
               <input
                 className="py-3 pl-10 pr-3 border border-[#CCCCCC] rounded w-full"
                 placeholder="Enter top-up amount"
+                value={amount}
+                id="top_"
+                onChange={(e) => setAmount(e.target.value)}
+                type="number"
                 required
               />
             </div>
           </div>
           <button
-            onClick={handleProceedClick}
+            type="submit"
             className="bg-[#252E6A] mt-10 rounded-lg px-3 py-3 w-[100%] text-white"
           >
             Proceed
           </button>
-          <button className="border border-[#252E6A] mt-4 rounded-lg px-3 py-3 w-[100%] text-customBlack">
+          <button
+            type="button"
+            className="border border-[#252E6A] mt-4 rounded-lg px-3 py-3 w-[100%] text-customBlack"
+            onClick={onClose}
+          >
             Skip for now
           </button>
-        </div>
+        </form>
       )}
     </div>
   );
 }
-
-// import React, { useState } from "react";
-// import { useCardContext } from "../../../context/CardContext"; // Adjust path as necessary
-// import USFlag from "../../../assets/images/Frame 373.png";
-// import Arrow from "../../../assets/images/Icons Right.png";
-
-// export default function TopUpCard({ onClose }) {
-//   const [selectedCurrency, setSelectedCurrency] = useState("USD");
-//   const [amount, setAmount] = useState("");
-//   const { setTopUpDetails } = useCardContext();
-
-//   const handleProceedClick = (event) => {
-//     event.preventDefault();
-//     setTopUpDetails({ amount, currency: selectedCurrency });
-//     // Show the PrepingCard component
-//   };
-
-//   return (
-//     <form onSubmit={handleProceedClick}>
-//           <div className="flex justify-between items-center mb-[36px]">
-//           <h6 className="font-millik text-customBlack text-lg text-center flex-1">
-//               Top-Up Card
-//             </h6>
-//           </div>
-//       <select
-//         value={selectedCurrency}
-//         onChange={(e) => setSelectedCurrency(e.target.value)}
-//       >
-//         <option value="USD">USD</option>
-//         <option value="NGN">NGN</option>
-//       </select>
-//       <input
-//         type="number"
-//         placeholder="Enter amount"
-//         value={amount}
-//         onChange={(e) => setAmount(e.target.value)}
-//       />
-//       <br/>
-//       <button type="submit">Proceed</button>
-//     </form>
-//   );
-// }

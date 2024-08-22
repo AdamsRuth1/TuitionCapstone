@@ -18,10 +18,10 @@ export default function Swip() {
   const [selectedCard, setSelectedCard] = React.useState(null);
   const [showEnterCardDetails, setShowEnterCardDetails] = React.useState(false);
 
-  const handleCardClick = (card) => {
-    console.log("Card clicked:", card);
-    setSelectedCard(card);
-    setCardDetails(card);
+  const handleCardClick = (card_style) => {
+    console.log("Card clicked:", card_style);
+    setSelectedCard(card_style);
+    setCardDetails(card_style);
   };
 
   const handleProceedClick = () => {
@@ -57,24 +57,28 @@ export default function Swip() {
             <SwiperSlide
               onClick={() => handleCardClick(<FirstCard />)}
               className="swiper-slide img mr-10 ml-4"
+              id="card_style"
             >
               <FirstCard />
             </SwiperSlide>
             <SwiperSlide
               onClick={() => handleCardClick(<SecondCard />)}
               className="swiper-slide img ml-10 "
+              id="card_style"
             >
               <SecondCard />
             </SwiperSlide>
             <SwiperSlide
               onClick={() => handleCardClick(<ThirdCard />)}
               className="swiper-slide img  mr-10 ml-10"
+              id="card_style"
             >
               <ThirdCard />
             </SwiperSlide>
             <SwiperSlide
               onClick={() => handleCardClick(<FourthCard />)}
               className="swiper-slide img"
+              id="card_style"
             >
               <FourthCard />
             </SwiperSlide>

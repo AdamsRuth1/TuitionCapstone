@@ -1,49 +1,35 @@
 import React, { useState, useEffect } from "react";
 import Details from "./detailsComponent";
 import RoundedCircleButton from "./dotted";
-import Search from "./searchFilter"; 
-
-
-const Cards = [
-  {
-    bank: "Monobank Card",
-    date: "2nd May 2021",
-    showCircle: false,
-  },
-  {
-    bank: "Subscription Card",
-    date: "26th May 2021",
-    showCircle: false,
-  },
-  {
-    bank: "Coursera Card",
-    date: "13th June 2021",
-    showCircle: false,
-  },
-];
+import Search from "./searchFilter";
 
 const AddWallet = () => {
-  const [cards, setCards] = useState(Cards);
+  const [cards, setCards] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedCardIndex, setSelectedCardIndex] = useState(null);
-  const [savedCardDetails, setSavedCardDetails] = useState([]);
   const [showRedDot, setShowRedDot] = useState(false);
 
-  // Retrieve card details from local storage
+  // Fetch card details from API
   useEffect(() => {
-    const savedCardData = localStorage.getItem("cardData");
-    try {
-      const parsedData = savedCardData ? JSON.parse(savedCardData) : [];
-      if (Array.isArray(parsedData)) {
-        // Sort cards by creation date in descending order
-        const sortedCards = parsedData.sort((a, b) => new Date(b.enteredDetails.creationDate) - new Date(a.enteredDetails.creationDate));
-        setSavedCardDetails(sortedCards);
-      } else {
-        setSavedCardDetails([]);
+    const fetchCardDetails = async () => {
+      try {
+        const response = await fetch("https://alt-wave-b-project-backend.onrender.com/api/flutter_app/cards/virtual-cards/{card_id}"); // Replace with your API endpoint
+        const data = await response.json();
+
+        if (Array.isArray(data)) {
+          // Sort cards by creation date in descending order
+          const sortedCards = data.sort((a, b) => new Date(b.enteredDetails.creationDate) - new Date(a.enteredDetails.creationDate));
+          setCards(sortedCards);
+        } else {
+          setCards([]);
+        }
+      } catch (error) {
+        console.error("Error fetching card details:", error);
+        setCards([]);
       }
-    } catch (error) {
-      setSavedCardDetails([]);
-    }
+    };
+
+    fetchCardDetails();
   }, []);
 
   // Handle search input
@@ -51,8 +37,8 @@ const AddWallet = () => {
     setSearchTerm(term);
   };
 
-  // Filter saved cards based on search term
-  const filteredSavedCards = savedCardDetails.filter((card) =>
+  // Filter cards based on search term
+  const filteredCards = cards.filter((card) =>
     card.enteredDetails?.description.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
@@ -73,8 +59,8 @@ const AddWallet = () => {
       <Search searchTerm={searchTerm} onSearch={handleSearch} />
 
       {/* Render saved card details if available and filtered */}
-      {filteredSavedCards.length > 0 ? (
-        filteredSavedCards.map((card, index) => (
+      {filteredCards.length > 0 ? (
+        filteredCards.map((card, index) => (
           <div key={index} className="mt-10 mb-10 flex justify-between">
             <RoundedCircleButton showCircle={showRedDot && index === selectedCardIndex} />
             <div style={{ marginLeft: "-50px" }}>
@@ -90,27 +76,13 @@ const AddWallet = () => {
         ))
       ) : (
         // Render "No cards found" message if no saved card details
-        filteredSavedCards.length === 0 && searchTerm ? (
+        filteredCards.length === 0 && searchTerm ? (
           <p className="text-center mt-10">No cards found</p>
         ) : (
-          // Render static cards if no saved card details and no search term
-          cards.map((card, index) => (
-            <div key={index} className="mb-10 mt-10 flex justify-between">
-              <RoundedCircleButton
-                onClick={() => handleSelectCard(index)}
-                showCircle={index === selectedCardIndex && showRedDot}
-              />
-              <div style={{ marginLeft: "-50px" }}>
-                <p className="font-medium font-Modarat text-base text-BlackFont">
-                  {card.bank}
-                </p>
-                <p style={{ color: "#606569" }} className="text-base font-normal font-Modarat">
-                  Created: {card.date}
-                </p>
-              </div>
-              <Details onClick={() => handleSelectCard(index)}>Details</Details>
-            </div>
-          ))
+          // Render a placeholder if no filtered cards and no search term
+          <div className="text-center mt-10">
+            <p>No cards available. Please check back later.</p>
+          </div>
         )
       )}
     </div>

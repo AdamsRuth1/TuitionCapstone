@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import { useCardContext } from './../../../context/CardContext';
 import TopUpCard from './topupCard';
 import Close from "../../../assets/images/close.png";
@@ -12,11 +12,16 @@ export default function EnterCardDetails({ onClose }) {
 
   const handleProceedClick = (event) => {
     event.preventDefault();
-    setEnteredDetails({ description: event.target.description.value, cardType: selectedOption });
+    const form = event.target;
+    const description = form.description.value;
+
+    // Send data with key card_type for backend compatibility
+    setEnteredDetails({ description, card_style: selectedOption });
     setShowTopUpCard(true);
   };
 
   const options = ["Single-use virtual card", "Multi-use virtual card"];
+
   const handleOptionClick = (option) => {
     setSelectedOption(option);
     setIsOpen(false);
@@ -61,13 +66,12 @@ export default function EnterCardDetails({ onClose }) {
             <div className="relative">
               <input
                 type="text"
-                name="cardType"
+                name="card_type"
                 placeholder="Select card type"
                 value={selectedOption}
                 className="px-12 py-2 rounded border border-[#CCCCCC] mt-[8px] w-full text-[#A1A4A8]"
-                
                 onClick={() => setIsOpen(!isOpen)}
-                required
+                readOnly
               />
               <img
                 src={Arrow}
