@@ -1,5 +1,3 @@
-
-
 import TuitionHeader from "../../components/dashboard/PayTuition/TuitionHeader";
 import TuitionButton from "../dashboard/PayTuition/TuitionButton";
 
@@ -58,4 +56,3 @@ const PaymentInformation = ({ Next }) => {
 };
 
 export default PaymentInformation;
-
