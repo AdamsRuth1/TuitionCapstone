@@ -14,7 +14,7 @@ export default function TopUpCard({ onClose }) {
   const handleProceedClick = (event) => {
     event.preventDefault();
     // Pass currency and top_up_amount to context
-    setTopUpDetails({ top_up_amount: amount, currency: selectedCurrency });
+    setTopUpDetails({ top_up_amount: parseFloat(amount) || 0, currency: selectedCurrency });
     setShowPrepingCard(true);
   };
 
@@ -98,7 +98,7 @@ export default function TopUpCard({ onClose }) {
                 className="py-3 pl-10 pr-3 border border-[#CCCCCC] rounded w-full"
                 placeholder="Enter top-up amount"
                 value={amount}
-                id="top_"
+                id="top_up_amount"
                 onChange={(e) => setAmount(e.target.value)}
                 type="number"
                 required
