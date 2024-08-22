@@ -28,7 +28,7 @@ const Services = () => {
     <Dashboard>
       <div className="w-full flex justify-between">
         <div className="">{renderPage()}</div>
-        <div className=" mr-[4rem]">
+        <div className=" mr-[4rem] max-sm:hidden flex">
           <TuitionStatus Steps={servicesStatus} activeState={currentPage} />
         </div>
       </div>

@@ -1,12 +1,11 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { useFlutterwave, closePaymentModal } from 'flutterwave-react-v3';
+import { useFlutterwave, closePaymentModal } from "flutterwave-react-v3";
 
 import TuitionHeader from "./TuitionHeader";
 import PaymentMethod from "./PaymentMethod";
 import TuitionWalletPayment from "./TuitionWalletPayment";
 import SuccessModal from "./SuccessModal";
-
 import Payment01 from "../../../assets/images/payment01.png";
 import card02 from "../../../assets/images/card02.png";
 import wallet04 from "../../../assets/images/wallet04.png";
@@ -17,6 +16,7 @@ const CompletePayment = () => {
   const [inputAmount, setInputAmount] = useState("");
   const [showModal, setShowModal] = useState(false);
   const [showSuccessModal, setShowSuccessModal] = useState(false);
+
   const navigate = useNavigate();
 
   const toggleModal = () => {
@@ -51,6 +51,7 @@ const CompletePayment = () => {
 
     handleFlutterPayment({
       callback: function (data) {
+        // Successful payment
         const newBalance = amount + numericAmount;
         setAmount(newBalance);
         localStorage.setItem("amount", newBalance);
@@ -61,23 +62,27 @@ const CompletePayment = () => {
           date: new Date().toISOString(),
         };
 
-        let transactions = JSON.parse(localStorage.getItem("transactions")) || [];
+        let transactions =
+          JSON.parse(localStorage.getItem("transactions")) || [];
         transactions.push(transaction);
+        console.log("Setting showSuccessModal to true");
+        setShowSuccessModal(true);
         localStorage.setItem("transactions", JSON.stringify(transactions));
 
-        setShowSuccessModal(true);
         closePaymentModal();
 
-        setTimeout(() => {
-          navigate("/dashboard/");
-        }, 3000); // Wait for 3 seconds before navigating
+        setShowSuccessModal(true);
       },
       onClose: function () {
+        setShowSuccessModal(true);
+
         setShowModal(false);
       },
     }).catch((error) => {
       console.error("Payment error:", error);
+
       closePaymentModal();
+      l;
       setShowModal(false);
     });
   };
@@ -92,12 +97,14 @@ const CompletePayment = () => {
   };
 
   return (
-    <div className="w-full ml-[3rem] pt-[4rem] mb-[18rem]">
+    <div className="w-full lg:ml-[3rem] pt-[4rem] mb-[18rem]">
       <TuitionHeader
         count="5"
+        Total="5"
         Header="Complete Payment"
         Paragraph="Confirm your bank’s transaction limit and choose your preferred payment method"
       />
+
       <PaymentMethod
         image={Payment01}
         Method="Generate Payment Link"
