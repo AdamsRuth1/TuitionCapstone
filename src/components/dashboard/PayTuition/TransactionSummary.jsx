@@ -7,9 +7,10 @@ const TransactionSummary = ({
   TwoStepsBack,
   OneStepBack,
 }) => {
-  const style = "w-[470px]";
+  const style = "lg:w-[470px] max-sm:w-[370px]";
   return (
     <div className=" pt-[4rem]  ">
+      <div className="max-sm:-ml-5">
       <TuitionHeader
         count="4"
         Total={5}
@@ -18,6 +19,8 @@ const TransactionSummary = ({
         before proceeding to payment."
         className={style}
       />
+      </div>
+      
 
       <div className="flex justify-between mb-[1.5rem] ">
         <h3 className="font-Modarat font-medium text-[20px] leading-[24px] text-[#51575D]">
@@ -37,7 +40,7 @@ const TransactionSummary = ({
       </div>
       <div className="border-b  border-[#51575D] mb-[2rem]"></div>
       {/* <div> */}
-      <div className="flex gap-[12.25rem] mb-[1.5rem]">
+      <div className="flex lg:gap-[12.25rem] mb-[1.5rem]">
         <h4 className="font-Modarat font-normal text-[16px] leading-[24px] text-[#51575D]">
           Institution:
         </h4>
@@ -71,7 +74,7 @@ const TransactionSummary = ({
         </div>
       </div>
       <div className="border-b  border-[#51575D] mb-[2rem]"></div>
-      <div className="flex gap-[11rem] mb-[1.5rem]">
+      <div className="flex lg:gap-[11rem] mb-[1.5rem]">
         <h4 className="font-Modarat font-normal text-[16px] leading-[24px] text-[#51575D]">
           Payment for:
         </h4>
@@ -79,7 +82,7 @@ const TransactionSummary = ({
           Tuition
         </h4>
       </div>
-      <div className="flex gap-[4.6rem]">
+      <div className="flex lg:gap-[4.6rem] max-sm:justify-between">
         <h4 className="font-Modarat font-normal text-[16px] leading-[24px] text-[#51575D]">
           Country you're paying from:
         </h4>
@@ -87,7 +90,7 @@ const TransactionSummary = ({
           Nigeria
         </h4>
       </div>
-      <div className="flex gap-[10.6rem] mt-[1.5rem] mb-[1.5rem]">
+      <div className="flex lg:gap-[10.6rem] max-sm:justify-between mt-[1.5rem] mb-[1.5rem]">
         <div className="font-Modarat   font-normal text-[16px] leading-[24px] text-[#51575D]">
           <h4>Total payment</h4>
 
@@ -97,7 +100,7 @@ const TransactionSummary = ({
           CAD 1,615.10 (NGN 1,589,760.81)
         </h4>
       </div>
-      <div className="flex gap-[10.2rem]  mb-[1.5rem]">
+      <div className="flex lg:gap-[10.2rem] max-sm:justify-between mb-[1.5rem]">
         <div className="font-Modarat   font-normal text-[16px] leading-[24px] text-[#51575D]">
           <h4>Institution gets:</h4>
         </div>
@@ -105,7 +108,7 @@ const TransactionSummary = ({
           CAD 1,500.00 (NGN 1,476,465.15)
         </h4>
       </div>
-      <div className="flex gap-[10.3rem]  mb-[1.5rem]">
+      <div className="flex lg:gap-[10.3rem] max-sm:justify-between mb-[1.5rem]">
         <div className="font-Modarat   font-normal text-[16px] leading-[24px] text-[#51575D]">
           <h4>Transactio fee:</h4>
         </div>
@@ -113,7 +116,7 @@ const TransactionSummary = ({
           CAD 100
         </h4>
       </div>
-      <div className="flex gap-[11.2rem]  mb-[1.5rem]">
+      <div className="flex lg:gap-[11.2rem] max-sm:justify-between mb-[1.5rem]">
         <div className="font-Modarat   font-normal text-[16px] leading-[24px] text-[#51575D]">
           <h4>Current rate:</h4>
         </div>
@@ -121,7 +124,7 @@ const TransactionSummary = ({
           CA$ 1 = NGN 984.3100970529757
         </h4>
       </div>
-      <div className="flex gap-[8.4rem]  mb-[1.5rem]">
+      <div className="flex lg:gap-[8.4rem] max-sm:justify-between  mb-[1.5rem]">
         <div className="font-Modarat   font-normal text-[16px] leading-[24px] text-[#51575D]">
           <h4>School fee invoice:</h4>
         </div>

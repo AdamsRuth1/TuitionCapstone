@@ -30,7 +30,9 @@ const SignInInput = () => {
     /^[a-zA-Z0-9._-]+@[a-zA-Z0-9]+\.[a-zA-Z]{2,3}$/.test(value);
 
   const validatePassword = (value) =>
-    /^(?=.*\d)(?=.*[A-Z])(?=.*[a-z])(?=.*[!@#$%^&*()_+{}\[\]:;"'<>,.?/~`|\\-]).{8,}$/.test(value);
+    /^(?=.*\d)(?=.*[A-Z])(?=.*[a-z])(?=.*[!@#$%^&*()_+{}\[\]:;"'<>,.?/~`|\\-]).{8,}$/.test(
+      value
+    );
 
   const handlePasswordVisibility = () => {
     setShowPassword(!showPassword);
@@ -74,7 +76,6 @@ const SignInInput = () => {
     setLoading(true);
 
     try {
-      // console.log("Sending request with data:", signInData);
 
       const signIn = await axios.post(`${base_URL}auth/login`, signInData, {
         headers: {
@@ -85,24 +86,28 @@ const SignInInput = () => {
       localStorage.setItem("email", JSON.stringify(email));
       localStorage.setItem("first_name", JSON.stringify(first_name));
       localStorage.setItem("last_name", JSON.stringify(last_name));
-      localStorage.setItem("token", JSON.stringify(signIn.data.data.access_token));
+      localStorage.setItem(
+        "token",
+        JSON.stringify(signIn.data.data.access_token)
+      );
       localStorage.setItem("u-id", JSON.stringify(signIn.data.data.user.id));
-
 
       if (signIn.status === 200) {
         const data = signIn.data;
-        // console.log("Response data:", data);
+        console.log("Response data:", data);
+
         navigate("/dashboard/");
       }
     } catch (error) {
       // console.error("Error response:", error.response);
-      setShowErrorMessage(error.response?.data?.message || "An error occurred.");
+      setShowErrorMessage(
+        error.response?.data?.message || "An error occurred."
+      );
     } finally {
       setLoading(false);
     }
   };
 
-  
   return (
     <div className="max-sm:px-[1rem]">
       <form onSubmit={handleSubmit}>
@@ -139,7 +144,7 @@ const SignInInput = () => {
             onClick={handlePasswordVisibility}
           >
             {showPassword ? (
-              <img src={EyeOpen} alt="eye icon" width={25}/>
+              <img src={EyeOpen} alt="eye icon" width={25} />
             ) : (
               <img src={EyeClose} alt="eye icon" />
             )}
@@ -162,8 +167,6 @@ const SignInInput = () => {
           onClose={() => setShowErrorMessage("")}
         />
       )}
-
-      
     </div>
   );
 };

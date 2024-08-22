@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 const TuitionWalletPayment = ({ Method, description, image, className }) => {
   return (
-    <div className="w-[528px] py-[24px] mb-[2.5rem] cursor-pointer  px-[16px] bg-white border border-[#CCCCCC] rounded-[8px]">
+    <div className="w-[528px] max-sm:w-[400px] max-sm:m-auto py-[24px] mb-[2.5rem] cursor-pointer  px-[16px] bg-white border border-[#CCCCCC] rounded-[8px]">
       <Link to="/dashboard/wallet">
         <div className="flex gap-[1.7rem]">
           <div
