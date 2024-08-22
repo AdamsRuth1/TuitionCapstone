@@ -84,7 +84,7 @@ const InstituteInfo = ({ Next }) => {
           </label>
           {/* <div className=""> */}
           <div
-            className={`tuitionSelect mb-[2rem] py-[0.8rem]  flex justify-between ${
+            className={`tuitionSelect mb-[2rem] py-[0.8rem]   flex justify-between ${
               errors.country ? "border-red-600" : ""
             }`}
           >
@@ -96,7 +96,7 @@ const InstituteInfo = ({ Next }) => {
               <img src={ArrowDown} alt="Arrow down icon" />
             </div>
             {isCountryOpen && (
-              <div className="absolute lg:ml-[6rem]">
+              <div className="absolute lg:ml-[6rem] ">
                 {Countries.map((country, index) => (
                   
                   <div
