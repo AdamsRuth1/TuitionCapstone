@@ -6,22 +6,34 @@ const SignUpWithGoogle = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    // Load Google's OAuth client with your client ID
-    window.gapi.load('auth2', async () => {
-      await window.gapi.auth2.init({
-        client_id: '1073252734008-7hcm78qd5c72lsfagh081qspat4k1ach.apps.googleusercontent.com ', // Replace with your OAuth client ID
+    // Ensure gapi is available before loading
+    if (window.gapi) {
+      window.gapi.load('auth2', async () => {
+        try {
+          await window.gapi.auth2.init({
+            client_id: '1073252734008-7hcm78qd5c72lsfagh081qspat4k1ach.apps.googleusercontent.com',
+          });
+        } catch (error) {
+          console.error('Error initializing Google API:', error);
+        }
       });
-    });
+    } else {
+      console.error('Google API is not loaded.');
+    }
   }, []);
 
   const handleSignIn = async () => {
     try {
       const googleAuth = window.gapi.auth2.getAuthInstance();
+      if (!googleAuth) {
+        console.error('Google Auth instance is not available.');
+        return;
+      }
+
       const googleUser = await googleAuth.signIn();
       const idToken = googleUser.getAuthResponse().id_token;
-
-      // Send the ID token to your backend for verification
-      await fetch('https://alt-wave-b-project-backend.onrender.com/api/flutter_app/auth/google', {
+console.log("id genereate", {idToken})
+      const response = await fetch('https://alt-wave-b-project-backend.onrender.com/api/flutter_app/auth/google', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -29,13 +41,22 @@ const SignUpWithGoogle = () => {
         body: JSON.stringify({ id_token: idToken }),
       });
 
-      console.log('ID token sent to backend successfully!');
+      if (!response.ok) {
+        throw new Error(`HTTP error! Status: ${response.status}`);
+      }
 
-      // Example: Redirect to another page after successful sign-in
-      navigate('/dashboard'); // Replace '/dashboard' with your actual route
+      console.log('ID token sent to backend successfully!');
+      navigate('/dashboard');
     } catch (error) {
-      console.error('Error signing in with Google:', error);
-      // Handle error appropriately, e.g., show an error message to the user
+      if (error.error === 'popup_closed_by_user') {
+        // User closed the popup, handle it gracefully
+        console.warn('Sign-in popup was closed by the user.');
+        alert('The sign-in popup was closed. Please try again.');
+      } else {
+        // Other errors
+        console.error('Error signing in with Google:', error);
+        alert('An error occurred during sign-in. Please try again.');
+      }
     }
   };
 

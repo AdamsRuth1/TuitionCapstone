@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "../../../../src/swipper.css";
@@ -21,7 +21,7 @@ export default function Swip() {
   const handleCardClick = (card_style) => {
     console.log("Card clicked:", card_style);
     setSelectedCard(card_style);
-    setCardDetails(card_style);
+    setCardDetails({ card_style }); // Correctly set card style
   };
 
   const handleProceedClick = () => {
@@ -55,28 +55,28 @@ export default function Swip() {
             className="mySwiper w-full h-full"
           >
             <SwiperSlide
-              onClick={() => handleCardClick(<FirstCard />)}
+              onClick={() => handleCardClick('FirstCard')} // Pass the style name as a string
               className="swiper-slide img mr-10 ml-4"
               id="card_style"
             >
               <FirstCard />
             </SwiperSlide>
             <SwiperSlide
-              onClick={() => handleCardClick(<SecondCard />)}
+              onClick={() => handleCardClick('SecondCard')} // Pass the style name as a string
               className="swiper-slide img ml-10 "
               id="card_style"
             >
               <SecondCard />
             </SwiperSlide>
             <SwiperSlide
-              onClick={() => handleCardClick(<ThirdCard />)}
+              onClick={() => handleCardClick('ThirdCard')} // Pass the style name as a string
               className="swiper-slide img  mr-10 ml-10"
               id="card_style"
             >
               <ThirdCard />
             </SwiperSlide>
             <SwiperSlide
-              onClick={() => handleCardClick(<FourthCard />)}
+              onClick={() => handleCardClick('FourthCard')} // Pass the style name as a string
               className="swiper-slide img"
               id="card_style"
             >

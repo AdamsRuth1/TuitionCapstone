@@ -2,58 +2,65 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Profile from "../../../assets/images/Profile empty.png";
 import logo from "../../../assets/images/Vector (4).png";
-import Dashboard from "../../views/dashboard";
 import PaginationBtn from './pagination';
+import { useCardContext } from "../../../context/CardContext";
 import HeaderMessage from "../../views/messageDashboard";
-import DashboardSideBar from "../../views/DashboardSideBar";
+import Dashboard from "../../views/dashboard";
 
 const DashboardHome = () => {
+  const { cardId } = useCardContext();
   const [hasMadePayment, setHasMadePayment] = useState(false);
   const [transactions, setTransactions] = useState([]);
   const [savedCardDetails, setSavedCardDetails] = useState([]);
-  const firstname = JSON.parse(localStorage.getItem("first_name"));
+  const [cardDetails, setCardDetails] = useState({});
+  const [currentDateTime, setCurrentDateTime] = useState(new Date()); // State for date and time
+  const firstname = JSON.parse(localStorage.getItem("first_name")) || "User";
 
   useEffect(() => {
-    // Fetch transactions and card details from backend
-    // const fetchTransactions = async () => {
-    //   try {
-    //     const response = await fetch('/api/transactions'); // Replace with your backend endpoint
-    //     if (response.ok) {
-    //       const data = await response.json();
-    //       if (data.length > 0) {
-    //         setHasMadePayment(true);
-    //         setTransactions(data);
-    //       } else {
-    //         setHasMadePayment(false);
-    //         setTransactions([]);
-    //       }
-    //     } else {
-    //       console.error('Failed to fetch transactions');
-    //     }
-    //   } catch (error) {
-    //     console.error('Error fetching transactions:', error);
-    //   }
-    // };
+    // Update current date and time when component mounts
+    setCurrentDateTime(new Date());
 
-    const fetchSavedCardDetails = async () => {
+    // Optionally, you can set an interval to update the time every minute
+    const intervalId = setInterval(() => {
+      setCurrentDateTime(new Date());
+    }, 60000); // Update every minute
+
+    return () => clearInterval(intervalId); // Cleanup interval on component unmount
+
+  }, []);
+
+  useEffect(() => {
+    if (!cardId) {
+      console.error("No cardId provided");
+      return; // Exit if cardId is not available
+    }
+
+    // Fetch card details by ID
+    const fetchCardDetails = async (cardId) => {
       try {
-        const response = await fetch('https://alt-wave-b-project-backend.onrender.com/api/flutter_app/cards/virtual-cards'); // Replace with your backend endpoint
-        if (response.ok) {
-          const data = await response.json();
-          if (Array.isArray(data) && data.length > 0) {
-            setSavedCardDetails(data);
-          } else {
-            setSavedCardDetails([]);
+        const token = JSON.parse(localStorage.getItem("token"));
+        const response = await fetch(`https://alt-wave-b-project-backend.onrender.com/api/flutter_app/cards/virtual-cards/${cardId}`, {
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`
           }
-        } else {
-          console.error('Failed to fetch card details');
+        });
+
+        if (!response.ok) {
+          throw new Error(`HTTP error! Status: ${response.status}`);
         }
+
+        const data = await response.json();
+        setCardDetails(data); // Update state with fetched data
+        setSavedCardDetails([data]); // Ensure this structure aligns with your rendering logic
       } catch (error) {
-        console.error('Error fetching card details:', error);
+        console.error("Error fetching card details:", error);
       }
     };
-    fetchSavedCardDetails();
-  }, []);
+
+    fetchCardDetails(cardId); // Call the function to fetch card details
+  }, [cardId]);
 
   return (
     <Dashboard className="mx-[10rem]">
@@ -67,6 +74,7 @@ const DashboardHome = () => {
         <div>
           <h1 className="font-millik text-3xl mb-2 leading-10">Hello {firstname}</h1>
           <p className="text-center font-Modarat text-customGray text-lg">Welcome to Tuition</p>
+         
         </div>
       </div>
 
@@ -79,13 +87,24 @@ const DashboardHome = () => {
             <div>
               <h1 className="font-Modarat font-bold text-2xl text-customBlack mb-4">Your Card Details</h1>
               <div className="mt-8" style={{ marginLeft: "32px", marginRight: "32px" }}>
-                {savedCardDetails.map((card, index) => (
-                  <div key={index} className="flex pb-10 items-center">
+                {savedCardDetails.map((card) => (
+                  <div key={card.id} className="flex pb-10 items-center">
                     <div className="flex flex-col w-full">
                       <div className="flex justify-between items-center">
-                        <p className="font-medium font-Modarat text-lg">{card.description || "N/A"}</p>
-                        <p style={{ color: "#606569" }} className="text-sm font-Modarat">Created: {card.creationDate || "N/A"}</p>
-                        <p style={{ color: "#606569" }} className="text-sm font-Modarat">Time: {card.creationTime || "N/A"}</p>
+                        <p className="font-medium font-Modarat text-lg">{card.data.description || "N/A"}</p>
+                        <p className="text-sm font-Modarat" style={{ color: "#606569" }}>
+                          Created: {card.data.card_type || "N/A"}
+                        </p>
+                        <p className="text-sm font-Modarat" style={{ color: "#606569" }}>
+                         Date: {currentDateTime.toLocaleString()}
+                        </p>
+                        {/* Display additional card details if available */}
+                        {cardDetails && (
+                          <div className="mt-4">
+                            <p className="font-medium font-Modarat text-lg">Card type: <span className="text-sm font-Modarat" style={{ color: "#606569" }}>{card.data.card_type}</span></p>
+                      
+                          </div>
+                        )}
                       </div>
                     </div>
                   </div>
@@ -96,6 +115,7 @@ const DashboardHome = () => {
         </div>
       ) : hasMadePayment ? (
         <div className="bg-customLightBlueGray mt-16 rounded-lg border-b shadow-sm w-full flex flex-col text-center">
+          {/* Uncomment and adjust the following block if you want to display transactions */}
           {/* <div className="lg:my-20">
             <div className="mb-10 flex justify-center">
               <img src={logo} alt="Logo" />
@@ -108,7 +128,7 @@ const DashboardHome = () => {
                     <div className="flex flex-col w-full">
                       <div className="flex justify-between items-center">
                         <p className="font-medium font-Modarat text-lg">Transaction Id: <span className="font-bold">{transaction.id}</span></p>
-                        <p style={{ color: "#606569" }} className="text-sm font-Modarat">{transaction.paymentType}</p>
+                        <p className="text-sm font-Modarat" style={{ color: "#606569" }}>{transaction.paymentType}</p>
                         <p className="text-right font-base font-Modarat text-customBlack">Amount: ₦{transaction.amount.toFixed(2)}</p>
                         <p className="text-right font-base font-Modarat text-customBlack">Date: {new Date(transaction.date).toLocaleString()}</p>
                       </div>
