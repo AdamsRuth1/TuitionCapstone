@@ -59,19 +59,6 @@ export default function ProfileInput() {
             }
 
             setStatusMessage('Profile saved successfully');
-           
-            setFormData({
-                phone_number: '',
-                student_id: '',
-                date_of_birth: '',
-                additional_information: '',
-                institution_information: '',
-                payment_information: '',
-                country_paying_from: '',
-                discount_code: '',
-                payment_for: '',
-                payment_by: '',
-            });
         } catch (error) {
             // console.error('Error saving profile:', error);
             setStatusMessage('Error saving profile. Please check the console for details.');
