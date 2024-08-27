@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { motion } from "framer-motion";
 import Footer from "../views/footer";
-import Header from "../views/header";
+import Header from "../views/dashboardHeader";
 import logo from "../../assets/images/Vector (1).png";
 
 // API endpoint
@@ -12,7 +12,7 @@ export default function ProfileInput() {
         phone_number: '',
         student_id: '',
         date_of_birth: '',
-        additional_information: '', // Added other expected fields
+        additional_information: '',
         institution_information: '',
         payment_information: '',
         country_paying_from: '',
@@ -21,9 +21,11 @@ export default function ProfileInput() {
         payment_by: '',
     });
 
+    const [statusMessage, setStatusMessage] = useState(''); 
+    const [isSaving, setIsSaving] = useState(false); 
     const token = JSON.parse(localStorage.getItem("token")) || '';
 
-    // Handle input changes
+    
     const handleInputChange = (e) => {
         const { id, value } = e.target;
         setFormData({
@@ -35,6 +37,8 @@ export default function ProfileInput() {
     // Handle form submission
     const handleSubmit = async (e) => {
         e.preventDefault();
+        setStatusMessage(''); // Clear previous status messages
+        setIsSaving(true); // Set saving status to true
 
         try {
             const response = await fetch(API_URL, {
@@ -47,16 +51,32 @@ export default function ProfileInput() {
             });
 
             if (!response.ok) {
-                // Get detailed error response from the server
+                
                 const errorData = await response.json();
-                console.error('Server returned error:', errorData); // Log the detailed error response
-                throw new Error(`Failed to save data: ${errorData.message || 'Unknown error'}`);
+                // console.error('Server returned error:', errorData);
+                setStatusMessage(` ${errorData.message || 'Unknown error'}`);
+                return;
             }
 
-            alert('Profile saved successfully');
+            setStatusMessage('Profile saved successfully');
+           
+            setFormData({
+                phone_number: '',
+                student_id: '',
+                date_of_birth: '',
+                additional_information: '',
+                institution_information: '',
+                payment_information: '',
+                country_paying_from: '',
+                discount_code: '',
+                payment_for: '',
+                payment_by: '',
+            });
         } catch (error) {
-            console.error('Error saving profile:', error); // Log the error for debugging
-            alert('Error saving profile. Please check the console for details.'); // User-friendly message
+            // console.error('Error saving profile:', error);
+            setStatusMessage('Error saving profile. Please check the console for details.');
+        } finally {
+            setIsSaving(false); // Set saving status to false after processing
         }
     };
 
@@ -75,14 +95,19 @@ export default function ProfileInput() {
                             My Profile
                         </h1>
                         <form onSubmit={handleSubmit}>
+                            {statusMessage && (
+                                <div className={`mb-4 ${statusMessage.includes('Error') ? 'text-red-600' : 'text-green-600'}`}>
+                                    {statusMessage}
+                                </div>
+                            )}
                             <div className="mb-4">
                                 <input
                                     className="border rounded w-full md:w-96 py-2 px-3 text-gray-700 border-gray-700 border-opacity-30"
                                     id="phone_number"
                                     value={formData.phone_number}
                                     onChange={handleInputChange}
-                                    type="text" // Changed to type "text" for phone number
-                                    placeholder="Enter your phone number"
+                                    type="text"
+                                    placeholder="Number must be in the format +234 123 456 7890"
                                     required
                                 />
                             </div>
@@ -110,9 +135,10 @@ export default function ProfileInput() {
                             </div>
                             <button
                                 type="submit"
-                                className="border w-full p-4 rounded-lg bg-customBlack text-white font-Modarat"
+                                className={`border w-full md:w-96 p-4 rounded-lg ${isSaving ? 'bg-gray-500 cursor-not-allowed' : 'bg-customBlack'} text-white font-Modarat`}
+                                disabled={isSaving}
                             >
-                                Save
+                                {isSaving ? 'Saving...' : 'Save'}
                             </button>
                         </form>
                     </div>
