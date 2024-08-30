@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import Footer from "../views/footer";
 import Header from "../views/dashboardHeader";
 import logo from "../../assets/images/Vector (1).png";
+import { Link } from 'react-router-dom';
 
 // API endpoint
 const API_URL = "https://alt-wave-b-project-backend.onrender.com/api/flutter_app/profile";
@@ -74,7 +75,10 @@ export default function ProfileInput() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 1 }}
             >
-                <Header />
+               <div className='flex p-4 '>
+                <div className='mr-[15%]'><img src={logo}/></div>
+                <Link to="/dashboard/" className='p-2 underline text-blue-600 italic '>Back to  Dashboard</Link>
+               </div>
                 <div className="flex flex-col md:flex-row md:mt-10 p-4 md:p-8">
                     <div className="flex-1 md:mr-16 md:ml-20">
                         {/* <img src={logo} alt="Logo" /> */}
