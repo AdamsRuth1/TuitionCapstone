@@ -64,7 +64,7 @@ export default function Header() {
               </li>
               <li>
                 <Link
-                  to=""
+                  to="testimonial"
                   className="text-black hover:bg-white hover:text-customButton hover:border-customButton px-4 py-2 border-b border-transparent transition-all duration-300 relative inline-block"
                 >
                   Testimonial
@@ -128,7 +128,7 @@ export default function Header() {
               </li>
             </ul>
             <div className="md:flex justify-between space-x-4 mx-3 hidden">
-              <Link className="border border-customButton rounded-md text-customButton py-3 text-center px-6">
+              <Link to="/comingsoon" className="border border-customButton rounded-md text-customButton py-3 text-center px-6">
                 Download App
               </Link>
               <Link

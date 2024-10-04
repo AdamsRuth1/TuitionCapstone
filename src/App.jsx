@@ -9,10 +9,12 @@ import { CardProvider } from "./context/CardContext"; // Updated import name
 import Landing from "./components/landingPage/landingPage";
 import EnrollPage from "./components/onboarding/Enroll";
 import SignIn from "./components/onboarding/SignIn";
+import Testimonial from "./components/landingPage/testimonial";
 import SignUp from "./components/onboarding/SignUp";
 import Blog from "./components/onboarding/BlogPage";
 import EnrollSuccess from "./components/onboarding/EnrollSuccess";
 import ContactUs from "./components/onboarding/contactUs/contactus";
+import ComingSoon from "./components/landingPage/comingSoon";
 import Faq from "./components/landingPage/faq";
 import Dashboard from "./components/dashboard/dashbord/DashboardHome";
 import Eservice from "./components/E-service/Services";
@@ -35,6 +37,8 @@ function App() {
             <Route path="/enroll" element={<EnrollPage />} />
             <Route path="/signin" element={<SignIn />} />
             <Route path="/signup" element={<SignUp />} />
+            <Route path="/testimonial" element={<Testimonial />} />
+          <Route path="/comingsoon" element={<ComingSoon />} />
             <Route path="/blog" element={<Blog />} />
             <Route path="/enrollsuccess" element={<EnrollSuccess />} />
             <Route path="/contactus" element={<ContactUs />} />
