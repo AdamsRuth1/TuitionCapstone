@@ -76,10 +76,12 @@ const SignInInput = () => {
     setLoading(true);
 
     try {
+      const token = JSON.parse(localStorage.getItem("token"));
 
       const signIn = await axios.post(`${base_URL}auth/login`, signInData, {
         headers: {
           "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
         },
       });
       const { email, first_name, last_name } = signIn.data.data.user;
@@ -95,7 +97,6 @@ const SignInInput = () => {
       if (signIn.status === 200) {
         const data = signIn.data;
         console.log("Response data:", data);
-
         navigate("/dashboard/");
       }
     } catch (error) {
@@ -123,9 +124,7 @@ const SignInInput = () => {
               errorMessage.email ? "error-border" : ""
             }`}
           />
-          {/* <p className="text-red-600" style={{ fontSize: "14px" }}>
-            {errorMessage.email}
-          </p> */}
+        
         </div>
         <div className="">
           <label className="moderat-font">Password</label> <br />
